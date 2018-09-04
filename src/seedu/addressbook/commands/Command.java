@@ -15,7 +15,7 @@ public class Command {
     protected AddressBook addressBook;
     protected List<? extends ReadOnlyPerson> relevantPersons;
     private int targetIndex = -1;
-
+    
     /**
      * @param targetIndex last visible listing index of the target person
      */
