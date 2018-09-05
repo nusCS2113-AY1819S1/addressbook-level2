@@ -22,8 +22,12 @@ public class Formatter {
         return String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
     }
 
-    public static String getMessage(String message) {
-        return addLinePrefix(message.replace("\n", LS + LINE_PREFIX));
+    public static String formatMessage(String... message) {
+        StringBuilder formatted = new StringBuilder();
+        for (String m : message) {
+            formatted.append(addLinePrefix(m.replace("\n", LS + LINE_PREFIX)));
+        }
+        return formatted.toString();
     }
 
     public static String addLinePrefix(String message) {

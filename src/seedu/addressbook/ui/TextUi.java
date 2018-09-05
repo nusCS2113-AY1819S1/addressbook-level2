@@ -103,9 +103,7 @@ public class TextUi {
 
     /** Shows message(s) to the user */
     public void showToUser(String... message) {
-        for (String m : message) {
-            out.println(Formatter.getMessage(m));
-        }
+        out.println(Formatter.formatMessage(message));
     }
 
     /**
