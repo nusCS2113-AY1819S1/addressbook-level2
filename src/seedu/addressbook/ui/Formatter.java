@@ -18,9 +18,6 @@ public class Formatter {
     /** Offset required to convert between 1-indexing and 0-indexing.  */
     public static final int DISPLAYED_INDEX_OFFSET = 1;
 
-    /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
-    private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
-
     public static String getStorageFileInfo(String storageFilePath) {
         return String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
     }
@@ -42,16 +39,6 @@ public class Formatter {
             displayIndex++;
         }
         return formatted.toString();
-    }
-
-    /**
-     * Returns true if the user input line is a comment line.
-     *
-     * @param rawInputLine full raw user input line.
-     * @return true if input line is a comment.
-     */
-    public static Boolean isCommentLine(String rawInputLine) {
-        return rawInputLine.trim().matches(COMMENT_LINE_FORMAT_REGEX);
     }
 
     /**

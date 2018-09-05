@@ -22,6 +22,9 @@ public class TextUi {
 
     private static final String DIVIDER = "===================================================";
 
+    /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
+    private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
+
     /** Offset required to convert between 1-indexing and 0-indexing.  */
     public static final int DISPLAYED_INDEX_OFFSET = 1;
 
@@ -44,7 +47,17 @@ public class TextUi {
      * @return true if the entire user input line should be ignored.
      */
     private boolean shouldIgnore(String rawInputLine) {
-        return rawInputLine.trim().isEmpty() || Formatter.isCommentLine(rawInputLine);
+        return rawInputLine.trim().isEmpty() || isCommentLine(rawInputLine);
+    }
+
+    /**
+     * Returns true if the user input line is a comment line.
+     *
+     * @param rawInputLine full raw user input line.
+     * @return true if input line is a comment.
+     */
+    private Boolean isCommentLine(String rawInputLine) {
+        return rawInputLine.trim().matches(COMMENT_LINE_FORMAT_REGEX);
     }
 
     /**
