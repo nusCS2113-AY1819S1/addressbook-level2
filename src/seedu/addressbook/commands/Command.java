@@ -15,6 +15,7 @@ public class Command {
     protected AddressBook addressBook;
     protected List<? extends ReadOnlyPerson> relevantPersons;
     private int targetIndex = -1;
+    private String name = "";
 
     /**
      * @param targetIndex last visible listing index of the target person
@@ -22,6 +23,8 @@ public class Command {
     public Command(int targetIndex) {
         this.setTargetIndex(targetIndex);
     }
+
+    public Command(String name) { this.name = name; }
 
     protected Command() {
     }
@@ -57,6 +60,7 @@ public class Command {
      * @throws IndexOutOfBoundsException if the target index is out of bounds of the last viewed listing
      */
     protected ReadOnlyPerson getTargetPerson() throws IndexOutOfBoundsException {
+        if (getTargetIndex() == -1) { setTargetIndex(getTargetIndexByName(this.name)); }    // getTargetIndex == -1, DeleteCommand(name)
         return relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
     }
 
@@ -66,5 +70,18 @@ public class Command {
 
     public void setTargetIndex(int targetIndex) {
         this.targetIndex = targetIndex;
+    }
+
+    public int getTargetIndexByName(String name) {
+        int targetIndex = DISPLAYED_INDEX_OFFSET;
+
+        for (ReadOnlyPerson person : relevantPersons) {
+            if (person.getName().toString().equals(name)) {
+                return targetIndex;
+            }
+            targetIndex++;
+        }
+
+        return targetIndex;
     }
 }
