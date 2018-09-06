@@ -29,10 +29,10 @@ public class DeleteCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
         try {
             final ReadOnlyPerson target = getTargetPerson();
             addressBook.removePerson(target);
+            List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
             return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target), allPersons);
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
