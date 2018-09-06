@@ -153,8 +153,18 @@ Views all details of the 1st person in the results of the `find` command.
 
 == Clearing all entries : `clear`
 
-Clears all entries from the address book. +
+Gives user a warning prompt to confirm or cancel deletion of address book.+
 Format: `clear`
+
+== Confirm Clear all entries : `yes`
+
+Clears all entries from the address book. +
+Format: `yes`
+
+== Cancel the clearing of all entries : `no`
+
+Informs user that the address book has not been cleared. +
+Format: `no`
 
 == Exiting the program : `exit`
 
