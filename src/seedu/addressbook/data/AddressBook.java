@@ -62,6 +62,12 @@ public class AddressBook {
     }
 
     /**
+     * Returns total number of contacts
+     */
+
+    public int total() {return allPersons.total();}
+
+    /**
      * Returns a new UniquePersonList of all persons in the address book at the time of the call.
      */
     public UniquePersonList getAllPersons() {
