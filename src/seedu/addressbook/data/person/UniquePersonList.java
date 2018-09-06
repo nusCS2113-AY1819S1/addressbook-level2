@@ -111,6 +111,14 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Gets total contacts
+     */
+
+    public int total(){
+        return internalList.size();
+    }
+
+    /**
      * Removes the equivalent person from the list.
      *
      * @throws PersonNotFoundException if no such person could be found in the list.
