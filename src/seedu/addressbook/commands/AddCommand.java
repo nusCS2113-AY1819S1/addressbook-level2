@@ -1,6 +1,7 @@
 package seedu.addressbook.commands;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -30,6 +31,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person toAdd;
+
 
     /**
      * Convenience constructor using raw values.
@@ -64,12 +66,14 @@ public class AddCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
         try {
             addressBook.addPerson(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), allPersons);
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         }
+
     }
 
 }
