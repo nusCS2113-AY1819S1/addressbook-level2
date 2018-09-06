@@ -91,7 +91,7 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
-== Deleting a person : `delete`
+== Deleting a person by index: `delete`
 
 Deletes the specified person from the address book. Irreversible. +
 Format: `delete INDEX`
@@ -110,6 +110,27 @@ Deletes the 2nd person in the address book.
 * `find Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
+
+== Deleting a person by name: `delete_name`
+
+Deletes the specified person from the address book after indexing other commands. Irreversible. +
+Format: `delete NAME`
+
+****
+Deletes the person by `NAME` not case sensitive.
+`NAME` refers to the full name of the person.
+****
+
+Examples:
+
+* `list` +
+`delete_name Matthew Alexander` +
+Deletes the Matthew Alexander in the address book.
+
+* `find Betsy` +
+`delete_name Betsy` +
+Deletes the 1st person in the results of the `find` command.
+
 
 == View non-private details of a person : `view`
 

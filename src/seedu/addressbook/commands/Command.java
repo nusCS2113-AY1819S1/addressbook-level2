@@ -76,7 +76,7 @@ public class Command {
         int targetIndex = DISPLAYED_INDEX_OFFSET;
 
         for (ReadOnlyPerson person : relevantPersons) {
-            if (person.getName().toString().equals(name)) {
+            if (person.getName().toString().equalsIgnoreCase(name)) {
                 return targetIndex;
             }
             targetIndex++;
