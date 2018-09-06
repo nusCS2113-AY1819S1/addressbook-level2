@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.tag.Tag;
 
 /**
@@ -60,6 +61,21 @@ public class Person implements ReadOnlyPerson {
     @Override
     public Set<Tag> getTags() {
         return new HashSet<>(tags);
+    }
+
+    @Override
+    public void setPhone(String phone) throws IllegalValueException{
+        this.phone.setPhone(phone);
+    }
+
+    @Override
+    public void setEmail(String email) throws IllegalValueException {
+        this.email.setEmail(email);
+    }
+
+    @Override
+    public void setAddress(String address) throws IllegalValueException{
+        this.address.setAddress(address);
     }
 
     /**

@@ -2,8 +2,8 @@ package seedu.addressbook.commands;
 
 
 import seedu.addressbook.common.Messages;
+import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.ReadOnlyPerson;
-import seedu.addressbook.data.person.UniquePersonList;
 
 
 /**
@@ -18,29 +18,42 @@ public class EditCommand extends Command{
             + "Parameters: INDEX parameter\n"
             + "Example: " + COMMAND_WORD + " 1 " + "number";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "%1$s's particulars has been updated";
 
     private final String parameter;
+    private final String value;
 
     /**
         Constructor for EditCommand
      **/
-    public EditCommand(int targetVisibleIndex,String parameter){
+    public EditCommand(int targetVisibleIndex,String parameter,String value){
         super(targetVisibleIndex);
         this.parameter=parameter;
+        this.value=value;
     }
 
+    /**
+     * Executes the command and returns the result.
+     */
     @Override
-    public CommandResult execute() {
+    public CommandResult execute() throws IllegalValueException {
         try {
             final ReadOnlyPerson target = getTargetPerson();
-            addressBook.removePerson(target);
-            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target));
-
+            switch(parameter) {
+                case "p":
+                    target.setPhone(value);
+                    break;
+                case "e":
+                    target.setEmail(value);
+                    break;
+                case "a":
+                    target.setAddress(value);
+                    break;
+            }
+            return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, target.getName()));
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        } catch (UniquePersonList.PersonNotFoundException pnfe) {
-            return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
         }
     }
+
 }

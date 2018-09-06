@@ -2,6 +2,7 @@ package seedu.addressbook.data.person;
 
 import java.util.Set;
 
+import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.tag.Tag;
 
 /**
@@ -20,6 +21,13 @@ public interface ReadOnlyPerson {
      * changes on the returned set will not affect the person's internal tags.
      */
     Set<Tag> getTags();
+
+    /**
+     * To set the Value of Phone Email Address
+     */
+    void setPhone(String phone) throws IllegalValueException;
+    void setEmail(String email) throws IllegalValueException;
+    void setAddress(String address) throws IllegalValueException;
 
     /**
      * Returns true if both persons have the same identity fields (name and telephone).
@@ -95,4 +103,6 @@ public interface ReadOnlyPerson {
         }
         return builder.toString();
     }
+
+
 }

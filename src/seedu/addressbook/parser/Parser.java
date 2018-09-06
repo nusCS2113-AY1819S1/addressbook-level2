@@ -32,7 +32,7 @@ public class Parser {
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
     public static final Pattern PERSON_INDEX_PARA_ARGS_FORMAT =
-            Pattern.compile("(?<targetIndex>[0-9]+)" + " (?<parameter>[^*]+)");
+            Pattern.compile("(?<targetIndex>[0-9]+)" + " (?<parameter>[pea]+)/(?<value>[^*]+)");
 
 
     /**
@@ -183,7 +183,9 @@ public class Parser {
         if (!matcher.matches()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
-        return new EditCommand(Integer.parseInt(matcher.group("targetIndex")),matcher.group("parameter"));
+        return new EditCommand(Integer.parseInt(matcher.group("targetIndex")),
+                matcher.group("parameter"),
+                matcher.group("value"));
     }
 
 
