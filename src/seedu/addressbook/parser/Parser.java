@@ -32,6 +32,14 @@ public class Parser {
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
 
+    public static final Pattern PERSON_INDEX_AND_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile("(?<targetIndex>.)"
+                    + "(?<name>[^/]+)"
+                    + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
+                    + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
+                    + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+
     /**
      * Signals that the user input could not be parsed.
      */
@@ -90,7 +98,7 @@ public class Parser {
             return new ExitCommand();
 
         case EditCommand.COMMAND_WORD:
-            return prepareAdd(arguments);
+            return prepareEdit(arguments);
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
@@ -138,12 +146,18 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareEdit(String args) {
-        final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(args.trim());
+        final Matcher matcher = PERSON_INDEX_AND_DATA_ARGS_FORMAT.matcher(args.trim());
         // Validate arg string format
         if (!matcher.matches()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
         try {
+            System.out.println(matcher.group("name"));
+            System.out.println(matcher.group("targetIndex"));
+            System.out.println(matcher.group("phone"));
+            System.out.println(matcher.group("email"));
+            System.out.println(matcher.group("address"));
+            System.out.println(matcher.group("tagArguments"));
             return new EditCommand(
                     matcher.group("name"),
 
