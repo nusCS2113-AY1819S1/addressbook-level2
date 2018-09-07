@@ -111,6 +111,19 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Adds a person to the list.
+     *
+     * @throws DuplicatePersonException if the person to add is a duplicate of an existing person in the list.
+     *    The @link{ReadOnlyPerson#isSamePerson} method is used for this comparison,
+     *    which defines a weaker notion of equality.
+     */
+    public void replace(Person personOut, Person personIn) throws DuplicatePersonException {
+        if (contains(personIn)) {
+            throw new DuplicatePersonException();
+        }
+        Collections.replaceAll(internalList, personOut, personIn);
+    }
+    /**
      * Removes the equivalent person from the list.
      *
      * @throws PersonNotFoundException if no such person could be found in the list.

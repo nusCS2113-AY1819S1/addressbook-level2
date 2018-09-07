@@ -158,7 +158,10 @@ public class Parser {
             System.out.println(matcher.group("email"));
             System.out.println(matcher.group("address"));
             System.out.println(matcher.group("tagArguments"));
+            final int targetIndex = Integer.parseInt(matcher.group("targetIndex"));
+
             return new EditCommand(
+                    targetIndex,
                     matcher.group("name"),
 
                     matcher.group("phone"),

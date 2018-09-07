@@ -23,14 +23,16 @@ public class EditCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
-    private final Person toAdd;
+    private final Person personIn;
+    private final ReadOnlyPerson personOut;
 
     /**
      * Convenience constructor using raw values.
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public EditCommand(String name,
+    public EditCommand(Integer targetIndex,
+                        String name,
                        String phone, boolean isPhonePrivate,
                        String email, boolean isEmailPrivate,
                        String address, boolean isAddressPrivate,
@@ -39,29 +41,26 @@ public class EditCommand extends Command {
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
-        this.toAdd = new Person(
+        this.personIn = new Person(
                 new Name(name),
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
                 new Address(address, isAddressPrivate),
                 tagSet
         );
-        System.out.println("I am edit");
-    }
-
-    public EditCommand(Person toAdd) {
-        this.toAdd = toAdd;
+        DeleteCommand tempDel = new DeleteCommand(targetIndex);
+        personOut = tempDel.getTargetPerson();
     }
 
     public ReadOnlyPerson getPerson() {
-        return toAdd;
+        return personIn;
     }
 
     @Override
     public CommandResult execute() {
         try {
-            addressBook.addPerson(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            addressBook.editPerson(personIn, personOut);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, personIn));
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         }
