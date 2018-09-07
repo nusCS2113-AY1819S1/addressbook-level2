@@ -6,6 +6,7 @@ import seedu.addressbook.data.tag.Tag;
 
 import java.util.HashSet;
 import java.util.Set;
+import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
 
 /**
  * Adds a person to the address book.
@@ -14,17 +15,17 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a person particular in the address book. "
             + "Contact details can be marked private by prepending 'p' to the prefix.\n"
-            + "Parameters: NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...\n"
+            + "Parameters: INDEX NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...\n"
             + "Example: " + COMMAND_WORD
-            + " John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney";
+            + " 1 John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
+    public static final String MESSAGE_SUCCESS = "Entry %1$d changed to: %2$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person personIn;
-    private final ReadOnlyPerson personOut;
+    private final int targetIndex;
 
     /**
      * Convenience constructor using raw values.
@@ -49,7 +50,7 @@ public class EditCommand extends Command {
                 tagSet
         );
         DeleteCommand tempDel = new DeleteCommand(targetIndex);
-        personOut = tempDel.getTargetPerson();
+        this.targetIndex = tempDel.getTargetIndex() - DISPLAYED_INDEX_OFFSET;
     }
 
     public ReadOnlyPerson getPerson() {
@@ -59,8 +60,9 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute() {
         try {
-            addressBook.editPerson(personIn, personOut);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, personIn));
+            addressBook.editPerson(targetIndex, personIn);
+            final int displayedIndex = targetIndex + DISPLAYED_INDEX_OFFSET;
+            return new CommandResult(String.format(MESSAGE_SUCCESS, displayedIndex, personIn));
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         }

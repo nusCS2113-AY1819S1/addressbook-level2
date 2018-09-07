@@ -152,16 +152,11 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
         try {
-            System.out.println(matcher.group("name"));
-            System.out.println(matcher.group("targetIndex"));
-            System.out.println(matcher.group("phone"));
-            System.out.println(matcher.group("email"));
-            System.out.println(matcher.group("address"));
-            System.out.println(matcher.group("tagArguments"));
             final int targetIndex = Integer.parseInt(matcher.group("targetIndex"));
 
             return new EditCommand(
                     targetIndex,
+
                     matcher.group("name"),
 
                     matcher.group("phone"),

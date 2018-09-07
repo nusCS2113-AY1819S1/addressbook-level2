@@ -54,13 +54,16 @@ public class AddressBook {
         allPersons.remove(toRemove);
     }
 
+    public void removePerson(Person toRemove) throws PersonNotFoundException {
+        allPersons.remove(toRemove);
+    }
     /**
      * Edit the equivalent person from the address book.
      *
      * @throws PersonNotFoundException if no such Person could be found.
      */
-    public void editPerson(Person personIn, Person personOut) throws DuplicatePersonException {
-        allPersons.replace(personIn, personOut);
+    public void editPerson(int targetIndex, Person personIn) throws DuplicatePersonException {
+        allPersons.replaceAtIndex(targetIndex, personIn);
     }
 
     /**
