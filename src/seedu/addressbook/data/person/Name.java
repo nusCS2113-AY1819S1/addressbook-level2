@@ -5,6 +5,8 @@ import seedu.addressbook.data.exception.IllegalValueException;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.addressbook.common.Utils;
+
 /**
  * Represents a Person's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
@@ -41,6 +43,10 @@ public class Name {
      */
     public List<String> getWordsInName() {
         return Arrays.asList(fullName.split("\\s+"));
+    }
+
+    public List<String> getWordsInNameLower() {
+        return Utils.convertListToLower(this.getWordsInName());
     }
 
     @Override
