@@ -151,6 +151,14 @@ Views all details of the 2nd person in the address book.
 `viewall 1` +
 Views all details of the 1st person in the results of the `find` command.
 
+== Edit name : `edit_name`
+
+Change the name of a person. +
+Format: `edit_name New Name n/Old Name`
+
+Examples:
+*`edit_name John Doe n/John Dee`
+
 == Clearing all entries : `clear`
 
 Clears all entries from the address book. +
