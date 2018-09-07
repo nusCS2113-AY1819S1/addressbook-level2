@@ -13,12 +13,10 @@ public class ListSortedCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
 
-    @Override
+//    @Override
     public CommandResult execute() {
         // TODO: Add list sorted
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        Collections.sort(allPersons, Collections.reverseOrder());
-
+        List<ReadOnlyPerson> allPersons = addressBook.getAllPersonsSorted().immutableListView();
         return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 
