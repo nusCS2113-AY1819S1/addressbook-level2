@@ -11,17 +11,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.addressbook.commands.AddCommand;
-import seedu.addressbook.commands.ClearCommand;
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
-import seedu.addressbook.commands.ExitCommand;
-import seedu.addressbook.commands.FindCommand;
-import seedu.addressbook.commands.HelpCommand;
-import seedu.addressbook.commands.IncorrectCommand;
-import seedu.addressbook.commands.ListCommand;
-import seedu.addressbook.commands.ViewAllCommand;
-import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
@@ -99,8 +89,8 @@ public class Parser {
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
-        case "edit":
-            return new ListCommand();
+        case EditCommand.COMMAND_WORD:
+            return prepareAdd(arguments);
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
@@ -139,6 +129,40 @@ public class Parser {
             return new IncorrectCommand(ive.getMessage());
         }
     }
+
+
+    /**
+     * Parses arguments in the context of the add person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareEdit(String args) {
+        final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(args.trim());
+        // Validate arg string format
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+        }
+        try {
+            return new EditCommand(
+                    matcher.group("name"),
+
+                    matcher.group("phone"),
+                    isPrivatePrefixPresent(matcher.group("isPhonePrivate")),
+
+                    matcher.group("email"),
+                    isPrivatePrefixPresent(matcher.group("isEmailPrivate")),
+
+                    matcher.group("address"),
+                    isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
+
+                    getTagsFromArgs(matcher.group("tagArguments"))
+            );
+        } catch (IllegalValueException ive) {
+            return new IncorrectCommand(ive.getMessage());
+        }
+    }
+
 
     /**
      * Returns true if the private prefix is present for a contact detail in the add command's arguments string.
