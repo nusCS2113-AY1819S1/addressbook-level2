@@ -115,7 +115,7 @@ public class Main {
             return result;
         }
         catch (IllegalValueException ive){
-            return new CommandResult(Messages.MESSAGE_INVALID_EDIT_PARAM);
+            return new CommandResult(ive.getMessage());
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
