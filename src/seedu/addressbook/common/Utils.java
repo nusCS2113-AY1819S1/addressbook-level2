@@ -1,7 +1,9 @@
 package seedu.addressbook.common;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -33,5 +35,19 @@ public class Utils {
             }
         }
         return true;
+    }
+
+    /**
+     * Converts all strings in a Collection to lowercase.
+     *
+     * @param toConvert source Collection
+     * @return convert to lowercase
+     */
+    public static List<String> convertListToLower(Collection<String> toConvert) {
+        ArrayList<String> converted = new ArrayList<>();
+        for (String s: toConvert) {
+            converted.add(s.toLowerCase());
+        }
+        return converted;
     }
 }
