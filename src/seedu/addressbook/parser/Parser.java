@@ -71,6 +71,9 @@ public class Parser {
             case DeleteCommand.COMMAND_WORD:
                 return prepareDelete(arguments);
 
+            case DeleteCommand.COMMAND_WORD_STRING:
+                return prepareDeleteWithName(arguments);
+
             case ClearCommand.COMMAND_WORD:
                 return new ClearCommand();
 
@@ -172,6 +175,15 @@ public class Parser {
         }
     }
 
+    private Command prepareDeleteWithName(String args) {
+        try {
+            final String name = parseArgsAsName(args);
+            return new DeleteCommand(name);
+        } catch (ParseException pe) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        }
+    }
+
     /**
      * Parses arguments in the context of the view command.
      *
@@ -226,6 +238,21 @@ public class Parser {
         return Integer.parseInt(matcher.group("targetIndex"));
     }
 
+
+    /**
+     * Parses arguments string to get the name of the person
+     *
+     * @param args arguments string to parse as name
+     * @return name
+     * @throws ParseException if no region of args string can be found for name
+     */
+    private String parseArgsAsName(String args) throws ParseException {
+        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            throw new ParseException("Could not find name to parse");
+        }
+        return matcher.group();
+    }
 
     /**
      * Parses arguments in the context of the find person command.
