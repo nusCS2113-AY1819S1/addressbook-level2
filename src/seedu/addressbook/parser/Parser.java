@@ -32,7 +32,7 @@ public class Parser {
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
     public static final Pattern EDIT_NAME_FORMAT =
-            Pattern.compile("(?<name>[^/]+)n(?<newname>[^/]+)");
+            Pattern.compile("(?<name>[^/]+)+\\s+n/(?<newname>[^/]+)");
     /**
      * Signals that the user input could not be parsed.
      */
