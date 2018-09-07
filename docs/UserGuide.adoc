@@ -91,6 +91,31 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Edit a person's particular: `edit`
+
+Edit the PhoneNumber/Address/Email from the address book. +
+Format: `edit INDEX parameter/value`
+
+****
+Edit the person at the specified `INDEX`.
+The index refers to the index number shown in the most recent listing.
+The parameter refers to the type of value to be changed.
+The value refers to the new string which will replace the previous value
+****
+
+Examples:
+
+* `list` +
+`edit 2 p/99999999` +
+Edit the 2nd person's phone number to 99999999 in the address book.
+
+* `find john` +
+`edit 1 a/Jurong Bird Park` +
+Edit the 1st person's address to Jurong Bird Park in the address book.
+
+`edit 3 e/john@gmail.com`
+Edit the 3rd person's email to john@gmail.com in the address book.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
