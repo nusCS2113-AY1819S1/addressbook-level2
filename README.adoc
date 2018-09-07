@@ -26,5 +26,3 @@ The full list of contributors for se-edu can be found https://se-edu.github.io/T
 if you noticed bugs or have suggestions on how to improve.
 * *Contributing* : We welcome pull requests. Follow the process described https://github.com/oss-generic/process[here]
 
-
-i am adding stuff that is not relevant.
