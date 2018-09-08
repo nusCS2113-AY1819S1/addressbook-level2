@@ -22,9 +22,13 @@ public class ListAllEmailsCommand extends Command {
     @Override
     public CommandResult execute() {
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        //make allEmails;
         ArrayList<Email> allEmails = new ArrayList<>(); //make a new method to extract these
-        //feed it here to the next line;
+
+        //Question: Where should I ideally put this helper function?
+        for (ReadOnlyPerson person: allPersons) {
+            allEmails.add(person.getEmail());
+        }
+
         return new CommandResult(getMessageForEmailListShownSummary(allEmails), allEmails);
     }
 }

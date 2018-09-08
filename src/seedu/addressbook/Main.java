@@ -122,6 +122,7 @@ public class Main {
      * @param launchArgs arguments supplied by the user at program launch
      * @throws InvalidStorageFilePathException if the target file path is incorrect.
      */
+
     private StorageFile initializeStorage(String[] launchArgs) throws InvalidStorageFilePathException {
         boolean isStorageFileSpecifiedByUser = launchArgs.length > 0;
         return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0]) : new StorageFile();
