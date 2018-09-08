@@ -6,18 +6,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case sensitive. (DOING: make it case insensitive)
+ * Keyword matching is now case insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
@@ -25,18 +26,6 @@ public class FindCommand extends Command {
 
     public FindCommand(Set<String> keywords) {
         this.keywords = keywords;
-    }
-
-    /**
-     * Takes a Set<String> and returns a Set<String>, where all the strings are lowercase.
-     * TODO: Will have to move this utility function into the utility Class... Where is that class???
-     */
-    private Set<String> StringSetToLower(Set<String> string_set){
-        Set<String> lower_string_set = new HashSet<String>();
-        for (String string : string_set) {
-            lower_string_set.add(string.toLowerCase());
-        }
-        return lower_string_set;
     }
 
     /**
@@ -54,6 +43,7 @@ public class FindCommand extends Command {
 
     /**
      * Retrieves all persons in the address book whose names contain some of the specified keywords.
+     * The words are all converted into lowercase here to allow case-insensitive comparison
      *
      * @param keywords for searching
      * @return list of persons found
@@ -61,8 +51,14 @@ public class FindCommand extends Command {
     private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
-            final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            Set<String> wordsInName = new HashSet<> ( person.getName().getWordsInName());
+
+            //convert the words in the sets into lowercase
+            Set<String> wordsInNameLowerCase = Utils.ConvertStringSetToLower(wordsInName);
+            Set<String> keywordsLowerCase = Utils.ConvertStringSetToLower(keywords);
+
+            //compare the lowercase versions of the 2 sets of words
+            if (!Collections.disjoint(wordsInNameLowerCase, keywordsLowerCase)) {
                 matchedPersons.add(person);
             }
         }
