@@ -20,6 +20,8 @@ public class ListAllEmailsCommand extends Command {
     @Override
     public CommandResult execute() {
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        //make allEmails;
+        //feed it here to the next line;
         return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 }

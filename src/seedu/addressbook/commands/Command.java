@@ -37,6 +37,16 @@ public class Command {
     }
 
     /**
+     * Constructs a feedback message to summarise an operation that displayed a listing of persons.
+     *
+     * @param emailsDisplayed used to generate summary
+     * @return summary message for emails displayed
+     */
+    public static String getMessageForEmailListShownSummary(List<? extends ReadOnlyPerson> emailsDisplayed) {
+        return String.format(Messages.MESSAGE_EMAILS_LISTED_OVERVIEW, emailsDisplayed.size());
+    }
+
+    /**
      * Executes the command and returns the result.
      */
     public CommandResult execute(){
