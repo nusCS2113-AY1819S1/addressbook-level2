@@ -124,10 +124,11 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
-    public void sortByName(){
+    public UniquePersonList sortByName(){
         internalList.sort(new NameComparator());
-        System.out.print("New sorted list");
-        System.out.print(internalList);
+        return this;
+        //System.out.print("\tSorted by name : \n");
+        //System.out.print(internalList);
     }
 
     @Override

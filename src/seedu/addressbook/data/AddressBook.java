@@ -75,5 +75,5 @@ public class AddressBook {
                         && this.allPersons.equals(((AddressBook) other).allPersons));
     }
 
-    public void sortByName(){ allPersons.sortByName();}
+    public UniquePersonList sortByName(){ return allPersons.sortByName();}
 }

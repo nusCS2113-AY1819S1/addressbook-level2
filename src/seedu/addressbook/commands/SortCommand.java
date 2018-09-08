@@ -20,8 +20,8 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        addressBook.sortByName();
-        return new CommandResult(String.format(MESSAGE_SUCCESS, addressBook.getAllPersons()));
+        UniquePersonList uniquePersonList = addressBook.sortByName();
+        return new CommandResult(MESSAGE_SUCCESS, uniquePersonList.immutableListView());
     }
 
 }
