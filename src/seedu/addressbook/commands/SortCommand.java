@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 
 
 /**
- * Lists all persons in the address book to the user sorted by name.
+ * Sorts all persons in the address book and lists all persons to the user.
  */
-public class SortCommand extends Command {
+public class SortCommand extends ListCommand {
 
     public static final String COMMAND_WORD = "sort";
 
@@ -23,15 +23,10 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        //Using Streams for readability
-        List<ReadOnlyPerson> allSortedPersons = getSortedPersons();
-        return new CommandResult(getMessageForPersonListShownSummary(allSortedPersons), allSortedPersons);
+
+        addressBook.sort();
+
+        return super.execute();
     }
 
-    private List<ReadOnlyPerson> getSortedPersons() {
-        return addressBook.getAllPersons().immutableListView()
-                .stream().sorted(
-                        Comparator.comparing((readOnlyPerson -> readOnlyPerson.getName().toString())))
-                .collect(Collectors.toList());
-    }
 }
