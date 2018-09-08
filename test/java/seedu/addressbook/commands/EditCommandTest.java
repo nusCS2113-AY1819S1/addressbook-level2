@@ -23,7 +23,7 @@ public class EditCommandTest {
     private List<ReadOnlyPerson> emptyDisplayList;
     private List<ReadOnlyPerson> listWithEveryone;
     private List<ReadOnlyPerson> listWithSurnameDoe;
-
+    private Person newPerson;
     @Before
     public void setUp() throws Exception {
         Person johnDoe = new Person(new Name("John Doe"), new Phone("61234567", false),
@@ -35,6 +35,8 @@ public class EditCommandTest {
         Person davidGrant = new Person(new Name("David Grant"), new Phone("61121122", false),
                 new Email("david@grant.com", false), new Address("44H Define Road", false),
                 Collections.emptySet());
+        newPerson = new Person(new Name("New Guy"), new Phone("1111111", false),
+                new Email("new@guy.com", false), new Address("New Street", false), Collections.emptySet());
 
         emptyAddressBook = TestUtil.createAddressBook();
         addressBook = TestUtil.createAddressBook(johnDoe, janeDoe, davidGrant, samDoe);
@@ -46,12 +48,12 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_emptyAddressBook_returnsPersonNotFoundMessage() {
+    public void execute_emptyAddressBook_returnsPersonNotFoundMessage() throws IllegalValueException {
         assertDeletionFailsDueToNoSuchPerson(1, emptyAddressBook, listWithEveryone);
     }
 
     @Test
-    public void execute_noPersonDisplayed_returnsInvalidIndexMessage() {
+    public void execute_noPersonDisplayed_returnsInvalidIndexMessage() throws IllegalValueException {
         assertDeletionFailsDueToInvalidIndex(1, addressBook, emptyDisplayList);
     }
 
@@ -66,36 +68,31 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_invalidIndex_returnsInvalidIndexMessage() {
+    public void execute_invalidIndex_returnsInvalidIndexMessage() throws IllegalValueException {
         assertDeletionFailsDueToInvalidIndex(0, addressBook, listWithEveryone);
         assertDeletionFailsDueToInvalidIndex(-1, addressBook, listWithEveryone);
         assertDeletionFailsDueToInvalidIndex(listWithEveryone.size() + 1, addressBook, listWithEveryone);
     }
 
     @Test
-    public void execute_validIndex_personIsDeleted() throws UniquePersonList.PersonNotFoundException {
-        assertDeletionSuccessful(1, addressBook, listWithSurnameDoe);
-        assertDeletionSuccessful(listWithSurnameDoe.size(), addressBook, listWithSurnameDoe);
-
-        int middleIndex = (listWithSurnameDoe.size() / 2) + 1;
-        assertDeletionSuccessful(middleIndex, addressBook, listWithSurnameDoe);
+    public void execute_validIndex_personIsDeleted() throws Exception{
+        assertDeletionSuccessful(1, addressBook, listWithEveryone);
     }
 
     /**
      * Creates a new delete command.
      *
-     * @param targetVisibleIndex of the person that we want to delete
+     * @param targetIndex of the person that we want to delete
      */
-    private Command createEditCommand(int targetIndex,
+    private EditCommand createEditCommand(int targetIndex,
                                               String name,
                                               String phone, boolean isPhonePrivate,
                                               String email, boolean isEmailPrivate,
                                               String address, boolean isAddressPrivate,
                                               Set<String> tags,
                                               AddressBook addressBook,
-                                              List<ReadOnlyPerson> displayList) {
+                                              List<ReadOnlyPerson> displayList) throws IllegalValueException {
 
-        try {
             EditCommand command = new EditCommand(targetIndex,
                     name,
                     phone, isPhonePrivate,
@@ -105,20 +102,33 @@ public class EditCommandTest {
             command.setData(addressBook, displayList);
 
             return command;
-        }
-        catch (IllegalValueException ive) {
-            return new IncorrectCommand(ive.getMessage());
-        }
+    }
+    /**
+     * Creates a new delete command.
+     *
+     * @param targetIndex of the person that we want to delete
+     */
+    private EditCommand createEditCommand(int targetIndex,
+                                      Person personIn,
+                                      AddressBook addressBook,
+                                      List<ReadOnlyPerson> displayList) throws IllegalValueException {
+            EditCommand command = createEditCommand(targetIndex,
+                    personIn.getName().toString(),
+                    personIn.getPhone().toString(), personIn.getPhone().isPrivate(),
+                    personIn.getEmail().toString(), personIn.getEmail().isPrivate(),
+                    personIn.getAddress().toString(), personIn.getAddress().isPrivate(),
+                    EMPTY_STRING_SET, addressBook, displayList);
+        command.setData(addressBook, displayList);
+        return command;
     }
 
     /**
      * Executes the command, and checks that the execution was what we had expected.
      */
-    private void assertCommandBehaviour(Command editCommand, String expectedMessage,
+    private void assertCommandBehaviour(EditCommand editCommand, String expectedMessage,
                                         AddressBook expectedAddressBook, AddressBook actualAddressBook) {
-
         CommandResult result = editCommand.execute();
-
+        
         assertEquals(expectedMessage, result.feedbackToUser);
         assertEquals(expectedAddressBook.getAllPersons(), actualAddressBook.getAllPersons());
     }
@@ -127,15 +137,11 @@ public class EditCommandTest {
      * Asserts that the index is not valid for the given display list.
      */
     private void assertDeletionFailsDueToInvalidIndex(int invalidVisibleIndex, AddressBook addressBook,
-                                                      List<ReadOnlyPerson> displayList) {
+                                                      List<ReadOnlyPerson> displayList) throws IllegalValueException {
 
         String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
-        Command command = createEditCommand(invalidVisibleIndex,Name.EXAMPLE,
-                                                    Phone.EXAMPLE, false,
-                                                    Email.EXAMPLE, false,
-                                                    Address.EXAMPLE, false,
-                                                    EMPTY_STRING_SET, addressBook, displayList);
+        EditCommand command = createEditCommand(invalidVisibleIndex, newPerson, addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -144,15 +150,11 @@ public class EditCommandTest {
      * is not in the address book.
      */
     private void assertDeletionFailsDueToNoSuchPerson(int visibleIndex , AddressBook addressBook,
-                                                      List<ReadOnlyPerson> displayList) {
+                                                      List<ReadOnlyPerson> displayList) throws IllegalValueException {
 
         String expectedMessage = Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
 
-        Command command = createEditCommand(visibleIndex,Name.EXAMPLE,
-                Phone.EXAMPLE, false,
-                Email.EXAMPLE, false,
-                Address.EXAMPLE, false,
-                EMPTY_STRING_SET, addressBook, displayList);
+        EditCommand command = createEditCommand(visibleIndex, newPerson, addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -164,21 +166,18 @@ public class EditCommandTest {
      * @throws UniquePersonList.PersonNotFoundException if the selected person is not in the address book
      */
     private void assertDeletionSuccessful(int targetVisibleIndex, AddressBook addressBook,
-                                          List<ReadOnlyPerson> displayList) throws UniquePersonList.PersonNotFoundException {
-
-        ReadOnlyPerson targetPerson = displayList.get(targetVisibleIndex - TextUi.DISPLAYED_INDEX_OFFSET);
-
+                                          List<ReadOnlyPerson> displayList) throws Exception {
+        final int actualIndex =  targetVisibleIndex - TextUi.DISPLAYED_INDEX_OFFSET;
+        ReadOnlyPerson targetPerson = displayList.get(actualIndex);
         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
-        expectedAddressBook.removePerson(targetPerson);
-        String expectedMessage = String.format(EditCommand.MESSAGE_SUCCESS, targetVisibleIndex, targetPerson);
+        expectedAddressBook.editPerson(targetPerson, newPerson);
+        ReadOnlyPerson personIn = expectedAddressBook.getPersonAtIndex(actualIndex);
+
+        String expectedMessage = String.format(EditCommand.MESSAGE_SUCCESS, targetVisibleIndex, personIn);
 
         AddressBook actualAddressBook = TestUtil.clone(addressBook);
 
-        Command command = createEditCommand(targetVisibleIndex,Name.EXAMPLE,
-                Phone.EXAMPLE, false,
-                Email.EXAMPLE, false,
-                Address.EXAMPLE, false,
-                EMPTY_STRING_SET, addressBook, displayList);
+        EditCommand command = createEditCommand(targetVisibleIndex, newPerson, actualAddressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
     }
 

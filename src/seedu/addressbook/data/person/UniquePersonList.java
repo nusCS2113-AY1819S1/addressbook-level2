@@ -129,6 +129,14 @@ public class UniquePersonList implements Iterable<Person> {
         final int targetIndex = internalList.indexOf(personOut);
         internalList.set(targetIndex, personIn);
     }
+
+    /**
+     * Returns the person at given index in the list.
+     *
+     */
+    public Person getPersonAtIndex(int targetIndex){
+        return internalList.get(targetIndex);
+    }
     /**
      * Removes the equivalent person from the list.
      *

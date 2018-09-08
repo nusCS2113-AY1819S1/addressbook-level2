@@ -67,6 +67,13 @@ public class AddressBook {
     }
 
     /**
+     * Returns the person at given index from the address book.
+     *
+     */
+    public Person getPersonAtIndex(int targetIndex) {
+       return allPersons.getPersonAtIndex(targetIndex);
+    }
+    /**
      * Clears all persons and tags from the address book.
      */
     public void clear() {
