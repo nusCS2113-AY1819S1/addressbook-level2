@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,6 +27,18 @@ public class UniquePersonList implements Iterable<Person> {
     public static class DuplicatePersonException extends DuplicateDataException {
         protected DuplicatePersonException() {
             super("Operation would result in duplicate persons");
+        }
+    }
+
+    /**
+     * Comparator for sorting a list by the person's name.
+     */
+    public class ComparatorByPersonName implements Comparator<Person> {
+        @Override
+        public int compare(Person p1, Person p2) {
+            Name nameOfPerson1 = p1.getName();
+            Name nameOfPerson2 = p2.getName();
+            return nameOfPerson1.fullName.compareTo(nameOfPerson2.fullName);
         }
     }
 
@@ -120,6 +133,14 @@ public class UniquePersonList implements Iterable<Person> {
         if (!personFoundAndDeleted) {
             throw new PersonNotFoundException();
         }
+    }
+
+    /**
+     * Sorts the internal list by name of the person according to alphabetical order
+     */
+    public void sort() {
+        Collections.sort(internalList, new ComparatorByPersonName());
+        System.out.println("|| sorting persons now");
     }
 
     /**

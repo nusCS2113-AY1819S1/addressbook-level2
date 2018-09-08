@@ -58,7 +58,7 @@ public class AddressBook {
      * Sorts the addressbook by person's name according to alphabetical order
      */
     public void sortPerson() {
-        System.out.println("|| sorting persons now");
+        allPersons.sort();
     }
 
     /**
