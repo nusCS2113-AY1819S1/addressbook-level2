@@ -42,9 +42,4 @@ public class Name extends Contact{
         return Arrays.asList(value.split("\\s+"));
     }
 
-    @Override
-    public int hashCode() {
-        return value.hashCode();
-    }
-
 }
