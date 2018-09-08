@@ -48,4 +48,10 @@ public class CommandResult {
         return Optional.ofNullable(relevantPersons);
     }
 
+    /**
+     * Returns a list of persons relevant to the command command result, if any.
+     */
+    public Optional<ArrayList<? extends Email>> getRelevantEmails() {
+        return Optional.ofNullable(relevantEmails);
+    }
 }

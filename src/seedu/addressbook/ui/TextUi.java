@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.person.Email;
 
 /**
  * Text UI of the application.
@@ -126,8 +127,11 @@ public class TextUi {
      */
     public void showResultToUser(CommandResult result) {
         final Optional<List<? extends ReadOnlyPerson>> resultPersons = result.getRelevantPersons();
+        final Optional<ArrayList<? extends Email>> resultEmails = result.getRelevantEmails();
         if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
+        } else if (resultEmails.isPresent()) {
+            showEmailListView(resultEmails.get());
         }
         showToUser(result.feedbackToUser, DIVIDER);
     }
@@ -142,6 +146,18 @@ public class TextUi {
             formattedPersons.add(person.getAsTextHidePrivate());
         }
         showToUserAsIndexedList(formattedPersons);
+    }
+
+    /**
+     * Shows a list of persons to the user, formatted as an indexed list.
+     * Private contact details are hidden.
+     */
+    private void showEmailListView(ArrayList<? extends Email> emails) {
+        final ArrayList<String> formattedEmails = new ArrayList<>();
+        for (Email email : emails) {
+            formattedEmails.add(email.toString());
+        }
+        showToUserAsIndexedList(formattedEmails);
     }
 
     /** Shows a list of strings to the user, formatted as an indexed list. */
