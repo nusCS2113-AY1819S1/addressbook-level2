@@ -113,9 +113,6 @@ public class Main {
             CommandResult result = command.execute();
             storage.save(addressBook);
             return result;
-        }
-        catch (IllegalValueException ive){
-            return new CommandResult(ive.getMessage());
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);

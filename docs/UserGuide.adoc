@@ -94,13 +94,13 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 == Edit a person's particular: `edit`
 
 Edit the PhoneNumber/Address/Email from the address book. +
-Format: `edit INDEX parameter/value`
+Format: `edit INDEX PARAMETER/VALUE`
 
 ****
-Edit the person at the specified `INDEX`.
-The index refers to the index number shown in the most recent listing.
-The parameter refers to the type of value to be changed.
-The value refers to the new string which will replace the previous value
+Edit the person at the specified `INDEX`. +
+The `INDEX` refers to the index number shown in the most recent listing. +
+The `PARAMETER` refers to the type of value to be changed. +
+The `VALUE` refers to the new string which will replace the previous value
 ****
 
 Examples:
@@ -113,7 +113,7 @@ Edit the 2nd person's phone number to 99999999 in the address book.
 `edit 1 a/Jurong Bird Park` +
 Edit the 1st person's address to Jurong Bird Park in the address book.
 
-`edit 3 e/john@gmail.com`
+* `edit 3 e/john@gmail.com` +
 Edit the 3rd person's email to john@gmail.com in the address book.
 
 == Deleting a person : `delete`

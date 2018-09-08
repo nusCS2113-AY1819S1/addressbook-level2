@@ -36,7 +36,7 @@ public class EditCommand extends Command{
      * Executes the command and returns the result.
      */
     @Override
-    public CommandResult execute() throws IllegalValueException {
+    public CommandResult execute(){
         try {
             final ReadOnlyPerson target = getTargetPerson();
             switch(parameter) {
@@ -53,6 +53,8 @@ public class EditCommand extends Command{
             return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, target.getName()));
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        } catch (IllegalValueException ive){
+            return new CommandResult(ive.getMessage());
         }
     }
 
