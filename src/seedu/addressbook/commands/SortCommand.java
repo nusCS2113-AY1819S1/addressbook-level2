@@ -20,13 +20,18 @@ public class SortCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
 
+
     @Override
     public CommandResult execute() {
         //Using Streams for readability
-        List<ReadOnlyPerson> allSortedPersons = addressBook.getAllPersons().immutableListView()
+        List<ReadOnlyPerson> allSortedPersons = getSortedPersons();
+        return new CommandResult(getMessageForPersonListShownSummary(allSortedPersons), allSortedPersons);
+    }
+
+    private List<ReadOnlyPerson> getSortedPersons() {
+        return addressBook.getAllPersons().immutableListView()
                 .stream().sorted(
                         Comparator.comparing((readOnlyPerson -> readOnlyPerson.getName().toString())))
                 .collect(Collectors.toList());
-        return new CommandResult(getMessageForPersonListShownSummary(allSortedPersons), allSortedPersons);
     }
 }
