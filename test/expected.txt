@@ -46,6 +46,10 @@
 || 
 || 0 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  listAllEmails]
+|| 
+|| 0 emails listed!
+|| ===================================================
 || Enter command: || [Command entered:  add wrong args wrong args]
 || Invalid command format! 
 || add: Adds a person to the address book. Contact details can be marked private by prepending 'p' to the prefix.
@@ -197,6 +201,15 @@
 || ===================================================
 || Enter command: || [Command entered:  viewall 5]
 || Viewing person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
+|| ===================================================
+|| Enter command: || [Command entered:  listAllEmails]
+||      1. adam@gmail.com
+||      2. benchoo@nus.edu.sg
+||      3. charlie.d@nus.edu.sg
+||      4. dickson@nus.edu.sg
+||      5. esther@not.a.real.potato
+|| 
+|| 5 emails listed!
 || ===================================================
 || Enter command: || [Command entered:  find]
 || Invalid command format! 

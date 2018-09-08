@@ -3,7 +3,9 @@ package seedu.addressbook.commands;
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.person.Email;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
@@ -34,6 +36,16 @@ public class Command {
      */
     public static String getMessageForPersonListShownSummary(List<? extends ReadOnlyPerson> personsDisplayed) {
         return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, personsDisplayed.size());
+    }
+
+    /**
+     * Constructs a feedback message to summarise an operation that displayed a listing of persons.
+     *
+     * @param emailsDisplayed used to generate summary
+     * @return summary message for emails displayed
+     */
+    public static String getMessageForEmailListShownSummary(ArrayList<Email> emailsDisplayed) {
+        return String.format(Messages.MESSAGE_EMAILS_LISTED_OVERVIEW, emailsDisplayed.size());
     }
 
     /**

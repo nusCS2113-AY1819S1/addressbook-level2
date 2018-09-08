@@ -21,6 +21,7 @@
   # address book should be emptied
   clear
   list
+  listAllEmails
 
 ##########################################################
 # test add person command, setup state for further tests
@@ -85,6 +86,12 @@
   viewall 3
   viewall 4
   viewall 5
+
+##########################################################
+# test listAllEmails command
+##########################################################
+
+  listAllEmails
 
 ##########################################################
 # test find persons command
