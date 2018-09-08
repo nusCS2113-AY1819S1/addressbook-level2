@@ -14,7 +14,6 @@ import java.util.Scanner;
 import static seedu.addressbook.common.Messages.*;
 
 public class Formatter {
-    
     private final PrintStream out;
 
     /** A decorative prefix added to the beginning of lines printed by AddressBook */
