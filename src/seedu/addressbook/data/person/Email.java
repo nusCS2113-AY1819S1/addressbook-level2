@@ -46,7 +46,8 @@ public class Email {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Email // instanceof handles nulls
-                && this.value.equals(((Email) other).value)); // state check
+                && this.value.equals(((Email) other).value)
+                && this.isPrivate() == ((Email) other).isPrivate()); // privacy check
     }
 
     @Override
