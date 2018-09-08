@@ -30,6 +30,13 @@ Please refer to the <<DeveloperGuide#setting-up, Setting up>> section to learn h
 . Type `java seedu.addressbook.Main`, then Enter to execute
 . Now you can interact with the program through the CLI
 
+== Changes from level 2 Origin
+
+* Newly added feature: "info"
+
+    View some information about the current version of addressbook
+    Format: `info`
+
 == Changes from level 1
 
 What's different from AddressBook-Level1:
