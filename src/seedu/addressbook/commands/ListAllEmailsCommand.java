@@ -6,11 +6,11 @@ import java.util.List;
 
 
 /**
- * Lists all persons in the address book to the user.
+ * Lists all persons in the address book to the user, regardless of privacy
  */
-public class ListEmailsCommand extends Command {
+public class ListAllEmailsCommand extends Command {
 
-    public static final String COMMAND_WORD = "listEmails";
+    public static final String COMMAND_WORD = "listAllEmails";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Displays all emails in the address book as a list with index numbers.\n"
