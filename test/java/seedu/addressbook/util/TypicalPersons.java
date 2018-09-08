@@ -44,13 +44,53 @@ public class TypicalPersons {
         }
     }
 
+    private void loadAddressBookWithSortedData(AddressBook ab) {
+        try {
+            for (Person p : this.getSortedTypicalPersons()) {
+                ab.addPerson(new Person(p));
+            }
+        } catch (IllegalValueException e) {
+            assert false : "not possible";
+        }
+    }
+
+    private void loadAddressBookWithJumbledData(AddressBook ab) {
+        try {
+            for (Person p : this.getJumbledTypicalPersons()) {
+                ab.addPerson(new Person(p));
+            }
+        } catch (IllegalValueException e) {
+            assert false : "not possible";
+        }
+    }
+
     public Person[] getTypicalPersons() {
         return new Person[]{amy, bill, candy, dan};
+    }
+
+    public Person[] getJumbledTypicalPersons() {
+        return new Person[]{amy, dan, candy, bill};
+    }
+
+    public Person[] getSortedTypicalPersons() {
+        return new Person[] {amy, bill, candy, dan};
     }
 
     public AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
         loadAddressBookWithSampleData(ab);
+        return ab;
+    }
+
+    public AddressBook getTypicalSortedAddressBook() {
+        AddressBook ab = new AddressBook();
+        loadAddressBookWithSortedData(ab);
+        return ab;
+    }
+
+    public AddressBook getTypicalJumbledAddressBook() {
+        AddressBook ab = new AddressBook();
+        loadAddressBookWithJumbledData(ab);
         return ab;
     }
 
