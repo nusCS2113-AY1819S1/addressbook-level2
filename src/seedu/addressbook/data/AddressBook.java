@@ -62,8 +62,8 @@ public class AddressBook {
      *
      * @throws PersonNotFoundException if no such Person could be found.
      */
-    public void editPerson(int targetIndex, Person personIn) throws DuplicatePersonException {
-        allPersons.replaceAtIndex(targetIndex, personIn);
+    public void editPerson(ReadOnlyPerson personOut, Person personIn) throws Exception {
+        allPersons.replaceAtIndex(personOut, personIn);
     }
 
     /**

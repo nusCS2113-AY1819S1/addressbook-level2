@@ -117,10 +117,16 @@ public class UniquePersonList implements Iterable<Person> {
      *    The @link{ReadOnlyPerson#isSamePerson} method is used for this comparison,
      *    which defines a weaker notion of equality.
      */
-    public void replaceAtIndex(int targetIndex, Person personIn) throws DuplicatePersonException {
+    public void replaceAtIndex(ReadOnlyPerson personOut, Person personIn) throws Exception {
         if (contains(personIn)) {
             throw new DuplicatePersonException();
         }
+
+        final boolean personFound= internalList.contains(personOut);
+        if (!personFound) {
+            throw new PersonNotFoundException();
+        }
+        final int targetIndex = internalList.indexOf(personOut);
         internalList.set(targetIndex, personIn);
     }
     /**

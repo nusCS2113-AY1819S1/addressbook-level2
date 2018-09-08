@@ -1,5 +1,6 @@
 package seedu.addressbook.commands;
 
+import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.*;
 import seedu.addressbook.data.tag.Tag;
@@ -7,6 +8,7 @@ import seedu.addressbook.data.tag.Tag;
 import java.util.HashSet;
 import java.util.Set;
 import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
+import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
 /**
  * Adds a person to the address book.
@@ -25,19 +27,19 @@ public class EditCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person personIn;
-    private final int targetIndex;
 
     /**
      * Convenience constructor using raw values.
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public EditCommand(Integer targetIndex,
+    public EditCommand(int targetIndex,
                         String name,
                        String phone, boolean isPhonePrivate,
                        String email, boolean isEmailPrivate,
                        String address, boolean isAddressPrivate,
                        Set<String> tags) throws IllegalValueException {
+        super(targetIndex);
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -49,8 +51,6 @@ public class EditCommand extends Command {
                 new Address(address, isAddressPrivate),
                 tagSet
         );
-        DeleteCommand tempDel = new DeleteCommand(targetIndex);
-        this.targetIndex = tempDel.getTargetIndex() - DISPLAYED_INDEX_OFFSET;
     }
 
     public ReadOnlyPerson getPerson() {
@@ -60,11 +60,18 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute() {
         try {
-            addressBook.editPerson(targetIndex, personIn);
-            final int displayedIndex = targetIndex + DISPLAYED_INDEX_OFFSET;
-            return new CommandResult(String.format(MESSAGE_SUCCESS, displayedIndex, personIn));
+            final ReadOnlyPerson personOut = getTargetPerson();
+            addressBook.editPerson(personOut, personIn);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, getTargetIndex(), personIn));
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
+        }catch (IndexOutOfBoundsException ie) {
+            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        } catch (PersonNotFoundException pnfe) {
+            return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new CommandResult("Unknown Exception");
         }
     }
 
