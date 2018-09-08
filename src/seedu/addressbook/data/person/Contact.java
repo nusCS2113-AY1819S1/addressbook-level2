@@ -19,4 +19,13 @@ public class Contact {
                 || (other instanceof Name // instanceof handles nulls
                 && this.value.equals(((Name) other).value)); // state check
     }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
 }
