@@ -87,6 +87,21 @@
   viewall 5
 
 ##########################################################
+# test edit person command
+##########################################################
+
+  # should catch invalid args format
+  edit
+  edit bet
+  edit 23912039120
+
+  # should catch that person does not exist
+  edit Port Dickson p/000000 e/d.port@nus.edu.sg a/111, alpha street
+
+  # should edit the details for Person
+  edit Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+
+##########################################################
 # test find persons command
 ##########################################################
 

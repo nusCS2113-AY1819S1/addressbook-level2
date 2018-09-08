@@ -111,6 +111,25 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Edits a person in the list.
+     *
+     * @throws PersonNotFoundException if the person to edit is not found in the list.
+     */
+    public void edit(Person toEdit) throws PersonNotFoundException {
+        Person personToEdit = null;
+        for (Person person: internalList) {
+            if (person.getName().equals(toEdit.getName())) {
+                personToEdit = person;
+            }
+        }
+        if (personToEdit == null) {
+            throw new PersonNotFoundException();
+        }
+        internalList.remove(personToEdit);
+        internalList.add(toEdit);
+    }
+
+    /**
      * Removes the equivalent person from the list.
      *
      * @throws PersonNotFoundException if no such person could be found in the list.
