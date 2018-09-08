@@ -74,4 +74,6 @@ public class AddressBook {
                 || (other instanceof AddressBook // instanceof handles nulls
                         && this.allPersons.equals(((AddressBook) other).allPersons));
     }
+
+    public void sortByName(){ allPersons.sortByName();}
 }
