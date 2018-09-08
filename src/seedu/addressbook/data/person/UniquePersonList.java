@@ -140,7 +140,6 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public void sort() {
         Collections.sort(internalList, new ComparatorByPersonName());
-        System.out.println("|| sorting persons now");
     }
 
     /**

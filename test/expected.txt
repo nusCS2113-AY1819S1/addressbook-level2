@@ -328,7 +328,6 @@
 || 6 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  sort]
-|| sorting persons now
 || Address book has been sorted!
 || ===================================================
 || Enter command: || [Command entered:  list]
