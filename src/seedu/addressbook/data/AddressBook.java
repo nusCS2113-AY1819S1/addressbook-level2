@@ -68,6 +68,17 @@ public class AddressBook {
         return new UniquePersonList(allPersons);
     }
 
+    /**
+     * Returns a new sorted by name UniquePersonList of all persons in the address book at the time of the call.
+     */
+
+    public UniquePersonList sortByName(){
+        UniquePersonList uniquePersonList = new UniquePersonList(allPersons);
+        uniquePersonList.sortByName();
+
+        return uniquePersonList;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -75,5 +86,5 @@ public class AddressBook {
                         && this.allPersons.equals(((AddressBook) other).allPersons));
     }
 
-    public UniquePersonList sortByName(){ return allPersons.sortByName();}
+
 }

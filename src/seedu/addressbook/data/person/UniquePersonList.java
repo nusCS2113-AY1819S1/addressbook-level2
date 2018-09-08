@@ -124,12 +124,7 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
-    public UniquePersonList sortByName(){
-        internalList.sort(new NameComparator());
-        return this;
-        //System.out.print("\tSorted by name : \n");
-        //System.out.print(internalList);
-    }
+
 
     @Override
     public Iterator<Person> iterator() {
@@ -142,6 +137,18 @@ public class UniquePersonList implements Iterable<Person> {
                 || (other instanceof UniquePersonList // instanceof handles nulls
                         && this.internalList.equals(((UniquePersonList) other).internalList));
     }
+
+
+    /**
+     *  Sorts the internal list by using a custom comparator class and returns the current object
+     */
+
+    public void sortByName(){
+        internalList.sort(new NameComparator());
+    }
+    /**
+     * Comparator class used for sorting persons by name
+     */
 
     class NameComparator implements Comparator<Person> {
         @Override
