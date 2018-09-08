@@ -297,9 +297,14 @@
 || 
 || 0 persons listed!
 || ===================================================
+Enter command: || [Command entered:  info]
+|| This is the addressbook level2 version 0.1
+|| Developed by Zeng Hao(Oscar)
+|| ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...
 || ===================================================
 || Good bye!
 || ===================================================
 || ===================================================
+
