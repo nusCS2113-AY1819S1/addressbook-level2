@@ -13,7 +13,6 @@ public class Address extends Contact{
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
     public final String value;
-    private boolean isPrivate;
 
     /**
      * Validates given address.
@@ -21,8 +20,8 @@ public class Address extends Contact{
      * @throws IllegalValueException if given address string is invalid.
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
+        super(isPrivate);
         String trimmedAddress = address.trim();
-        this.isPrivate = isPrivate;
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
@@ -51,9 +50,5 @@ public class Address extends Contact{
     @Override
     public int hashCode() {
         return value.hashCode();
-    }
-
-    public boolean isPrivate() {
-        return isPrivate;
     }
 }
