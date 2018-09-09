@@ -82,12 +82,14 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Returns an modifiable java List view with elements.
+     * Sorts the internalList before casting as immutable.
+     * Returns an unmodifiable java List view with elements cast as immutable
      * For use with other methods/libraries.
      * Any changes to the internal list/elements are immediately visible in the returned list.
      */
-    public List<Person> mutableListView() {
-        return internalList;
+    public List<ReadOnlyPerson> sortedListView() {
+        internalList.sort((p1, p2) -> p1.getName().toString().compareToIgnoreCase(p2.getName().toString()));
+        return Collections.unmodifiableList(internalList);
     }
 
 
