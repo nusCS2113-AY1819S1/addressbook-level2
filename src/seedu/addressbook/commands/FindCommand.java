@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Arrays;
 
-
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
@@ -25,7 +24,9 @@ public class FindCommand extends Command {
 
     private final Set<String> keywords;
 
-    public FindCommand(Set<String> keywords) { this.keywords = keywords; }
+    public FindCommand(Set<String> keywords) {
+        this.keywords = keywords;
+    }
 
     /**
      * Returns a copy of keywords, in small case, in this command.
