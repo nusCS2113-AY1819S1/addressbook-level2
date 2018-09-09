@@ -38,6 +38,7 @@ public class Name {
 
     /**
      * Retrieves a listing of every word in the name, in order.
+     * During the retrieve process, set all names to lowercase to enhance find command
      */
     public List<String> getWordsInName() {
         return Arrays.asList(fullName.toLowerCase().split("\\s+"));

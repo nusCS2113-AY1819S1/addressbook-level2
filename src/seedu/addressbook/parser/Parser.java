@@ -249,6 +249,7 @@ public class Parser {
         }
 
         // keywords delimited by whitespace
+        // set the input of the user keyword to lowercase to enhance find function
         final String[] keywords = matcher.group("keywords").toLowerCase().split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
