@@ -50,7 +50,7 @@ Help is also shown if you enter an incorrect command e.g. `abcd`
 == Adding a person: `add`
 
 Adds a person to the address book. +
-Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
+Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [m/MESSAGE] [t/TAG]...`
 
 ****
 Words in `UPPER_CASE` are the parameters, items in `SQUARE_BRACKETS` are optional,
@@ -58,6 +58,8 @@ items with `...` after them can have multiple instances. Order of parameters are
 
 Put a `p` before the phone / email / address prefixes to mark it as `private`. `private` details can only
 be seen using the `viewall` command.
+
+Use '/m' to add an optional message for the person.
 
 Persons can have any number of tags (including 0).
 ****
