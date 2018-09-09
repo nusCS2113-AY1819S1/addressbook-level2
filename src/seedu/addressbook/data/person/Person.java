@@ -10,7 +10,7 @@ import seedu.addressbook.data.tag.Tag;
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated.
  */
-public class Person implements ReadOnlyPerson {
+public class Person implements ReadOnlyPerson{
 
     private Name name;
     private Phone phone;
