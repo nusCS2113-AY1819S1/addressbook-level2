@@ -14,6 +14,7 @@ import seedu.addressbook.storage.StorageFile;
 import seedu.addressbook.storage.StorageFile.InvalidStorageFilePathException;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 import seedu.addressbook.ui.TextUi;
+import seedu.addressbook.ui.Formatter;
 
 
 /**
@@ -26,6 +27,7 @@ public class Main {
     public static final String VERSION = "AddressBook Level 2 - Version 1.0";
 
     private TextUi ui;
+    private Formatter format;
     private StorageFile storage;
     private AddressBook addressBook;
 
@@ -53,6 +55,7 @@ public class Main {
     private void start(String[] launchArgs) {
         try {
             this.ui = new TextUi();
+            this.format = new Formatter();
             this.storage = initializeStorage(launchArgs);
             this.addressBook = storage.load();
             ui.showWelcomeMessage(VERSION, storage.getPath());
