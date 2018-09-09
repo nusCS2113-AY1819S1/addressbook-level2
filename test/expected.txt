@@ -305,7 +305,7 @@
 || 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 	4. Rajdeep Phone: 96259456 Email: rajdeep@gmail.com Address: Blk 113, Simei street 1, #03-695 Tags: [cs2113][male]
 || 	5. Tsu Wei Quan Phone: 96259456 Email: tsuweiquan@gmail.com Address: Blk 111, Simei street 1, #03-696 Tags: [cs2113][male]
-||
+|| 
 || 5 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  clear]
