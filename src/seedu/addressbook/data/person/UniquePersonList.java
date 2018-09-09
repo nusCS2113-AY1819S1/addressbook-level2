@@ -77,6 +77,18 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Sorts the persons in address book in alphabetical order
+     */
+    public void sort(){
+        Collections.sort(internalList, new Comparator<ReadOnlyPerson>() {
+            @Override
+            public int compare(ReadOnlyPerson o1, ReadOnlyPerson o2) {
+                return o1.getName().toString().compareTo(o2.getName().toString());
+            }
+        });
+    }
+
+    /**
      * Checks if the list contains an equivalent person as the given argument.
      * The {@link ReadOnlyPerson#isSamePerson} method is used for this comparison, which
      * defines a weaker notion of equality.
