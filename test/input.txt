@@ -141,6 +141,17 @@
   list
 
 ##########################################################
+# test sort person command
+# add a 3 user and display if sorted correctly
+##########################################################
+
+  #add 3 person with different starting letters
+  add Tsu Wei Quan p/96259456 e/tsuweiquan@gmail.com a/Blk 111, Simei street 1, #03-696 t/male t/cs2113
+  add Candy Ng p/96259456 e/candy@gmail.com a/Blk 112, Simei street 1, #03-694 t/female t/cs2113
+  add Rajdeep p/96259456 e/rajdeep@gmail.com a/Blk 113, Simei street 1, #03-695 t/male t/cs2113
+  sort
+  
+##########################################################
 # test clear command
 ##########################################################
 
