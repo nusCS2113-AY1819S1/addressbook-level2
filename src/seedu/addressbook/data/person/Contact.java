@@ -4,10 +4,14 @@ package seedu.addressbook.data.person;
  * Represents an person's contact.
  */
 public class Contact {
-    public String value;
+    protected String value;
     protected boolean isPrivate;
 
     protected Contact(){
+    }
+
+    public String getValue() {
+        return value;
     }
 
     public boolean isPrivate() {
