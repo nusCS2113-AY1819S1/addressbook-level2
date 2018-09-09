@@ -18,6 +18,7 @@ import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.Message;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
@@ -114,11 +115,13 @@ public class StorageFileTest {
                                 new Phone("98765432", false),
                                 new Email("johnd@gmail.com", false),
                                 new Address("John street, block 123, #01-01", false),
+                                new Message(""),
                                 Collections.emptySet()));
         ab.addPerson(new Person(new Name("Betsy Crowe"),
                                 new Phone("1234567", true),
                                 new Email("betsycrowe@gmail.com", false),
                                 new Address("Newgate Prison", true),
+                                new Message(""),
                                 new HashSet<>(Arrays.asList(new Tag("friend"), new Tag("criminal")))));
         return ab;
     }
