@@ -43,6 +43,17 @@ public class Name {
         return Arrays.asList(fullName.split("\\s+"));
     }
 
+    /**
+     * Retrieves a listing of every word in the name, in order, in small case to aid non case-sensitive search.
+     */
+    public List<String> getWordsInNameInSmallCase() {
+        List<String> NameInSmallCase = getWordsInName();
+        for (int i = 0; i < NameInSmallCase.size(); i++) {
+            NameInSmallCase.set(i, NameInSmallCase.get(i).toLowerCase());
+        }
+        return NameInSmallCase;
+    }
+
     @Override
     public String toString() {
         return fullName;
