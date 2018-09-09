@@ -3,6 +3,7 @@ package seedu.addressbook.ui;
 import static seedu.addressbook.common.Messages.MESSAGE_GOODBYE;
 import static seedu.addressbook.common.Messages.MESSAGE_INIT_FAILED;
 import static seedu.addressbook.common.Messages.MESSAGE_PROGRAM_LAUNCH_ARGS_USAGE;
+import static seedu.addressbook.common.Messages.MESSAGE_RETRY_WITH_DEFAULT;
 import static seedu.addressbook.common.Messages.MESSAGE_USING_STORAGE_FILE;
 import static seedu.addressbook.common.Messages.MESSAGE_WELCOME;
 
@@ -30,7 +31,7 @@ public class TextUi {
     private static final String DIVIDER = "===================================================";
 
     /** Format of indexed list item */
-    private static final String MESSAGE_INDEXED_LIST_ITEM = "\t%1$d. %2$s";
+    //private static final String MESSAGE_INDEXED_LIST_ITEM = "\t%1$d. %2$s";
 
 
     /** Offset required to convert between 1-indexing and 0-indexing.  */
@@ -93,7 +94,7 @@ public class TextUi {
 
 
     public void showWelcomeMessage(String version, String storageFilePath) {
-        String storageFileInfo = String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
+        String storageFileInfo = Formatter.formatStorageFile((storageFilePath));
         showToUser(
                 DIVIDER,
                 DIVIDER,
@@ -112,6 +113,8 @@ public class TextUi {
     public void showInitFailedMessage() {
         showToUser(MESSAGE_INIT_FAILED, DIVIDER, DIVIDER);
     }
+    
+    public void showRetryMessage(){showToUser(MESSAGE_RETRY_WITH_DEFAULT);}
 
     /** Shows message(s) to the user */
     public void showToUser(String... message) {
@@ -129,7 +132,7 @@ public class TextUi {
         if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
         }
-        showToUser(result.feedbackToUser, DIVIDER);
+        showToUser(result.getFeedbackToUser(), DIVIDER);
     }
 
     /**
@@ -166,7 +169,7 @@ public class TextUi {
      * @param visibleIndex visible index for this listing
      */
     private static String getIndexedListItem(int visibleIndex, String listItem) {
-        return String.format(MESSAGE_INDEXED_LIST_ITEM, visibleIndex, listItem);
+        return Formatter.formatIndexedListItem(visibleIndex,listItem);
     }
 
 }

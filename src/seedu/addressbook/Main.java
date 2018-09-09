@@ -50,7 +50,7 @@ public class Main {
      * @param launchArgs arguments supplied by the user at program launch
      *
      */
-    private void start(String[] launchArgs) {
+    private void start(String... launchArgs) {
         try {
             this.ui = new TextUi();
             this.storage = initializeStorage(launchArgs);
@@ -58,7 +58,7 @@ public class Main {
             ui.showWelcomeMessage(VERSION, storage.getPath());
 
         } catch (InvalidStorageFilePathException | StorageOperationException e) {
-            ui.showInitFailedMessage();
+            ui.showRetryMessage();
             /*
              * ==============NOTE TO STUDENTS=========================================================================
              * We are throwing a RuntimeException which is an 'unchecked' exception. Unchecked exceptions do not need
@@ -68,8 +68,16 @@ public class Main {
              * Cf https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html
              * =======================================================================================================
              */
-            throw new RuntimeException(e);
-        }
+            try {
+                String[] lol = new String[] {"addressbook.txt"};
+                this.ui = new TextUi();
+                this.storage = initializeStorage(lol);
+                this.addressBook = storage.load();
+                ui.showWelcomeMessage(VERSION, storage.getPath());
+            } catch(InvalidStorageFilePathException | StorageOperationException a){
+                ui.showGoodbyeMessage();
+            }
+        } 
     }
 
     /** Prints the Goodbye message and exits. */
@@ -81,6 +89,7 @@ public class Main {
     /** Reads the user command and executes it, until the user issues the exit command.  */
     private void runCommandLoopUntilExitCommand() {
         Command command;
+  
         do {
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
@@ -89,6 +98,7 @@ public class Main {
             ui.showResultToUser(result);
 
         } while (!ExitCommand.isExit(command));
+            
     }
 
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
@@ -114,7 +124,7 @@ public class Main {
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
-        }
+        } 
     }
 
     /**
@@ -122,7 +132,7 @@ public class Main {
      * @param launchArgs arguments supplied by the user at program launch
      * @throws InvalidStorageFilePathException if the target file path is incorrect.
      */
-    private StorageFile initializeStorage(String[] launchArgs) throws InvalidStorageFilePathException {
+    private StorageFile initializeStorage(String... launchArgs) throws InvalidStorageFilePathException {
         boolean isStorageFileSpecifiedByUser = launchArgs.length > 0;
         return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0]) : new StorageFile();
     }
