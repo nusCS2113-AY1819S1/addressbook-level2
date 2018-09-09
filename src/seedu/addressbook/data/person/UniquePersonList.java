@@ -81,8 +81,23 @@ public class UniquePersonList implements Iterable<Person> {
         return Collections.unmodifiableList(internalList);
     }
 
-
     /**
+     * Returns a sorted list (alphabetically) of all the current persons in the AddressBook
+     * Any changes to the internal list/elements are immediately visible in the returned list
+     * Lambda expression for the Comparator was adapted from Michael Myers on the question
+     * "Sort ArrayList of custom Objects by property" on Stack Overflow
+     *
+     * Comparator comparing not used as user must import java.util.Comparator, used the lambda
+     * expression instead
+     * @return
+     */
+    public List<ReadOnlyPerson> sortList() {
+        List<Person> sortedList = internalList;
+        sortedList.sort((p1, p2) -> p1.getName().toString().compareToIgnoreCase(p2.getName().toString()));
+        return Collections.unmodifiableList(sortedList);
+    }
+
+    /**ex
      * Checks if the list contains an equivalent person as the given argument.
      * The {@link ReadOnlyPerson#isSamePerson} method is used for this comparison, which
      * defines a weaker notion of equality.

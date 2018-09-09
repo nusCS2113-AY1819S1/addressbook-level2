@@ -1,5 +1,6 @@
 package seedu.addressbook.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -19,7 +20,7 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().sortList();
+        return new CommandResult(getMessageForSortSummary(allPersons), allPersons);
     }
 }
