@@ -42,7 +42,8 @@ public class FindCommand extends Command {
 
     /**
      * Retrieves all persons in the address book whose names contain some of the specified keywords.
-     *
+     * string stored in keywords set are all in lowercase
+     * string stored in wordsInName are also in lowercase
      * @param keywords for searching
      * @return list of persons found
      */

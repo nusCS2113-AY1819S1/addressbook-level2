@@ -290,6 +290,24 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  add Tsu Wei Quan p/96259456 e/tsuweiquan@gmail.com a/Blk 111, Simei street 1, #03-696 t/male t/cs2113]
+|| New person added: Tsu Wei Quan Phone: 96259456 Email: tsuweiquan@gmail.com Address: Blk 111, Simei street 1, #03-696 Tags: [cs2113][male]
+|| ===================================================
+|| Enter command: || [Command entered:  add Candy Ng p/96259456 e/candy@gmail.com a/Blk 112, Simei street 1, #03-694 t/female t/cs2113]
+|| New person added: Candy Ng Phone: 96259456 Email: candy@gmail.com Address: Blk 112, Simei street 1, #03-694 Tags: [cs2113][female]
+|| ===================================================
+|| Enter command: || [Command entered:  add Rajdeep p/96259456 e/rajdeep@gmail.com a/Blk 113, Simei street 1, #03-695 t/male t/cs2113]
+|| New person added: Rajdeep Phone: 96259456 Email: rajdeep@gmail.com Address: Blk 113, Simei street 1, #03-695 Tags: [cs2113][male]
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Candy Ng Phone: 96259456 Email: candy@gmail.com Address: Blk 112, Simei street 1, #03-694 Tags: [cs2113][female]
+|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	4. Rajdeep Phone: 96259456 Email: rajdeep@gmail.com Address: Blk 113, Simei street 1, #03-695 Tags: [cs2113][male]
+|| 	5. Tsu Wei Quan Phone: 96259456 Email: tsuweiquan@gmail.com Address: Blk 111, Simei street 1, #03-696 Tags: [cs2113][male]
+|| 
+|| 5 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
