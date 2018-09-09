@@ -37,15 +37,14 @@ public class SortCommandTest {
     @Test
     public void sortCommand_sortsAddressBookCorrectly() {
         SortCommand sortCommand = new SortCommand();
-        SortCommand redundantCommand = new SortCommand();
+        SortCommand expectedCommand = new SortCommand();
         sortCommand.setData(unsortedAddressBook, listWithUnsortedPersons);
 
         // sortedAddressBook is already sorted when created.
-        SortCommand expectedCommand = new SortCommand();
-        redundantCommand.setData(sortedAddressBook, listWithSortedPersons);
+        expectedCommand.setData(sortedAddressBook, listWithSortedPersons);
 
 
-        CommandResult expectedResult = redundantCommand.execute();
+        CommandResult expectedResult = expectedCommand.execute();
         CommandResult actualResult = sortCommand.execute();
 
         //Same size
