@@ -26,5 +26,5 @@ public class SortCommand extends Command {
         allPersons.sort(customComparator);
         
         return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
-    }
+    }   
 }
