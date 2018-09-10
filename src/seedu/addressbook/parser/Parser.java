@@ -3,11 +3,7 @@ package seedu.addressbook.parser;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,6 +18,7 @@ import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.EditCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
@@ -93,6 +90,9 @@ public class Parser {
         case ViewCommand.COMMAND_WORD:
             return prepareView(arguments);
 
+        case EditCommand.COMMAND_WORD:
+            return prepareEdit(arguments);
+
         case ViewAllCommand.COMMAND_WORD:
             return prepareViewAll(arguments);
 
@@ -156,6 +156,15 @@ public class Parser {
         // replace first delimiter prefix, then split
         final Collection<String> tagStrings = Arrays.asList(tagArguments.replaceFirst(" t/", "").split(" t/"));
         return new HashSet<>(tagStrings);
+    }
+
+    /**
+     * Parses arguments in the context of edit person command
+     * @param args String containing the exact name of the person
+     * @return the prepared command
+     */
+    private Command prepareEdit(String args) {
+        return new EditCommand(args);
     }
 
 
