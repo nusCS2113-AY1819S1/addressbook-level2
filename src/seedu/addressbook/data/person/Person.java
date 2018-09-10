@@ -10,14 +10,22 @@ import seedu.addressbook.data.tag.Tag;
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated.
  */
-public class Person implements ReadOnlyPerson {
+public class Person implements ReadOnlyPerson{
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private static int nextSequenceNumber;
+
+    public int getSequenceNumber() {
+        return sequenceNumber;
+    }
+
+    private int sequenceNumber;
 
     private final Set<Tag> tags = new HashSet<>();
+    
 
     /**
      * Assumption: Every field must be present and not null.
@@ -28,6 +36,7 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.sequenceNumber = ++nextSequenceNumber;
     }
 
     /**

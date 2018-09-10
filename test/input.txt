@@ -34,26 +34,37 @@
   add Valid Name p/12345 e/valid@email.butNoTagPrefix a/valid, address t/goodTag noPrefixTag
   
   # should catch invalid person data
-  add []\[;] p/12345 e/valid@e.mail a/valid, address
+  add []\[;] p/12345 e/valid@e.mail a/valid, address t/lol
   add Valid Name p/not_numbers e/valid@e.mail a/valid, address
   add Valid Name p/12345 e/notAnEmail a/valid, address
   add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag
+  add Valid Name p/12345 e/valid@e.mail a/Invalid, address t/invalid
+ 
 
   # should add correctly and list non private information
-  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street, #01-123, 610111
   list
-  add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
+  add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street, #08-119, 600222 t/secretive
   list
-  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
+  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street, #07-129, 600333 t/friends t/school
   list
-  add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends
+  add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street, #05-101, 600444 t/friends
   list
-  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
   list
-
   # should not allow adding duplicate persons
-  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
-
+  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
+  add Aaron Potato p/555666 e/aaron@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
+  add Andrew Potato p/555666 e/andrew@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
+##########################################################
+# test add person command, setup state for further tests
+##########################################################
+  sort
+  delete 1
+  list
+  delete 6
+  list
+  
 ##########################################################
 # test view/viewall persons command
 ##########################################################

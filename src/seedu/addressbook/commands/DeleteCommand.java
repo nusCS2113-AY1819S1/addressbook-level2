@@ -3,6 +3,10 @@ package seedu.addressbook.commands;
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import seedu.addressbook.data.tag.Tag;
+import seedu.addressbook.data.tag.Tagging;
+
+import java.util.Set;
 
 
 /**
@@ -29,6 +33,8 @@ public class DeleteCommand extends Command {
     public CommandResult execute() {
         try {
             final ReadOnlyPerson target = getTargetPerson();
+            final Set<Tag> deletedTags = target.getTags();
+            recordDeletedTags(target.getName().toString(),deletedTags);
             addressBook.removePerson(target);
             return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target));
 
@@ -36,6 +42,12 @@ public class DeleteCommand extends Command {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         } catch (PersonNotFoundException pnfe) {
             return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
+        }
+    }
+    
+    private void recordDeletedTags(String name,Set<Tag> deletedTags){
+        for (Tag deletedTag: deletedTags){
+            Tagging.deleteTag(name,deletedTag);
         }
     }
 

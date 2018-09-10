@@ -7,10 +7,22 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+import seedu.addressbook.data.tag.Tag;
 
 public class UtilsTest {
-
-
+    
+    @Test
+    public void falseIsAnyNull() throws Exception{
+        Object testObject = new Tag("lol");
+        assertFalse(Utils.isAnyNull(testObject));
+    };
+    
+    @Test
+    public void trueIsAnyNull() throws Exception {
+        Object testObject = null;
+        String controlObject = "test";
+        assertTrue(Utils.isAnyNull(testObject, controlObject));
+    }
     @Test
     public void elementsAreUnique() throws Exception {
         // empty list

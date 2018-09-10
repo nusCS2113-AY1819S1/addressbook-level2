@@ -9,6 +9,8 @@ import seedu.addressbook.data.tag.Tag;
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
 public interface ReadOnlyPerson {
+    
+    /**Abstract methods in interface**/
 
     Name getName();
     Phone getPhone();
@@ -51,7 +53,7 @@ public interface ReadOnlyPerson {
     default String getAsTextShowAll() {
         final StringBuilder builder = new StringBuilder();
         final String detailIsPrivate = "(private) ";
-        builder.append(getName())
+        builder.append(getPrintableString(getName()))
                 .append(" Phone: ");
         if (getPhone().isPrivate()) {
             builder.append(detailIsPrivate);
@@ -79,15 +81,15 @@ public interface ReadOnlyPerson {
      */
     default String getAsTextHidePrivate() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName());
+        builder.append(getPrintableString(getName()));
         if (!getPhone().isPrivate()) {
-            builder.append(" Phone: ").append(getPhone());
+            builder.append(getPrintableString(getPhone()));
         }
         if (!getEmail().isPrivate()) {
-            builder.append(" Email: ").append(getEmail());
+            builder.append(getPrintableString(getEmail()));
         }
         if (!getAddress().isPrivate()) {
-            builder.append(" Address: ").append(getAddress());
+            builder.append(getPrintableString(getAddress()));
         }
         builder.append(" Tags: ");
         for (Tag tag : getTags()) {
@@ -95,4 +97,8 @@ public interface ReadOnlyPerson {
         }
         return builder.toString();
     }
+    default String getPrintableString(Printable printable){
+        return printable.getPrintableString();
+    }
+    
 }
