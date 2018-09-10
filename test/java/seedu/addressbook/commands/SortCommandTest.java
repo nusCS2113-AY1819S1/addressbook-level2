@@ -1,6 +1,7 @@
 package seedu.addressbook.commands;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.Collections;
 
@@ -38,11 +39,18 @@ public class SortCommandTest {
      */
     @Test
     public void sortTesting() {
+        bookEqualityCheck( unsortedBook, sortedBook);
         assertSuccessfulSort(unsortedBook, sortedBook);
     }
 
-    public void assertSuccessfulSort( AddressBook unsortedBook, AddressBook sortedBook) {
+    /**
+     * This shows that the books are not equal before the sort
+     */
+    public void bookEqualityCheck( AddressBook unsortedBook, AddressBook sortedBook) {
+        assertNotEquals(unsortedBook, sortedBook);
+    }
 
+    public void assertSuccessfulSort( AddressBook unsortedBook, AddressBook sortedBook) {
         unsortedBook.sortPersons();
         assertEquals(unsortedBook, sortedBook);
     }
