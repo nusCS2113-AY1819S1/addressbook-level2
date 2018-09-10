@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
+import seedu.addressbook.commands.SizeCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
@@ -83,6 +84,9 @@ public class Parser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
+            
+        case SizeCommand.COMMAND_WORD:
+            return new SizeCommand();
 
         case FindCommand.COMMAND_WORD:
             return prepareFind(arguments);
