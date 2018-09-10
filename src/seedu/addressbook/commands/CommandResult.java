@@ -16,6 +16,7 @@ public class CommandResult {
     /** The list of persons that was produced by the command */
     private final List<? extends ReadOnlyPerson> relevantPersons;
 
+    //2 constructors, in case 1 of them is null
     public CommandResult(String feedbackToUser) {
         this.feedbackToUser = feedbackToUser;
         relevantPersons = null;

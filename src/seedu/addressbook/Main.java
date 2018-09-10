@@ -39,7 +39,7 @@ public class Main {
 
     /** Runs the program until termination.  */
     public void run(String[] launchArgs) {
-        start(launchArgs);
+        start(launchArgs); //launchArgs contain ui, storage, addressBook
         runCommandLoopUntilExitCommand();
         exit();
     }
