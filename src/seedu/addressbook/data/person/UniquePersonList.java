@@ -73,6 +73,14 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Sorts the list
+     */
+    public void sort () {
+        Collections.sort(internalList, Person.COMPARE_BY_NAME);
+    }
+
+
+    /**
      * Returns an unmodifiable java List view with elements cast as immutable {@link ReadOnlyPerson}s.
      * For use with other methods/libraries.
      * Any changes to the internal list/elements are immediately visible in the returned list.
