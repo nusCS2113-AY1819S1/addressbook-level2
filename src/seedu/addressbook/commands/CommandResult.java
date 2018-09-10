@@ -16,6 +16,7 @@ public class CommandResult {
     /** The list of persons that was produced by the command */
     private final List<? extends ReadOnlyPerson> relevantPersons;
 
+
     public CommandResult(String feedbackToUser) {
         this.feedbackToUser = feedbackToUser;
         relevantPersons = null;
@@ -31,6 +32,13 @@ public class CommandResult {
      */
     public Optional<List<? extends ReadOnlyPerson>> getRelevantPersons() {
         return Optional.ofNullable(relevantPersons);
+    }
+
+    /**
+     * Returns the feedbacktoUser, if any.
+     */
+    public String getfeedbacktoUser() {
+        return feedbackToUser;
     }
 
 }
