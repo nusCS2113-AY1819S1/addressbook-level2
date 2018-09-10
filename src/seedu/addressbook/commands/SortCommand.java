@@ -1,12 +1,13 @@
 package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.person.UniquePersonList;
 
 import java.util.List;
 
 /**
  * Lists all the persons in the addressbook to the user
- * in alphabetical / lexicographic order
+ * in alphabetical / lexicographic order (name)
  */
 public class SortCommand extends Command{
     public static final String COMMAND_WORD = "sorted";
@@ -18,8 +19,10 @@ public class SortCommand extends Command{
 
     @Override
     public CommandResult execute() {
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        UniquePersonList allPersons = addressBook.getAllPersons();
+        allPersons.sorted();
+        List<ReadOnlyPerson> allSortedPeople = allPersons.immutableListView();
+        return new CommandResult(getMessageForPersonListShownSummary(allSortedPeople), allSortedPeople);
     }
 
 }
