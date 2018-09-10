@@ -107,10 +107,37 @@
   find Charlie Betsy
 
 ##########################################################
-# test delete person command
+# test edit persons command
 ##########################################################
 
 # last active view: [1] betsy [2] charlie
+
+  # should catch invalid args format due no index and params
+  edit
+  edit 1
+  edit 2 asdas
+
+  # should catch invalid parameter as the email need to contain '@'  
+  edit 1 e/notanEmail
+	
+  # should catch invalid index
+  edit 0 p/99999999
+  edit 3 e/school@gmail.com
+
+  # edit betsy handphone number to "99999999"
+  edit 1 p/99999999
+
+  # edit charlie email to "charlie@gmail.com"		
+  edit 2 e/school@gmail.com
+	
+  # edit charlie address to "999, singapore street"		
+  edit 2 a/999, singapore street	
+
+
+##########################################################
+# test delete person command
+##########################################################
+ # last active view: [1] betsy [2] charlie
 
   # should catch invalid args format
   delete

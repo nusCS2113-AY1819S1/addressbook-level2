@@ -233,6 +233,42 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  edit]
+|| Invalid command format! 
+|| edit: edit a person particular identified by the index number used in the last person listing.
+|| Parameters: INDEX parameter phonenumber/address/email
+|| Example: edit 1 p/99999999
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1]
+|| Invalid command format! 
+|| edit: edit a person particular identified by the index number used in the last person listing.
+|| Parameters: INDEX parameter phonenumber/address/email
+|| Example: edit 1 p/99999999
+|| ===================================================
+|| Enter command: || [Command entered:  edit 2 asdas]
+|| Invalid command format! 
+|| edit: edit a person particular identified by the index number used in the last person listing.
+|| Parameters: INDEX parameter phonenumber/address/email
+|| Example: edit 1 p/99999999
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 e/notanEmail]
+|| Person emails should be 2 alphanumeric/period strings separated by '@'
+|| ===================================================
+|| Enter command: || [Command entered:  edit 0 p/99999999]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  edit 3 e/school@gmail.com]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 p/99999999]
+|| Betsy Choo's particulars has been updated
+|| ===================================================
+|| Enter command: || [Command entered:  edit 2 e/school@gmail.com]
+|| Charlie Dickson's particulars has been updated
+|| ===================================================
+|| Enter command: || [Command entered:  edit 2 a/999, singapore street  ]
+|| Charlie Dickson's particulars has been updated
+|| ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 
 || delete: Deletes the person identified by the index number used in the last person listing.
@@ -252,7 +288,7 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
-|| Deleted Person: Charlie Dickson Phone: (private) 333333 Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| Deleted Person: Charlie Dickson Phone: (private) 333333 Email: school@gmail.com Address: 999, singapore street Tags: [school][friends]
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
 || Person could not be found in address book

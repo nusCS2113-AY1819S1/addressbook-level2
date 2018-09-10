@@ -11,7 +11,6 @@ import java.util.Set;
 import org.junit.Test;
 
 import seedu.addressbook.data.AddressBook;
-import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.util.TypicalPersons;
 
@@ -21,7 +20,7 @@ public class FindCommandTest {
     private final TypicalPersons td = new TypicalPersons();
 
     @Test
-    public void execute() throws IllegalValueException {
+    public void execute() {
         //same word, same case: matched
         assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
 
