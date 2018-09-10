@@ -1,6 +1,13 @@
 package seedu.addressbook.data.person;
 
+import java.util.Objects;
+
 import seedu.addressbook.data.exception.IllegalValueException;
+
+import seedu.addressbook.data.person.address.Block;
+import seedu.addressbook.data.person.address.PostalCode;
+import seedu.addressbook.data.person.address.Street;
+import seedu.addressbook.data.person.address.Unit;
 
 /**
  * Represents a Person's address in the address book.
@@ -11,6 +18,11 @@ public class Address {
     public static final String EXAMPLE = "123, some street";
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
+
+    private Block block;
+    private PostalCode postalCode;
+    private Unit unit;
+    private Street street;
 
     public final String value;
     private boolean isPrivate;
