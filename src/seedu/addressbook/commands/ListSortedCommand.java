@@ -15,7 +15,6 @@ public class ListSortedCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        // TODO: Add list sorted
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersonsSorted().immutableListView();
         return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }

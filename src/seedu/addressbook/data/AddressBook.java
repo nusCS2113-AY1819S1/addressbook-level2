@@ -69,7 +69,6 @@ public class AddressBook {
     }
 
     public UniquePersonList getAllPersonsSorted() {
-        // TODO: Sort in uniquePersonList
         UniquePersonList uniquePersons = new UniquePersonList(allPersons);
         uniquePersons.sort(); // Call to sort the list
         return uniquePersons;
