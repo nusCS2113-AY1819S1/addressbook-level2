@@ -89,7 +89,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case FindTagCommand.COMMAND_WORD:
-            return prepareFind(arguments);
+            return prepareFindTag(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -265,7 +265,7 @@ public class Parser {
         final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
         if (!matcher.matches()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    FindCommand.MESSAGE_USAGE));
+                    FindTagCommand.MESSAGE_USAGE));
         }
 
         // keywords delimited by whitespace
