@@ -290,6 +290,9 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  size]
+|| Size of the address book is 2.
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
