@@ -19,6 +19,7 @@ import seedu.addressbook.commands.ListCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.commands.EditCommand;
+import seedu.addressbook.data.Types.StructEdit;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
@@ -164,7 +165,25 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareEdit(String args) {
-        return new EditCommand(args);
+        StructEdit editParameters = new StructEdit();
+        try {
+            Scanner sc = new Scanner(args).useDelimiter("edit ");
+            sc.useDelimiter(" ");
+
+
+            editParameters.id = Integer.parseInt(sc.next());
+            editParameters.fieldType = sc.next();
+            editParameters.newField = sc.next();
+        } catch(RuntimeException rte) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+        }
+
+
+//        try{
+//
+//            final int targetIndex = parseArgsAsDisplayedIndex(args);
+//        }
+        return new EditCommand(editParameters.id);
     }
 
 

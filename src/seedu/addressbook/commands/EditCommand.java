@@ -1,5 +1,6 @@
 package seedu.addressbook.commands;
 
+import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
@@ -22,17 +23,31 @@ public class EditCommand extends Command{
 
     /**
      * Constructor for EditCommand
-     * @param searchName
+     * @param targetVisibleIndex
      */
-    public EditCommand(String searchName){
-        this.searchName = searchName;
+    public EditCommand(int targetVisibleIndex) {
+        super(targetVisibleIndex);
     }
 
+//    @Override
+//    public CommandResult execute(){
+//        String result = (isPersonFound(searchName) ? searchName + " is found." : searchName + " is not found.");
+//        return new CommandResult(result);
+//    }
+
     @Override
-    public CommandResult execute(){
-        String result = (isPersonFound(searchName) ? searchName + " is found." : searchName + " is not found.");
-        return new CommandResult(result);
+    public CommandResult execute() {
+        try {
+            final ReadOnlyPerson target = getTargetPerson();
+            if (!addressBook.containsPerson(target)) {
+                return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
+            }
+            return new CommandResult("Something is found.");
+        } catch (IndexOutOfBoundsException ie) {
+            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
     }
+
     /**
      * Checks if the specified person name is inside the address book.
      * @param searchName to check if the name is inside the address book
