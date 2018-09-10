@@ -3,6 +3,8 @@ package seedu.addressbook;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
+
 
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.CommandResult;
@@ -24,11 +26,10 @@ public class Main {
 
     /** Version info of the program. */
     public static final String VERSION = "AddressBook Level 2 - Version 1.0";
-
     private TextUi ui;
     private StorageFile storage;
     private AddressBook addressBook;
-
+    Scanner scanner = new Scanner(System.in);
     /** The list of person shown to the user most recently.  */
     private List<? extends ReadOnlyPerson> lastShownList = Collections.emptyList();
 
@@ -40,6 +41,7 @@ public class Main {
     /** Runs the program until termination.  */
     public void run(String[] launchArgs) {
         start(launchArgs);
+        passwordEntry();
         runCommandLoopUntilExitCommand();
         exit();
     }
@@ -70,6 +72,17 @@ public class Main {
              */
             throw new RuntimeException(e);
         }
+    }
+    private void passwordEntry(){
+        String enteredPass="a";
+        String setPass="default";
+        while(!enteredPass.equals(setPass)){
+
+            enteredPass = ui.getPassword();
+        }
+
+
+
     }
 
     /** Prints the Goodbye message and exits. */
