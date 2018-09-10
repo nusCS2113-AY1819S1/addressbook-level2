@@ -131,7 +131,7 @@
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy]
 || New person added: Sequence No.:5 Name: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street, #12-119, 600555 Tags: [tubers][starchy]
 || ===================================================
-|| Enter command: || [Command entered:        list]
+|| Enter command: || [Command entered:  list]
 || 	1. Name: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street, #01-123, 610111 Tags: 
 || 	2. Name: Betsy Choo Tags: [secretive]
 || 	3. Name: Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street, #07-129, 600333 Tags: [school][friends]
@@ -142,6 +142,48 @@
 || ===================================================
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy]
 || This person already exists in the address book
+|| ===================================================
+|| Enter command: || [Command entered:  add Aaron Potato p/555666 e/aaron@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy]
+|| New person added: Sequence No.:7 Name: Aaron Potato Phone: 555666 Email: aaron@not.a.real.potato Address: (private) 555, epsilon street, #12-119, 600555 Tags: [tubers][starchy]
+|| ===================================================
+|| Enter command: || [Command entered:  add Andrew Potato p/555666 e/andrew@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy]
+|| New person added: Sequence No.:8 Name: Andrew Potato Phone: 555666 Email: andrew@not.a.real.potato Address: (private) 555, epsilon street, #12-119, 600555 Tags: [tubers][starchy]
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| 	1. Name: Aaron Potato Phone: 555666 Email: aaron@not.a.real.potato Tags: [tubers][starchy]
+|| 	2. Name: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street, #01-123, 610111 Tags: 
+|| 	3. Name: Andrew Potato Phone: 555666 Email: andrew@not.a.real.potato Tags: [tubers][starchy]
+|| 	4. Name: Betsy Choo Tags: [secretive]
+|| 	5. Name: Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street, #07-129, 600333 Tags: [school][friends]
+|| 	6. Name: Dickson Ee Phone: 444444 Address: 444, delta street, #05-101, 600444 Tags: [friends]
+|| 	7. Name: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 7 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 1]
+|| Deleted Person: Name: Aaron Potato Phone: 555666 Email: aaron@not.a.real.potato Address: (private) 555, epsilon street, #12-119, 600555 Tags: [tubers][starchy]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Name: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street, #01-123, 610111 Tags: 
+|| 	2. Name: Betsy Choo Tags: [secretive]
+|| 	3. Name: Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street, #07-129, 600333 Tags: [school][friends]
+|| 	4. Name: Dickson Ee Phone: 444444 Address: 444, delta street, #05-101, 600444 Tags: [friends]
+|| 	5. Name: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	6. Name: Andrew Potato Phone: 555666 Email: andrew@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 6 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 6]
+|| Deleted Person: Name: Andrew Potato Phone: 555666 Email: andrew@not.a.real.potato Address: (private) 555, epsilon street, #12-119, 600555 Tags: [tubers][starchy]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Name: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street, #01-123, 610111 Tags: 
+|| 	2. Name: Betsy Choo Tags: [secretive]
+|| 	3. Name: Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street, #07-129, 600333 Tags: [school][friends]
+|| 	4. Name: Dickson Ee Phone: 444444 Address: 444, delta street, #05-101, 600444 Tags: [friends]
+|| 	5. Name: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 5 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  view]
 || Invalid command format! 
@@ -309,6 +351,14 @@
 || - Dickson Ee [friends]
 || - Esther Potato [tubers]
 || - Esther Potato [starchy]
+|| - Aaron Potato [tubers]
+|| - Aaron Potato [starchy]
+|| - Andrew Potato [tubers]
+|| - Andrew Potato [starchy]
+|| - Aaron Potato [tubers]
+|| - Aaron Potato [starchy]
+|| - Andrew Potato [tubers]
+|| - Andrew Potato [starchy]
 || - Charlie Dickson [school]
 || - Charlie Dickson [friends]
 || - Charlie Dickson [school]

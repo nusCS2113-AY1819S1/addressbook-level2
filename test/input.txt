@@ -51,11 +51,20 @@
   add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street, #05-101, 600444 t/friends
   list
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
-        list
-
+  list
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
-
+  add Aaron Potato p/555666 e/aaron@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
+  add Andrew Potato p/555666 e/andrew@not.a.real.potato pa/555, epsilon street, #12-119, 600555 t/tubers t/starchy
+##########################################################
+# test add person command, setup state for further tests
+##########################################################
+  sort
+  delete 1
+  list
+  delete 6
+  list
+  
 ##########################################################
 # test view/viewall persons command
 ##########################################################
