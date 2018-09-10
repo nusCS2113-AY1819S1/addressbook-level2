@@ -105,7 +105,7 @@ and persons matching at least one keyword will be returned (i.e. `OR` search).
 Examples:
 
 * `findtag friends` +
-Returns Any person with the tag `friends` but not `Friends`.
+Returns Any person having tag `friends` but not `Friends`.
 
 * `findtag friends owesMoney` +
 Returns Any person having tags `friends`, or `owesMoney`.
