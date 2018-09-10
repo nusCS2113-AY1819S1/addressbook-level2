@@ -78,5 +78,5 @@ Solution: The output of the very first test run could be slightly different beca
 creates a new storage file. Tests should pass from the 2nd run onwards.
 
 === Adding more sort functions
-Refer to `UniquePersonList class` and `Person class`. +
+Refer to `UniquePersonList` class and `Person` class. +
 Add on to custom comparator
