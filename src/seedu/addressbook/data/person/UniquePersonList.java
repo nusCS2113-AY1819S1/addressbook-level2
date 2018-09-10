@@ -129,6 +129,11 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
+    /**
+     * Returns the size of the list.
+     */
+    public int getSize() { return internalList.size(); }
+
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();
