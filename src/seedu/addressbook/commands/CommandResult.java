@@ -11,7 +11,7 @@ import java.util.Optional;
 public class CommandResult {
 
     /** The feedback message to be shown to the user. Contains a description of the execution result */
-    private final String feedbackToUser;
+    public final String feedbackToUser;
     
     /** Getter method for private member feedbackToUser */
     public String getFeedbackToUser() {
