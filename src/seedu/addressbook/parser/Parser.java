@@ -39,6 +39,7 @@ public class Parser {
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
+                    + "(?<message>(?: m/[^/]+)?)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
 
@@ -130,11 +131,23 @@ public class Parser {
                     matcher.group("address"),
                     isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
 
+                    getMessageFromArgs(matcher.group("message")),
+
                     getTagsFromArgs(matcher.group("tagArguments"))
             );
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
+    }
+
+    private static String getMessageFromArgs(String messageArguments) throws IllegalValueException {
+        // no tags
+        if (messageArguments.isEmpty()) {
+            return null;
+        }
+        // replace first delimiter prefix
+        final String message = messageArguments.replaceFirst(" m/", "");
+        return message;
     }
 
     /**
