@@ -111,6 +111,29 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+
+
+
+== Edit a person's Email : `edit_email`
+
+Displays the non-private details of the specified person. +
+Format: `edit INDEX e/KEYWORD`
+
+****
+Edit the email of the person at the specified `INDEX`.
+The index refers to the index number shown in the most recent listing.
+****
+
+Examples:
+
+* `list` +
+`edit 2 e/newemail@gmail.com` +
+Edit the email of the 2nd person in the most recent listing.
+
+* `find Betsy` +
+`edit 1 e/newemail@gmail.com` +
+Edit the email of the 1st person in the results of the `find` command.
+
 == View non-private details of a person : `view`
 
 Displays the non-private details of the specified person. +
