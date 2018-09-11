@@ -42,13 +42,21 @@ public class Command {
     public CommandResult execute(){
         throw new UnsupportedOperationException("This method is to be implemented by child classes");
     };
-
     /**
      * Supplies the data the command will operate on.
      */
     public void setData(AddressBook addressBook, List<? extends ReadOnlyPerson> relevantPersons) {
         this.addressBook = addressBook;
         this.relevantPersons = relevantPersons;
+    }
+
+    /**
+     *
+     * @param personsDisplayed
+     * @return
+     */
+    public static String getMessageForSortedList(List<? extends ReadOnlyPerson> personsDisplayed) {
+        return String.format(Messages.MESSAGE_PERSONS_SORTED_OVERVIEW, personsDisplayed.size());
     }
 
     /**

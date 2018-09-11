@@ -25,6 +25,9 @@ public class HelpCommand extends Command {
                 + "\n" + ViewAllCommand.MESSAGE_USAGE
                 + "\n" + HelpCommand.MESSAGE_USAGE
                 + "\n" + ExitCommand.MESSAGE_USAGE
+                + "\n" + SortNameCommand.MESSAGE_USAGE
+
+
         );
     }
 }

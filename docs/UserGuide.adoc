@@ -47,6 +47,10 @@ Format: `help`
 Help is also shown if you enter an incorrect command e.g. `abcd`
 ====
 
+== Sort AddressBooklevel(2) elements by Name: `sortName`
+Sort the elements in addressBookLevel(2) by Name and print the sorted list by names along with their details.
+Format: `sortName`
+
 == Adding a person: `add`
 
 Adds a person to the address book. +

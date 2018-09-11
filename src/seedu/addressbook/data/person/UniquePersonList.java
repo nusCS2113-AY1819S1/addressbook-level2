@@ -109,6 +109,16 @@ public class UniquePersonList implements Iterable<Person> {
         }
         internalList.add(toAdd);
     }
+    /**
+     * Sort the list of person.
+     *
+     * @throws DuplicatePersonException if the person to add is a duplicate of an existing person in the list.
+     *    The @link{ReadOnlyPerson#isSamePerson} method is used for this comparison,
+     *    which defines a weaker notion of equality.
+     */
+    public void sortName() {
+
+    }
 
     /**
      * Removes the equivalent person from the list.
