@@ -19,6 +19,8 @@
 || Example: find alice bob charlie
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
+|| sort: Displays all persons in the address book as a sorted in ascending order list with index numbers.
+|| Example: sort
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: view 1
@@ -296,6 +298,22 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add john p/12345678 e/hello@hotmail.com a/311, clementi ave 2, #02-25]
+|| New person added: john Phone: 12345678 Email: hello@hotmail.com Address: 311, clementi ave 2, #02-25 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add bonnie p/666 e/hello123@hotmail.com a/321, bukit batok ave 2, #03-25]
+|| New person added: bonnie Phone: 666 Email: hello123@hotmail.com Address: 321, bukit batok ave 2, #03-25 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add hafiz p/87654321 e/HAfist@gmail.com a/512, choa chu kang ave 10, #10-10]
+|| New person added: hafiz Phone: 87654321 Email: HAfist@gmail.com Address: 512, choa chu kang ave 10, #10-10 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:	sort]
+|| 	1. bonnie Phone: 666 Email: hello123@hotmail.com Address: 321, bukit batok ave 2, #03-25 Tags: 
+|| 	2. hafiz Phone: 87654321 Email: HAfist@gmail.com Address: 512, choa chu kang ave 10, #10-10 Tags: 
+|| 	3. john Phone: 12345678 Email: hello@hotmail.com Address: 311, clementi ave 2, #02-25 Tags: 
+|| 
+|| 3 persons sorted and listed!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...

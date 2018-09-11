@@ -149,6 +149,18 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+  
+  # add some contacts into address book
+  add john p/12345678 e/hello@hotmail.com a/311, clementi ave 2, #02-25
+  add bonnie p/666 e/hello123@hotmail.com a/321, bukit batok ave 2, #03-25
+  add hafiz p/87654321 e/HAfist@gmail.com a/512, choa chu kang ave 10, #10-10
+  
+  # should show list of names sorted in ascending alphabetical order
+  sort
+
+##########################################################
 # test exit command
 ##########################################################
 
