@@ -36,6 +36,10 @@ public class Command {
         return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, personsDisplayed.size());
     }
 
+    public static String getMessageForSortedPersonListShownSummary(List<? extends ReadOnlyPerson> personDisplayed) {
+        return String.format(Messages.MESSAGE_PERSONS_SORTED_OVERVIEW, personDisplayed.size());
+    }
+
     /**
      * Executes the command and returns the result.
      */
