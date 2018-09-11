@@ -91,6 +91,10 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Edit the particulars of a person: `edit`
+Edits the details of the specified person. +
+Format: `edit [INDEX] [PARAMETER] [NEW CHANGES]`
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
