@@ -149,10 +149,8 @@ public class Parser {
         if (tagArguments.isEmpty()) {
             return Collections.emptySet();
         }
-        System.out.println(tagArguments);
         // replace first delimiter prefix, then split
         final Collection<String> tagStrings = Arrays.asList(tagArguments.replaceFirst(" t/", "").split(" t/"));
-        System.out.println(tagStrings);
 
         return new HashSet<>(tagStrings);
     }
