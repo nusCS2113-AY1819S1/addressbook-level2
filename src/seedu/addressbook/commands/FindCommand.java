@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
@@ -50,9 +51,9 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
-                matchedPersons.add(person);
-            }
+            boolean sameLa=Utils.checkConsistencyWithoutCaseSensitive(keywords,wordsInName);
+           if(sameLa)
+               matchedPersons.add(person);
         }
         return matchedPersons;
     }

@@ -34,4 +34,16 @@ public class Utils {
         }
         return true;
     }
+
+    public static boolean checkConsistencyWithoutCaseSensitive(Set<String> keywords, Set<String> wordsInName) {
+        boolean sameLa = false;
+        for (String key : keywords) {
+            for (String name : wordsInName) {
+                if (key.equalsIgnoreCase(name)) {
+                    sameLa = true;
+                }
+            }
+        }
+        return sameLa;
+    }
 }

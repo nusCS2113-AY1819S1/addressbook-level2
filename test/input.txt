@@ -50,6 +50,8 @@
   list
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
+  add John Doe p/666666 e/john@gmail.com w/666, tampines street t/friends
+  list
 
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
@@ -96,7 +98,7 @@
   find bet
   # does not match if none have keyword
   find 23912039120
-  # matching should be case-sensitive
+  # matching should be non case-sensitive
   find betsy
 
   # find unique keyword
@@ -105,6 +107,10 @@
   find Dickson
   # find multiple with some keywords
   find Charlie Betsy
+  # matching should be non case-sensitive
+    find dickson
+ # matching should be non case-sensitive
+     find join
 
 ##########################################################
 # test delete person command
