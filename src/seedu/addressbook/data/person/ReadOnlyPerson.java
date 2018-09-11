@@ -80,19 +80,45 @@ public interface ReadOnlyPerson {
     default String getAsTextHidePrivate() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName());
+        // Phone
+        fillEmptySpace(builder,3);
         if (!getPhone().isPrivate()) {
-            builder.append(" Phone: ").append(getPhone());
+            builder.append("Phone: ").append(getPhone());
         }
+        else {
+            fillEmptySpace(builder,2);
+        }
+
+        // Email
+        fillEmptySpace(builder,2);
         if (!getEmail().isPrivate()) {
-            builder.append(" Email: ").append(getEmail());
+            builder.append("Email: ").append(getEmail());
         }
+        else {
+            fillEmptySpace(builder,7);
+        }
+
+        // Address
+        fillEmptySpace(builder,4);
         if (!getAddress().isPrivate()) {
-            builder.append(" Address: ").append(getAddress());
+            builder.append("Address: ").append(getAddress());
         }
-        builder.append(" Tags: ");
+        else {
+            fillEmptySpace(builder,8);
+        }
+
+        // Tags
+        fillEmptySpace(builder,3);
+        builder.append("Tags: ");
         for (Tag tag : getTags()) {
             builder.append(tag);
         }
         return builder.toString();
+    }
+
+    default void fillEmptySpace(StringBuilder builder, int length) {
+        for(int i=0; i<length; i++) {
+            builder.append("\t");
+        }
     }
 }
