@@ -34,6 +34,9 @@ public class Parser {
     public static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
+    public static final Pattern EDIT_EMAIL_FORMAT =
+            Pattern.compile("?<targetIndex>.+)+\\s+e/(?<newemail>[^/]+)");
+
     public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
@@ -188,9 +191,10 @@ public class Parser {
      */
     private Command prepareEdit(String args){
         try{
-            return ;
+            final int targetIndex = parseArgsAsDisplayedIndex(args);
+            return new EditEmailCommand(targetIndex);
         }
-        catch{
+        catch {
             return ;
         }
         catch{
