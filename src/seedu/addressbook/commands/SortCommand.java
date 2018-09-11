@@ -5,7 +5,7 @@ import java.util.List;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
- * List all persons in the address book in alphabetical order of their names to the user.
+ * Sort and list all persons in the address book in alphabetical order of their names to the user.
  */
 public class SortCommand extends Command {
 
@@ -18,6 +18,7 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        addressBook.sort();
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
         return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
