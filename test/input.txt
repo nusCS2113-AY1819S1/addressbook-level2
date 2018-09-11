@@ -42,14 +42,33 @@
   # should add correctly and list non private information
   add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
   list
+  sort
   add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
   list
+  sort
   add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
   list
+  sort
   add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends
   list
+  sort
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
+  sort
+
+##########################################################
+# test full functionality of sort command
+##########################################################
+  add Aesther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  sort
+  add Bob Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  sort
+  add Cake Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  sort
+  list
+  delete 7
+  delete 6
+  delete 5
 
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
@@ -147,6 +166,12 @@
   # clears all
   clear
   list
+
+##########################################################
+# test sort command on empty list
+##########################################################
+  # sorts an empty list
+  sort
 
 ##########################################################
 # test exit command
