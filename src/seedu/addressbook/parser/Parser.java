@@ -60,15 +60,15 @@ public class Parser {
 
     /**
      * Parses user input into command for execution.
-     *
-     * @param userInput full user input string
-     * @return the command based on the user input
+     *      *
+     *      * @param userInput full user input string
+     *      * @return the command based on the user input
      */
-    public Command parseCommand(String userInput) {
-        final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
-        if (!matcher.matches()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
-        }
+        public Command parseCommand(String userInput) {
+            final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
+            if (!matcher.matches()) {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+            }
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
@@ -99,10 +99,14 @@ public class Parser {
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
+        case EditEmailCommand.COMMAND_WORD;
+            return prepareEdit(arguments);
+
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
             return new HelpCommand();
         }
+
     }
 
     /**
@@ -173,6 +177,24 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+    }
+
+    /**
+     * Parses arguments in the context of the delete person command.
+     *
+     * @param args full command arg string
+     * @return the prepared command
+     */
+    private Command prepareEdit(String args){
+        try{
+            return ;
+        }
+        catch{
+            return ;
+        }
+        catch{
+            return ;
         }
     }
 
