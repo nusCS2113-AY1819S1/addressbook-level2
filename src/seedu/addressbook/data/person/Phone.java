@@ -33,7 +33,7 @@ public class Phone {
      * Returns true if the given string is a valid person phone number.
      */
     public static boolean isValidPhone(String test) {
-        return test.matches(PHONE_VALIDATION_REGEX)&&(test.length()==8)&&(test.startsWith("9")||test.startsWith("8")||test.startsWith("6")));
+        return test.matches(PHONE_VALIDATION_REGEX)&&(test.length()==8)&&(test.startsWith("9")||test.startsWith("8")||test.startsWith("6"));
 
     }
 

@@ -36,7 +36,7 @@
   # should catch invalid person data
   add []\[;] p/12345 e/valid@e.mail a/valid, address
   add Valid Name p/not_numbers e/valid@e.mail a/valid, address
-  add Valid Name p/12345 e/notAnEmail a/valid, address
+  add Valid Name p/92345111 e/notAnEmail a/valid, address
   add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag
 
   # should add correctly and list non private information

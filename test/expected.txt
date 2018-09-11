@@ -79,7 +79,7 @@
 || Enter command: || [Command entered:  add Valid Name p/not_numbers e/valid@e.mail a/valid, address]
 || Person phone numbers should only contain numbers
 || ===================================================
-|| Enter command: || [Command entered:  add Valid Name p/12345 e/notAnEmail a/valid, address]
+|| Enter command: || [Command entered:  add Valid Name p/92345111 e/notAnEmail a/valid, address]
 || Person emails should be 2 alphanumeric/period strings separated by '@'
 || ===================================================
 || Enter command: || [Command entered:  add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag]
