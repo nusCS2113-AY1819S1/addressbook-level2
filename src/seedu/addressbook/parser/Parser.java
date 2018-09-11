@@ -33,6 +33,12 @@ public class Parser {
 
     public static final Pattern EDIT_NAME_FORMAT =
             Pattern.compile("(?<name>[^/]+)+\\s+n/(?<newname>[^/]+)");
+
+    /**
+     * The format for the phone number
+     */
+    public static final Pattern EDIT_PHONE_FORMAT =
+            Pattern.compile("(?<phone>[^/]+)n(?<newPhone>[^/]+)");
     /**
      * Signals that the user input could not be parsed.
      */
@@ -67,6 +73,8 @@ public class Parser {
         switch (commandWord) {
             case EditNameCommand.COMMAND_WORD:
                 return prepareEditNameCommand(arguments);
+            case EditPhoneCommand.COMMAND_WORD:
+                return prepareEditPhoneCommand(arguments);
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
 
@@ -108,6 +116,18 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditNameCommand.MESSAGE_USAGE));
         }
         return new EditNameCommand(matcher.group("name"), matcher.group("newname"));
+    }
+    /**
+     * Parses arguments in the context of the edit_phone command
+     * @param  args full command args String
+     * @return  the prepared command
+     */
+    public Command prepareEditPhoneCommand(String args){
+        final Matcher matcher = EDIT_PHONE_FORMAT.matcher(args.trim());
+        if(!matcher.matches()){
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditPhoneCommand.MESSAGE_USAGE));
+        }
+        return new EditPhoneCommand(matcher.group("phone"), matcher.group("newPhone"));
     }
     /**
      * Parses arguments in the context of the add person command.
