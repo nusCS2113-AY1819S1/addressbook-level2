@@ -40,6 +40,7 @@ public class Main {
     /** Runs the program until termination.  */
     public void run(String[] launchArgs) {
         start(launchArgs);
+
         runCommandLoopUntilExitCommand();
         exit();
     }
