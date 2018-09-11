@@ -32,8 +32,8 @@ public class DeleteCommand extends Command {
         try {
             final ReadOnlyPerson target = getTargetPerson();
             addressBook.removePerson(target);
-            List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target), allPersons);
+            //List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target));
 
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
