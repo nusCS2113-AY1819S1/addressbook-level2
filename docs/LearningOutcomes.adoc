@@ -22,7 +22,7 @@ toc::[]
 
 * https://se-edu.github.io/se-book/oop/objects/encapsulation/[se-edu/se-book: Paradigms: OOP: Objects: Encapsulation]
 
-=== Exercise: Encapsulate `CommandResult` class members
+=== Exercise: Encapsulate `CommandResult` class members DONE
 
 * A member of the `CommandResult` class is not encapsulated. i.e. it is visible outside the object.
 Hide it so that it can only be accessed using methods provided.
