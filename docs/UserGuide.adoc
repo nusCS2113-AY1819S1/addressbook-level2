@@ -59,6 +59,8 @@ items with `...` after them can have multiple instances. Order of parameters are
 Put a `p` before the phone / email / address prefixes to mark it as `private`. `private` details can only
 be seen using the `viewall` command.
 
+Shows a list of all persons, along with their non-private details, in the address book after adding the new person.
+
 Persons can have any number of tags (including 0).
 ****
 
@@ -99,6 +101,7 @@ Format: `delete INDEX`
 ****
 Deletes the person at the specified `INDEX`.
 The index refers to the index number shown in the most recent listing.
+Shows a list of all persons, along with their non-private details, in the address book after deleting the person.
 ****
 
 Examples:
