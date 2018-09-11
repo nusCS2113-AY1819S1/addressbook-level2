@@ -46,7 +46,7 @@ public class EditPhoneCommand extends Command {
                     toBeRemoved.getAddress(),
                     toBeRemoved.getTags()
             );
-        }
+
 
             addressBook.addPerson(newEntry);
             addressBook.removePerson(toBeRemoved);
