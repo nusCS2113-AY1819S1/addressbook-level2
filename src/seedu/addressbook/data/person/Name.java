@@ -55,6 +55,7 @@ public class Name {
                 && this.fullName.equals(((Name) other).fullName)); // state check
     }
 
+    // @question: why do we need hashcode for this?
     @Override
     public int hashCode() {
         return fullName.hashCode();

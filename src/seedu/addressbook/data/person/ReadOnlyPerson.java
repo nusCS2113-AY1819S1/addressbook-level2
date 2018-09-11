@@ -14,6 +14,7 @@ public interface ReadOnlyPerson {
     Phone getPhone();
     Email getEmail();
     Address getAddress();
+    Nickname getNickname();
 
     /**
      * Returns a new TagSet that is a deep copy of the internal TagSet,
@@ -42,6 +43,7 @@ public interface ReadOnlyPerson {
                     && other.getPhone().equals(this.getPhone())
                     && other.getEmail().equals(this.getEmail())
                     && other.getAddress().equals(this.getAddress())
+                    && other.getNickname().equals(this.getNickname())
                     && other.getTags().equals(this.getTags()));
     }
 
@@ -53,20 +55,29 @@ public interface ReadOnlyPerson {
         final String detailIsPrivate = "(private) ";
         builder.append(getName())
                 .append(" Phone: ");
+
         if (getPhone().isPrivate()) {
             builder.append(detailIsPrivate);
         }
+
         builder.append(getPhone())
                 .append(" Email: ");
+
         if (getEmail().isPrivate()) {
             builder.append(detailIsPrivate);
         }
+
         builder.append(getEmail())
                 .append(" Address: ");
+
         if (getAddress().isPrivate()) {
             builder.append(detailIsPrivate);
         }
+
         builder.append(getAddress())
+                .append(" Nickname");
+
+        builder.append(getNickname())
                 .append(" Tags: ");
         for (Tag tag : getTags()) {
             builder.append(tag);
@@ -89,6 +100,8 @@ public interface ReadOnlyPerson {
         if (!getAddress().isPrivate()) {
             builder.append(" Address: ").append(getAddress());
         }
+        builder.append(" Nickname: ").append(getNickname());
+
         builder.append(" Tags: ");
         for (Tag tag : getTags()) {
             builder.append(tag);
