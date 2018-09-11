@@ -72,6 +72,11 @@ Examples:
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
 
+== Sorting all persons : `sort`
+
+Shows a list of all persons, in alphabetical order, along with their non-private details, in the address book. +
+Format: `sort`
+
 == Finding all persons containing any keyword in their name: `find`
 
 Finds persons whose names contain any of the given keywords. +
@@ -79,13 +84,13 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 [NOTE]
 ====
-The search is case insensitive, the order of the keywords does not matter, only the name is searched,
+The search is case ininsensitive, the order of the keywords does not matter, only the name is searched,
 and persons matching at least one keyword will be returned (i.e. `OR` search).
 ====
 
 Examples:
 
-* `find John/john` +
+* `find John/john`
 Returns `John Doe`.
 
 * `find Betsy Tim John` +
