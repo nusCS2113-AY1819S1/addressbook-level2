@@ -28,6 +28,9 @@
 || edit_name: Updates the name of a user.
 || Parameters: Old Name n/New Name
 || Example: edit_name John Doe n/New Name
+|| edit_phone: Updates the phone number of a user.
+|| Parameters: Old Phone Number n/New Phone Number
+|| Example: edit_name 88888888 n/81818181
 || help: Shows program usage instructions.
 || Example: help
 || exit: Exits the program.
