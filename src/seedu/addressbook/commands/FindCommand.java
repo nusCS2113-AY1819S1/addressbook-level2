@@ -36,6 +36,7 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        convertKeyWordsToLowerCase();
         final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
         return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
@@ -50,11 +51,35 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            final Set<String> wordsInNameCaseInsensitive = returnWordSetWithLowerCase(wordsInName);
+            if (!Collections.disjoint(wordsInNameCaseInsensitive, keywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
+    }
+
+
+    /**
+     * Convert all keywords to lower case characters
+     */
+    private void convertKeyWordsToLowerCase() {
+        Set<String> lowerCaseConvertedWordList = returnWordSetWithLowerCase(keywords);
+        keywords.clear();
+        keywords.addAll(lowerCaseConvertedWordList);
+    }
+
+    /**
+     * Converts all words in a set to lower case characters
+     *
+     * @param toConvert a set of keywords that needs to be converted to lower case.
+     */
+    private Set<String> returnWordSetWithLowerCase(Set<String> toConvert) {
+        Set<String> lowerCaseConvertedWordList = new HashSet<>();
+        for (String word : toConvert) {
+            lowerCaseConvertedWordList.add(word.toLowerCase());
+        }
+        return lowerCaseConvertedWordList;
     }
 
 }
