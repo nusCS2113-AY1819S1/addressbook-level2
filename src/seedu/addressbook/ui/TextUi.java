@@ -87,7 +87,7 @@ public class TextUi {
             fullInputLine = in.nextLine();
         }
 
-        showToUser("[Command entered:" + fullInputLine + "]" + "\n\nList of Contact(s) found: ");
+        showToUser("[Command entered:" + fullInputLine + "]");
         return fullInputLine;
     }
 
