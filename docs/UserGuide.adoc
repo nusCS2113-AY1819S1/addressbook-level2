@@ -104,7 +104,7 @@ The index refers to the index number shown in the most recent listing.
 Examples:
 
 * `list` +
-`delete 2 ` +
+`delete 2` +
 Deletes the 2nd person in the address book.
 
 * `find Betsy` +
