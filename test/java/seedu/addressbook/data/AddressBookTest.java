@@ -1,20 +1,9 @@
 package seedu.addressbook.data;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static seedu.addressbook.util.TestUtil.getSize;
-import static seedu.addressbook.util.TestUtil.isEmpty;
-import static seedu.addressbook.util.TestUtil.isIdentical;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
@@ -25,16 +14,28 @@ import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.data.tag.Tag;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static seedu.addressbook.util.TestUtil.getSize;
+import static seedu.addressbook.util.TestUtil.isEmpty;
+import static seedu.addressbook.util.TestUtil.isIdentical;
+
 public class AddressBookTest {
     private Tag tagPrizeWinner;
     private Tag tagScientist;
     private Tag tagMathematician;
     private Tag tagEconomist;
+    private Tag tagPoor;
 
     private Person aliceBetsy;
     private Person bobChaplin;
     private Person charlieDouglas;
     private Person davidElliot;
+    private Person bennyTan;
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
@@ -46,7 +47,7 @@ public class AddressBookTest {
         tagScientist     = new Tag("scientist");
         tagMathematician = new Tag("mathematician");
         tagEconomist     = new Tag("economist");
-
+        tagPoor          = new Tag("poor");
         aliceBetsy     = new Person(new Name("Alice Betsy"),
                                     new Phone("91235468", false),
                                     new Email("alice@nushackers.org", false),
@@ -70,6 +71,11 @@ public class AddressBookTest {
                                     new Email("douglas@nuscomputing.com", false),
                                     new Address("11 Arts Link", false),
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
+        bennyTan       = new Person(new Name("Benny Tan"),
+                                    new Phone("99998888", false),
+                                    new Email("benben@nus.com", false),
+                                    new Address("Somewhere over the rainbow", false),
+                                    new HashSet<>(Collections.singleton(tagPoor)));
 
         emptyAddressBook = new AddressBook();
         defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
@@ -87,7 +93,7 @@ public class AddressBookTest {
     @Test
     public void containsPerson() throws Exception {
         UniquePersonList personsWhoShouldBeIn = new UniquePersonList(aliceBetsy, bobChaplin);
-        UniquePersonList personsWhoShouldNotBeIn = new UniquePersonList(charlieDouglas, davidElliot);
+        UniquePersonList personsWhoShouldNotBeIn = new UniquePersonList(charlieDouglas, davidElliot, bennyTan);
 
         for (Person personWhoShouldBeIn : personsWhoShouldBeIn) {
             assertTrue(defaultAddressBook.containsPerson(personWhoShouldBeIn));
@@ -96,7 +102,7 @@ public class AddressBookTest {
             assertFalse(defaultAddressBook.containsPerson(personWhoShouldNotBeIn));
         }
 
-        UniquePersonList allPersons = new UniquePersonList(aliceBetsy, bobChaplin, charlieDouglas, davidElliot);
+        UniquePersonList allPersons = new UniquePersonList(aliceBetsy, bobChaplin, charlieDouglas, davidElliot,bennyTan);
 
         for (Person person : allPersons) {
             assertFalse(emptyAddressBook.containsPerson(person));
@@ -133,6 +139,17 @@ public class AddressBookTest {
         UniquePersonList allPersons = defaultAddressBook.getAllPersons();
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
 
+        assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void sortPersons() throws Exception{
+        defaultAddressBook.addPerson(charlieDouglas);
+        defaultAddressBook.addPerson(davidElliot);
+        defaultAddressBook.addPerson(bennyTan);
+        defaultAddressBook.sortPersons();
+        UniquePersonList allPersons = defaultAddressBook.getAllPersons();
+        UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bennyTan, bobChaplin, charlieDouglas, davidElliot);
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
 }
