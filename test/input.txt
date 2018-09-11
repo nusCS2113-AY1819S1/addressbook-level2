@@ -3,8 +3,7 @@
 ##########################################################
 
   # should recognise invalid command
-  password
-  # sfdfd
+  sfdfd
 
 ##########################################################
 # commands using list index before any listing created

@@ -3,7 +3,6 @@ package seedu.addressbook;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
 
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.CommandResult;
@@ -22,7 +21,7 @@ import seedu.addressbook.ui.TextUi;
  * Initializes the application and starts the interaction with the user.
  */
 public class Main {
-
+    /add
     /** Version info of the program. */
     public static final String VERSION = "AddressBook Level 2 - Version 1.0";
 
@@ -41,30 +40,8 @@ public class Main {
     /** Runs the program until termination.  */
     public void run(String[] launchArgs) {
         start(launchArgs);
-        //login(); //commented out first
         runCommandLoopUntilExitCommand();
         exit();
-    }
-
-    /*
-    Password feature to allow users to log in
-     */
-    public void login() {
-        while(true){
-            System.out.println("|| What is the Password?");
-            if(checkPassword()){
-                System.out.println("|| Password is correct, you have gained access to the addressbook");
-                break;
-            }
-            else{
-                System.out.println("|| Password is incorrect try again!");
-            }
-        }
-    }
-    public boolean checkPassword(){
-        Scanner SCANNER= new Scanner(System.in);
-        if(SCANNER.nextLine().equals("password")) return true;
-        else return false;
     }
 
     /**
