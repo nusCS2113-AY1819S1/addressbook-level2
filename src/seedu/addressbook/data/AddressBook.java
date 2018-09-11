@@ -6,6 +6,7 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
+
 /**
  * Represents the entire address book. Contains the data of the address book.
  */
@@ -66,7 +67,9 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+
     }
+
 
     @Override
     public boolean equals(Object other) {
