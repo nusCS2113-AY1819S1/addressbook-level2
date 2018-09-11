@@ -22,6 +22,9 @@
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: view 1
+|| edit: Edit a person's profile according to his/her ID.
+|| Parameters: [ID] [PARAMETER TO EDIT] [NEW INPUT]
+|| Example: edit 3 e/ johndoe@gmail.com
 || viewall: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: viewall 1
@@ -290,12 +293,18 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  edit 1 e/ johndoe@hotmail.com]
+|| This person is found.
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 e/ johndoe@hotmail.com]
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...

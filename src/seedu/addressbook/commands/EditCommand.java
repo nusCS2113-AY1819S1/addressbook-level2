@@ -13,10 +13,9 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
  */
 public class EditCommand extends Command{
     public static final String COMMAND_WORD = "edit";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit a person's profile whose name matches exactly" +
-            " as typed in the command.\n" +
-            "Parameters: [EXACT NAME OF THE PERSON AS IN THE RECORDS]\n" +
-            "Example: " + COMMAND_WORD + " john smith";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit a person's profile according to his/her ID.\n" +
+            "Parameters: [ID] [PARAMETER TO EDIT] [NEW INPUT]\n" +
+            "Example: " + COMMAND_WORD + " 3 e/ johndoe@gmail.com";
 
     private String searchName;
 
@@ -29,12 +28,6 @@ public class EditCommand extends Command{
         super(targetVisibleIndex);
     }
 
-//    @Override
-//    public CommandResult execute(){
-//        String result = (isPersonFound(searchName) ? searchName + " is found." : searchName + " is not found.");
-//        return new CommandResult(result);
-//    }
-
     @Override
     public CommandResult execute() {
         try {
@@ -42,7 +35,7 @@ public class EditCommand extends Command{
             if (!addressBook.containsPerson(target)) {
                 return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
             }
-            return new CommandResult("Something is found.");
+            return new CommandResult("This person is found.");
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
