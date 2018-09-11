@@ -84,7 +84,7 @@ and persons matching at least one keyword will be returned (i.e. `OR` search).
 ====
 
 Examples:
-
+// inform user option if it is case insensitive or not
 * `find john` +
 Returns `John Doe` and/or `john`.
 
