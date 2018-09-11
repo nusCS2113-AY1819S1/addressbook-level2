@@ -75,7 +75,7 @@ Format: `list`
 
 == Sorting the entire list : `sort`
 
-Sorts all of the contacts in the current addressbook. +
+Sorts all of the contacts in the current addressbook alphabetically by the first name. +
 Format: `sort`
 
 == Finding all persons containing any keyword in their name: `find`
