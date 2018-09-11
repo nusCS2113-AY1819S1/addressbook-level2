@@ -1,6 +1,6 @@
 || ===================================================
 || ===================================================
-|| Welcome to your Address Book!
+|| Welcome to your Address Book, your one-stop solution to organising your contacts! To start, please enter a command:
 || AddressBook Level 2 - Version 1.0
 || Launch command format: java seedu.addressbook.Main [STORAGE_FILE_PATH]
 || Using storage file : addressbook.txt
@@ -29,6 +29,12 @@
 || Example: help
 || exit: Exits the program.
 || Example: exit
+|| ===================================================
+|| Enter command: || [Command entered:  ADD Adam Brown p/111111 e/adam@gmail.com a/111, alpha street]
+|| New person added: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  AdD Adam Brown p/111111 e/adam@gmail.com a/111, alpha street]
+|| New person added: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || The person index provided is invalid
@@ -300,6 +306,6 @@
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...
 || ===================================================
-|| Good bye!
+|| Good bye! We hope to see you again!
 || ===================================================
 || ===================================================
