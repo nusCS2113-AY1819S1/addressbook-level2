@@ -38,6 +38,9 @@ public class AddressBook {
         allPersons.add(toAdd);
     }
 
+    public void Sort(){
+        allPersons.SortList();
+    }
     /**
      * Returns true if an equivalent person exists in the address book.
      */
