@@ -55,28 +55,21 @@ public interface ReadOnlyPerson {
         final String detailIsPrivate = "(private) ";
         builder.append(getName())
                 .append(" Phone: ");
-
         if (getPhone().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-
         builder.append(getPhone())
                 .append(" Email: ");
-
         if (getEmail().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-
         builder.append(getEmail())
                 .append(" Address: ");
-
         if (getAddress().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-
         builder.append(getAddress())
                 .append(" Nickname: ");
-
         builder.append(getNickname())
                 .append(" Tags: ");
         for (Tag tag : getTags()) {

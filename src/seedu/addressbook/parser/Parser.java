@@ -40,7 +40,7 @@ public class Parser {
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + " n/(?<nickname>[^/]+)"
-                    + " (?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // Why liddat works????????????
 
 
     /**
