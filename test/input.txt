@@ -154,7 +154,7 @@
   # Populate list
   add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
   list
-  edit_name 1 e/newemail@gmail.com
+  edit_email 1 e/newemail@gmail.com
   list
 
 

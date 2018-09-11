@@ -18,7 +18,7 @@ import seedu.addressbook.data.tag.Tag;
  */
 public class EditEmailCommand extends Command {
 
-    public static final String COMMAND_WORD = "edit";
+    public static final String COMMAND_WORD = "edit_email";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the person's email identified by the index number used in the last person listing.\n"

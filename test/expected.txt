@@ -303,7 +303,7 @@
 ||
 ||  3 persons listed!
 || ===================================================
-||  Enter command: || [Command entered: edit 3 e/newemail@gmail.com]
+||  Enter command: || [Command entered: edit_email 3 e/newemail@gmail.com]
 ||  Edited Email: newemail@gmail.com
 || ===================================================
 || Enter command: || [Command entered: list]
