@@ -100,7 +100,7 @@ public class Parser {
             return new ExitCommand();
 
         case EditEmailCommand.COMMAND_WORD;
-            return ;
+            return prepareEdit(arguments);
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
@@ -177,6 +177,24 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+    }
+
+    /**
+     * Parses arguments in the context of the delete person command.
+     *
+     * @param args full command arg string
+     * @return the prepared command
+     */
+    private Command prepareEdit(String args){
+        try{
+            return ;
+        }
+        catch{
+            return ;
+        }
+        catch{
+            return ;
         }
     }
 
