@@ -11,7 +11,9 @@ public class Email {
     public static final String EXAMPLE = "valid@e.mail";
     public static final String MESSAGE_EMAIL_CONSTRAINTS =
             "Person emails should be 2 alphanumeric/period strings separated by '@'";
-    public static final String EMAIL_VALIDATION_REGEX = "[\\w\\.]+@[\\w\\.]+";
+    public static final String EMAIL_VALIDATION_REGEX0 = "\\S+@\\S+\\.com";
+    public static final String EMAIL_VALIDATION_REGEX1 = "\\S+@\\S+\\.org";
+    public static final String EMAIL_VALIDATION_REGEX2 = "\\S+@\\S+\\.edu.sg";
 
     public final String value;
     private boolean isPrivate;
@@ -34,7 +36,7 @@ public class Email {
      * Returns true if the given string is a valid person email.
      */
     public static boolean isValidEmail(String test) {
-        return test.matches(EMAIL_VALIDATION_REGEX);
+        return test.matches(EMAIL_VALIDATION_REGEX0)||test.matches(EMAIL_VALIDATION_REGEX2)||test.matches(EMAIL_VALIDATION_REGEX1);
     }
 
     @Override
