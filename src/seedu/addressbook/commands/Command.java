@@ -37,6 +37,16 @@ public class Command {
     }
 
     /**
+     * Constructs a feedback message to summarise an operation that displayed the total number of people.
+     *
+     * @param personsDisplayed used to generate summary
+     * @return summary message for number of persons displayed
+     */
+    public static String getMessageForPersonTotalShownSummary(List<? extends ReadOnlyPerson> personsDisplayed) {
+        return String.format(Messages.MESSAGE_TOTAL_NUMBER, personsDisplayed.size());
+    }
+
+    /**
      * Executes the command and returns the result.
      */
     public CommandResult execute(){
