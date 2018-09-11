@@ -141,11 +141,23 @@
   list
 
 ##########################################################
+# test sortedlist command
+##########################################################
+
+  # add Adam Brown
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  # Show listing
+  list
+  # Show sorted listing by name
+  sortedlist
+
+##########################################################
 # test clear command
 ##########################################################
 
-  # clears all
+  # Clear data
   clear
+  # Show listing
   list
 
 ##########################################################
