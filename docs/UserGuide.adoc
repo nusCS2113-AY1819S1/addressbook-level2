@@ -38,6 +38,11 @@ What's different from AddressBook-Level1:
 * Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`)
 * View details of a person (`view` : shows non-private details), (`viewall` : shows all details)
 
+
+== Accessing the address book
+Password: default
+
+
 == Viewing help : `help`
 
 Format: `help`

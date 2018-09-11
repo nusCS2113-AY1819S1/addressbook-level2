@@ -90,6 +90,11 @@ public class TextUi {
         showToUser("[Command entered:" + fullInputLine + "]");
         return fullInputLine;
     }
+    public String getPassword(){
+        out.print("Enter Password: " );
+        String enteredPass = in.nextLine();
+        return enteredPass;
+    }
 
 
     public void showWelcomeMessage(String version, String storageFilePath) {
