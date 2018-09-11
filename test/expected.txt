@@ -14,7 +14,7 @@
 || Example: delete 1
 || Clears address book permanently.
 || Example: clear
-|| find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| find: Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
 || list: Displays all persons in the address book as a list with index numbers.
@@ -135,6 +135,46 @@
 || 
 || 5 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  add zack gian p/77777777 e/zhicai@u.nus.edu pa/24, bukit street t/anri t/sugihara]
+|| New person added: zack gian Phone: 77777777 Email: zhicai@u.nus.edu Address: (private) 24, bukit street Tags: [sugihara][anri]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	6. zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 
+|| 6 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add zack gian p/77777777 e/zhicai@u.nus.edu pa/24, bukit street t/anri t/sugihara]
+|| This person already exists in the address book
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	6. zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 
+|| 6 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add zack the IMPOSSIBLE p/77777777 e/zhicai@u.nus.edu pa/24, bukit street t/anri t/sugihara]
+|| New person added: zack the IMPOSSIBLE Phone: 77777777 Email: zhicai@u.nus.edu Address: (private) 24, bukit street Tags: [sugihara][anri]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	6. zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 	7. zack the IMPOSSIBLE Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 
+|| 7 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
 || This person already exists in the address book
 || ===================================================
@@ -163,7 +203,7 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  view 6]
-|| The person index provided is invalid
+|| Viewing person: zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
 || ===================================================
 || Enter command: || [Command entered:  viewall -1]
 || The person index provided is invalid
@@ -172,7 +212,7 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  viewall 6]
-|| The person index provided is invalid
+|| Viewing person: zack gian Phone: 77777777 Email: zhicai@u.nus.edu Address: (private) 24, bukit street Tags: [sugihara][anri]
 || ===================================================
 || Enter command: || [Command entered:  view 1]
 || Viewing person: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
@@ -200,7 +240,7 @@
 || ===================================================
 || Enter command: || [Command entered:  find]
 || Invalid command format! 
-|| find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| find: Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
 || ===================================================
@@ -213,8 +253,9 @@
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find betsy]
+|| 	1. Betsy Choo Tags: [secretive]
 || 
-|| 0 persons listed!
+|| 1 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find Betsy]
 || 	1. Betsy Choo Tags: [secretive]
@@ -232,6 +273,17 @@
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 
 || 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find zack the]
+|| 	1. zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 	2. zack the IMPOSSIBLE Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find the IMPOSSIBLE]
+|| 	1. zack the IMPOSSIBLE Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 
+|| 1 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 
@@ -252,43 +304,52 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
-|| Deleted Person: Charlie Dickson Phone: (private) 333333 Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
-|| Person could not be found in address book
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  view 2]
-|| Person could not be found in address book
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  viewall 2]
-|| Person could not be found in address book
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
-|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 	4. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	6. zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 	7. zack the IMPOSSIBLE Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
 || 
-|| 4 persons listed!
+|| 7 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete 4]
-|| Deleted Person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
+|| Deleted Person: Dickson Ee Phone: 444444 Email: (private) dickson@nus.edu.sg Address: 444, delta street Tags: [friends]
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
-|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	5. zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 	6. zack the IMPOSSIBLE Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
 || 
-|| 3 persons listed!
+|| 6 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || Deleted Person: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo Tags: [secretive]
-|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	3. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	4. zack gian Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
+|| 	5. zack the IMPOSSIBLE Phone: 77777777 Email: zhicai@u.nus.edu Tags: [sugihara][anri]
 || 
-|| 2 persons listed!
+|| 5 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!

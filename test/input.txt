@@ -50,6 +50,12 @@
   list
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
+  add zack gian p/77777777 e/zhicai@u.nus.edu pa/24, bukit street t/anri t/sugihara
+  list
+  add zack gian p/77777777 e/zhicai@u.nus.edu pa/24, bukit street t/anri t/sugihara
+  list
+  add zack the IMPOSSIBLE p/77777777 e/zhicai@u.nus.edu pa/24, bukit street t/anri t/sugihara
+  list
 
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
@@ -96,7 +102,7 @@
   find bet
   # does not match if none have keyword
   find 23912039120
-  # matching should be case-sensitive
+  # matching should be case-insensitive
   find betsy
 
   # find unique keyword
@@ -105,6 +111,10 @@
   find Dickson
   # find multiple with some keywords
   find Charlie Betsy
+  #find multiple containing keywords
+  find zack the
+  #find multiple containing keywords
+  find the IMPOSSIBLE
 
 ##########################################################
 # test delete person command
