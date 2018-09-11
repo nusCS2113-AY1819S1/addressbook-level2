@@ -168,5 +168,9 @@ public class TextUi {
     private static String getIndexedListItem(int visibleIndex, String listItem) {
         return String.format(MESSAGE_INDEXED_LIST_ITEM, visibleIndex, listItem);
     }
-
+    //password getting from UI
+    public String Password(){
+        System.out.println("What is the Password?");
+        return in.nextLine();
+    }
 }
