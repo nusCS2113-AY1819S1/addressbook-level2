@@ -95,6 +95,11 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 
 Sort the persons in AddressBook by lexicographical order of their names.
 
+[NOTE]
+====
+Lists out the sorted results after sorting
+====
+
 Format: `sort`
 
 == Deleting a person : `delete`
