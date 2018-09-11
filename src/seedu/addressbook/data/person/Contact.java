@@ -2,12 +2,15 @@ package seedu.addressbook.data.person;
 
 /**
  * Represents an person's contact.
+ * Guarantees: immutable;
  */
 public class Contact {
-    protected String value;
+    private final String value;
     protected boolean isPrivate;
 
-    protected Contact(){
+    Contact(String value, boolean isPrivate){
+        this.value = value.trim();
+        this.isPrivate = isPrivate;
     }
 
     public String getValue() {
