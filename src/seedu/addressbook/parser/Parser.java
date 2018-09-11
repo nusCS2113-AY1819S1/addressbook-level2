@@ -39,7 +39,8 @@ public class Parser {
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
-                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+                    + " n/(?<nickname>[^/]+)"
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // Why liddat works????????????
 
 
     /**
@@ -129,6 +130,8 @@ public class Parser {
 
                     matcher.group("address"),
                     isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
+
+                    matcher.group("nickname"),
 
                     getTagsFromArgs(matcher.group("tagArguments"))
             );
