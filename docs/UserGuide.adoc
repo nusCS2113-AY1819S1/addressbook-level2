@@ -84,8 +84,8 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 
-* `find John` +
-Returns `John Doe` but not `john`.
+* `find John` or `find john'+
+Returns `John Doe`.
 
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
