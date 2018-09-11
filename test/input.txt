@@ -48,11 +48,11 @@
   list
   add Dickson Ee p/99444444 pe/dickson@nus.edu.sg a/444, delta street t/friends
   list
-  add Esther Potato p/99555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  add Esther Potato p/99555555 e/esther@not.a.real.potato.com pa/555, epsilon street t/tubers t/starchy
   list
 
   # should not allow adding duplicate persons
-  add Esther Potato p/99555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  add Esther Potato p/99555555 e/esther@not.a.real.potato.com pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
 # test view/viewall persons command
