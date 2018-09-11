@@ -103,7 +103,7 @@ public class Parser {
             return new ExitCommand();
 
         case EditEmailCommand.COMMAND_WORD;
-            return prepareEdit(arguments);
+            return prepareEmailEdit(arguments);
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
@@ -189,17 +189,13 @@ public class Parser {
      * @param args full command arg string
      * @return the prepared command
      */
-    private Command prepareEdit(String args){
-        try{
-            final int targetIndex = parseArgsAsDisplayedIndex(args);
-            return new EditEmailCommand(targetIndex);
+    private Command prepareEmailEdit(String args){
+        final int targetIndex = parseArgsAsDisplayedIndex(args);
+        final Matcher matcher = EDIT_EMAIL_FORMAT_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditNameCommand.MESSAGE_USAGE));
         }
-        catch {
-            return ;
-        }
-        catch{
-            return ;
-        }
+        return new EditEmailCommand(targetIndex, matcher.group("email"));
     }
 
     /**
