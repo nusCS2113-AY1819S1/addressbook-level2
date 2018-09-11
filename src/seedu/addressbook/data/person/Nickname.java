@@ -11,11 +11,7 @@ public class Nickname {
     public static final String MESSAGE_NAME_CONSTRAINTS = "Person's nickname should be alphabetic characters";
     public static final String NAME_VALIDATION_REGEX = "[\\p{Alpha} ]+";
     public final String nickname;
-    /**
-     * Validates given name.
-     *
-     * @throws IllegalValueException if given name string is invalid.
-     */
+
     public Nickname(String name) throws IllegalValueException {
         if (!isValidName(name)) {
             throw new IllegalValueException(MESSAGE_NAME_CONSTRAINTS);

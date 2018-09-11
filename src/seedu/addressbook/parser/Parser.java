@@ -39,8 +39,8 @@ public class Parser {
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
-                    + " (?<nickname>[^/]+)"
-                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+                    + " n/(?<nickname>[^/]+)"
+                    + " (?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
 
     /**

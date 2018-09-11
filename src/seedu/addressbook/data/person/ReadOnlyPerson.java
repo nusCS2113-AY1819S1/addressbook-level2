@@ -75,7 +75,7 @@ public interface ReadOnlyPerson {
         }
 
         builder.append(getAddress())
-                .append(" Nickname");
+                .append(" Nickname: ");
 
         builder.append(getNickname())
                 .append(" Tags: ");
