@@ -111,7 +111,7 @@
  ##########################################################
 
    # should display all persons in contact list
-   list
+   inventory
 
 ##########################################################
 # test total command

@@ -233,7 +233,7 @@
 || 
 || 2 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:   list]
+|| Enter command: || [Command entered:   inventory]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
