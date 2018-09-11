@@ -52,6 +52,11 @@ Help is also shown if you enter an incorrect command e.g. `abcd`
 Adds a person to the address book. +
 Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
 
+[NOTE]
+====
+Email address entered has to be valid (e.g. address@gmail.com)
+====
+
 ****
 Words in `UPPER_CASE` are the parameters, items in `SQUARE_BRACKETS` are optional,
 items with `...` after them can have multiple instances. Order of parameters are fixed.
