@@ -17,7 +17,7 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
@@ -50,8 +50,18 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
-                matchedPersons.add(person);
+//            if (!Collections.disjoint(wordsInName, keywords)) {
+//                matchedPersons.add(person);
+//            }
+
+            // Ignorecase
+            for (String name : wordsInName)
+            {
+                for (String key : keywords)
+                {
+                    if(name.equalsIgnoreCase(key))
+                        matchedPersons.add(person);
+                }
             }
         }
         return matchedPersons;
