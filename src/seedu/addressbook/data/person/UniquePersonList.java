@@ -125,10 +125,10 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Clears all persons in list.
+     * Sorts contacts in list.
      */
     public void sort() {
-
+        internalList.sort(Comparator.comparing(Person::toString));
     }
 
     @Override
