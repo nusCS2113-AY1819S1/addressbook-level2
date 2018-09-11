@@ -314,6 +314,14 @@
 || 
 || 1 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  edit_phone 111111 n/81818181]
+|| Person updated: Chin Chin Phone: 81818181 Email: adam@gmail.com Address: 111, alpha street Tags:
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Chin Chin Phone: 81818181 Email: adam@gmail.com Address: 111, alpha street Tags:
+||
+|| 1 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...
 || ===================================================

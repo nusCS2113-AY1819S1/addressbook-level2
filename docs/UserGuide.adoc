@@ -159,6 +159,15 @@ Format: `edit_name New Name n/Old Name`
 Examples:
 *`edit_name John Doe n/John Dee`
 
+== Edit Phone : `edit_phone`
+
+Change the phone number of a person. +
+Format: `edit_phone New Phone n/Old Phone`
+
+Examples:
+*`edit_phone 88888888 n/81818181`
+
+
 == Clearing all entries : `clear`
 
 Clears all entries from the address book. +
