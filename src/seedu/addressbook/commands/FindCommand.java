@@ -10,14 +10,14 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case sensitive.
+ * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
@@ -40,6 +40,28 @@ public class FindCommand extends Command {
         return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
 
+    //@@author zhicaizack
+    /**
+     * This method will search through the set of wordInName for the keyword provided (case insensitive)
+     * @param wordsInName
+     * @param keyword
+     * @return true if there exists a name that contains the searching keyword (case insensitive)
+     */
+    private static boolean nameContainsInsensitiveKeyword(Set<String> wordsInName, String keyword) {
+        return wordsInName.stream().anyMatch(name -> name.equalsIgnoreCase(keyword));
+    }
+    //@@author zhicaizack
+    /**
+     * This method will update the list of matched person list with the person if the person haven't existed in the list
+     * @param matchedPersons
+     * @param person
+     */
+    private static void addMatchedPersonIfNotExisted(List<ReadOnlyPerson> matchedPersons, ReadOnlyPerson person) {
+        if(!matchedPersons.contains(person)) {
+            matchedPersons.add(person);
+        }
+    }
+
     /**
      * Retrieves all persons in the address book whose names contain some of the specified keywords.
      *
@@ -50,8 +72,13 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
-                matchedPersons.add(person);
+//            if (!Collections.disjoint(wordsInName, keywords)) {
+//                matchedPersons.add(person);
+//            }
+            for (String keyword : keywords) {
+                if (nameContainsInsensitiveKeyword(wordsInName, keyword)) {
+                    addMatchedPersonIfNotExisted(matchedPersons, person);
+                }
             }
         }
         return matchedPersons;
