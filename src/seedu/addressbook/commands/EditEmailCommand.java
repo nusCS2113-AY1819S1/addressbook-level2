@@ -26,7 +26,41 @@ public class EditEmailCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
 
-    public static final String EMAIL_EDIT_PERSON_SUCCESS = "Editted Email: %1$s";
+    public static final String EMAIL_EDIT_PERSON_SUCCESS = "Edited Email: %1$s";
+    private static final String MESSAGE_DUPLICATE = "The Old Email and the New Email are the same";
 
+    //public EditEmailCommand(int targetVisibleIndex)  {super(targetVisibleIndex);}
+    private String newEmail;
+
+    public EditEmailCommand(string newEmail){
+        this.newEmail=newEmail;
+    }
+
+    @Override
+    public CommandResult execute(){
+        try {
+            final ReadOnlyPerson target = getTargetPerson();
+            //addressBook.removePerson(target);
+
+            Person newPerson = new Person(
+                target.getName(),
+                target.getPhone(),
+                new Email(this.newEmail),
+                target.getAddress(),
+                target.getTags()
+            );
+            addressBook.addPerson(newPerson);
+            addressBook.removeperson(target);
+            return new CommandResult(String.format(EMAIL_EDIT_PERSON_SUCCESS, target));
+        }
+        catch (IndexOutOfBoundsException ie) {
+            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+        catch (PersonNotFoundException pnfe) {
+            return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
+        }
+        /*catch (UniquePersonList.DuplicatePersonException dpe){
+            return new CommandResult(MESSAGE_DUPLICATE);
+        }*/
 
 }
