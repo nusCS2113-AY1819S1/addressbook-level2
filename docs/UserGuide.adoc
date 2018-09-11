@@ -72,16 +72,15 @@ Examples:
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
 
+== Sorting and listing all persons : `sort`
+
+Shows a sorted list of all persons, along with their non-private details, in the address book. +
+Format: `sort`
+
 == Finding all persons containing any keyword in their name: `find`
 
 Finds persons whose names contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
-
-[NOTE]
-====
-The search is case sensitive, the order of the keywords does not matter, only the name is searched,
-and persons matching at least one keyword will be returned (i.e. `OR` search).
-====
 
 Examples:
 
