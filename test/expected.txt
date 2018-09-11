@@ -213,15 +213,16 @@
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find betsy]
-|| 
-|| 0 persons listed!
+|| 	1. Betsy Choo Tags: [secretive]
+||
+|| 1 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find Betsy]
 || 	1. Betsy Choo Tags: [secretive]
 || 
 || 1 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  find Dickson]
+|| Enter command: || [Command entered:  find dickson]
 || 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 

@@ -102,7 +102,7 @@
   # find unique keyword
   find Betsy
   # find multiple with same keyword
-  find Dickson
+  find dickson
   # find multiple with some keywords
   find Charlie Betsy
 
