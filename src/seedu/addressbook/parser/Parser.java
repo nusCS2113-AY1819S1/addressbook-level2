@@ -34,6 +34,9 @@ public class Parser {
     public static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
+    public static final Pattern EDIT_EMAIL_FORMAT =
+            Pattern.compile("?<targetIndex>.+)+\\s+e/(?<newemail>[^/]+)");
+
     public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
@@ -60,15 +63,15 @@ public class Parser {
 
     /**
      * Parses user input into command for execution.
-     *
-     * @param userInput full user input string
-     * @return the command based on the user input
+     *      *
+     *      * @param userInput full user input string
+     *      * @return the command based on the user input
      */
-    public Command parseCommand(String userInput) {
-        final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
-        if (!matcher.matches()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
-        }
+        public Command parseCommand(String userInput) {
+            final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
+            if (!matcher.matches()) {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+            }
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
@@ -99,10 +102,14 @@ public class Parser {
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
+        case EditEmailCommand.COMMAND_WORD;
+            return prepareEmailEdit(arguments);
+
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
             return new HelpCommand();
         }
+
     }
 
     /**
@@ -174,6 +181,21 @@ public class Parser {
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+    }
+
+    /**
+     * Parses arguments in the context of the delete person command.
+     *
+     * @param args full command arg string
+     * @return the prepared command
+     */
+    private Command prepareEmailEdit(String args){
+        final int targetIndex = parseArgsAsDisplayedIndex(args);
+        final Matcher matcher = EDIT_EMAIL_FORMAT_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditNameCommand.MESSAGE_USAGE));
+        }
+        return new EditEmailCommand(targetIndex, matcher.group("email"));
     }
 
     /**
