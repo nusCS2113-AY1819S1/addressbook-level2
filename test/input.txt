@@ -1,9 +1,11 @@
+notpassword
+password
 ##########################################################
 # invalid command
 ##########################################################
 
   # should recognise invalid command
-  sfdfd
+  password
 
 ##########################################################
 # commands using list index before any listing created
