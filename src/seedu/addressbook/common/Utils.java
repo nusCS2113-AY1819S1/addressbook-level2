@@ -1,5 +1,6 @@
 package seedu.addressbook.common;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,4 +35,16 @@ public class Utils {
         }
         return true;
     }
+
+    public static void convertToLowerCase(Collection<String> strings)//This can use for any other Collection data type: eg.Set
+    {
+        String[] stringsArray = strings.toArray(new String[0]);
+        for (int i=0; i<stringsArray.length; ++i)
+        {
+            stringsArray[i] = stringsArray[i].toLowerCase();
+        }
+        strings.clear();
+        strings.addAll(Arrays.asList(stringsArray));
+    }
+
 }

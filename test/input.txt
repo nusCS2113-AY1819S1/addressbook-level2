@@ -96,13 +96,15 @@
   find bet
   # does not match if none have keyword
   find 23912039120
-  # matching should be case-sensitive
+  # matching should be non case-sensitive
   find betsy
 
   # find unique keyword
   find Betsy
   # find multiple with same keyword
   find Dickson
+  # find multiple with same keyword
+  find dickson
   # find multiple with some keywords
   find Charlie Betsy
 
