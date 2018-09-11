@@ -51,8 +51,12 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
 
+  # should show sorted list (in alphabetical order)
+  sorted
+
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
 
 ##########################################################
 # test view/viewall persons command
@@ -139,6 +143,13 @@
   # listing indexes get updated on next request
   delete 1
   list
+
+##########################################################
+# test sorted command
+##########################################################
+  # should show sorted list after adding new contact
+  add Alethea Ho p/0909099 e/alethea@gmail.com a/lol hi
+  sorted
 
 ##########################################################
 # test clear command
