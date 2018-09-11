@@ -65,6 +65,7 @@ the test has passed
 * In IntelliJ, right-click on the `test` folder and choose `Run 'All Tests'`
 
 === Troubleshooting test failures
+* Problem: You may want to write your own test cases.
 
 * Problem: How do I examine the exact differences between `actual.txt` and `expected.txt`? +
 Solution: You can use a diff/merge tool with a GUI e.g. WinMerge (on Windows).
