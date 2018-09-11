@@ -149,9 +149,23 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+
+  # add some names
+  add Cohn Doe p/98765432 e/cohnd@gmail.com a/Cohn street, block 123, #01-01
+  add Bohn Doe p/98765432 e/bohnd@gmail.com a/Bohn street, block 123, #01-01
+  add Aohn Doe p/98765432 e/aohnd@gmail.com a/Aohn street, block 123, #01-01
+  list
+
+  # should show the sorted list of name
+  sort
+
+##########################################################
 # test exit command
 ##########################################################
 
   # exits properly
   exit
   list
+
