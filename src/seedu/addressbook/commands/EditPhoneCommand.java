@@ -26,9 +26,9 @@ public class EditPhoneCommand extends Command {
         //PhoneList pList = addressBook.
         UniquePersonList people = addressBook.getAllPersons();
         ReadOnlyPerson toBeRemoved = null;
-        //to loop thru every single person in the addressbook
+        //to loop thru every single person in the address book
         for(ReadOnlyPerson person: people.immutableListView()){
-            //test to see if phone number exists in the addressbook
+            //test to see if phone number exists in the address book
             if(person.getPhone().value.equals(this.oldPhone)){
                 //myTestCase=1;
                 toBeRemoved = person;
@@ -54,7 +54,7 @@ public class EditPhoneCommand extends Command {
         } catch (UniquePersonList.DuplicatePersonException dpe){
             return new CommandResult(MESSAGE_DUPLICATE);
         } catch (UniquePersonList.PersonNotFoundException cpe){
-            return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK+this.oldPersonName);
+            return new CommandResult(Messages.MESSAGE_PHONE_NOT_IN_ADDRESSBOOK+this.oldPhone);
         } catch (IllegalValueException ive){
             return new CommandResult(ive.getMessage());
         }

@@ -28,6 +28,14 @@ public class Phone {
         }
         this.value = trimmedPhone;
     }
+    public Phone(String phone) throws IllegalValueException {
+        //this.isPrivate = isPrivate;
+        String trimmedPhone = phone.trim();
+        if (!isValidPhone(trimmedPhone)) {
+            throw new IllegalValueException(MESSAGE_PHONE_CONSTRAINTS);
+        }
+        this.value = trimmedPhone;
+    }
 
     /**
      * Returns true if the given string is a valid person phone number.
