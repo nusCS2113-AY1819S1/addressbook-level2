@@ -1,6 +1,7 @@
 package seedu.addressbook.commands;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -50,11 +51,26 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if (!Collections.disjoint(convertStringsToLowerCase(wordsInName), convertStringsToLowerCase(keywords))) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
     }
 
+    /**
+     * Converts a collection of strings to lowercase strings
+     *
+     * @param strings to be converted
+     * @return list of strings in lowercase
+     */
+    private List<String> convertStringsToLowerCase(Collection<String> strings) {
+        List<String> results = new ArrayList<>();
+
+        for (String word : strings) {
+            results.add(word.toLowerCase());
+        }
+
+        return results;
+    }
 }
