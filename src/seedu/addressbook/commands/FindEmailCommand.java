@@ -45,11 +45,11 @@ public class FindEmailCommand extends Command {
     private List<ReadOnlyPerson> getPersonsWithEmailContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
-            final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if ( keywords.contains( person.getEmail().toString() ) ) {
                 matchedPersons.add(person);
             }
         }
+
         return matchedPersons;
     }
 
