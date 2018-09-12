@@ -62,7 +62,7 @@
   # sort the list
   sort
 
-  # list the sorted result
+  # should see a sorted list
   list
 
 ##########################################################
