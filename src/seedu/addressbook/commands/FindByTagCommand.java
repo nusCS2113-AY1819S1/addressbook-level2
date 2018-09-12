@@ -7,14 +7,14 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
 
 /**
- * Finds and lists all persons in address book whose name contains the specified tag.
+ * Finds and lists all persons in address book who contains the specified tag.
  * Keyword matching is not case sensitive.
  */
 public class FindByTagCommand extends Command {
 
     public static final String COMMAND_WORD = "findbytag";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose tags contain the"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons who contain the "
             + "specified tag (non-case-sensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [TAG]...\n"
             + "Example: " + COMMAND_WORD + " friends";
@@ -39,7 +39,7 @@ public class FindByTagCommand extends Command {
     }
 
     /**
-     * Retrieves all persons in the address book who contains the specified tag.
+     * Retrieves all persons in the address book who contain the specified tag.
      *
      * @param tag for searching
      * @return list of persons found
