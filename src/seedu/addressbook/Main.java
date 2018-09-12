@@ -1,8 +1,9 @@
 package seedu.addressbook;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.IOException;
 
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.CommandResult;
@@ -14,6 +15,8 @@ import seedu.addressbook.storage.StorageFile;
 import seedu.addressbook.storage.StorageFile.InvalidStorageFilePathException;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 import seedu.addressbook.ui.TextUi;
+import seedu.addressbook.ui.Formatter;
+
 
 
 /**
@@ -22,10 +25,57 @@ import seedu.addressbook.ui.TextUi;
  */
 public class Main {
 
+    /**
+     * Commence login process for access to application
+     */
+    public static void initializeLoginProcess() {
+        System.out.println("You need to login for access to application. Please enter student matriculation ID as user ID:");
+        Scanner userInput = new Scanner(System.in);
+        String userID = userInput.next();
+        Properties loadLoginCredentials = new Properties();
+        InputStream input = null;
+
+        try {
+            input = new FileInputStream("loginCredentials.properties");
+            loadLoginCredentials.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        Enumeration<String> loginData = (Enumeration<String>) loadLoginCredentials.propertyNames();
+        while (loginData.hasMoreElements()) {
+            String key = loginData.nextElement();
+            if(userID.equals(key)) {
+                System.out.println("Current user exists!");
+            }
+            System.out.println("Enter your password:");
+            Scanner userPassword = new Scanner(System.in);
+            String password = userPassword.next();
+            String value = loadLoginCredentials.getProperty(key);
+            // If password input is correct.
+            if (password.equals(value)) {
+                System.out.println("Correct password! Login successful!");
+                break;
+            }
+            // If password input is incorrect.
+            else {
+                System.out.println("Wrong password!");
+                System.exit(0);
+            }
+        }
+    }
     /** Version info of the program. */
     public static final String VERSION = "AddressBook Level 2 - Version 1.0";
 
     private TextUi ui;
+    private Formatter format;
     private StorageFile storage;
     private AddressBook addressBook;
 
@@ -34,6 +84,7 @@ public class Main {
 
 
     public static void main(String... launchArgs) {
+        initializeLoginProcess();
         new Main().run(launchArgs);
     }
 
@@ -53,6 +104,7 @@ public class Main {
     private void start(String[] launchArgs) {
         try {
             this.ui = new TextUi();
+            this.format = new Formatter();
             this.storage = initializeStorage(launchArgs);
             this.addressBook = storage.load();
             ui.showWelcomeMessage(VERSION, storage.getPath());
