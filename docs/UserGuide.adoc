@@ -154,6 +154,7 @@ Views all details of the 1st person in the results of the `find` command.
 == Clearing all entries : `clear`
 
 Clears all entries from the address book. +
+Shows a confirmation message before clearing. User can enter "y" or "n" for "yes" and "no" respectively (Case is ignored).
 Format: `clear`
 
 == Exiting the program : `exit`
