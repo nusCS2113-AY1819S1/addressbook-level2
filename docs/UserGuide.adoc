@@ -34,6 +34,7 @@ Please refer to the <<DeveloperGuide#setting-up, Setting up>> section to learn h
 
 What's different from AddressBook-Level1:
 
+* Support for access to AddressBook using login credentials
 * Support for storing address (`a/`) and tags (`t/`)
 * Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`)
 * View details of a person (`view` : shows non-private details), (`viewall` : shows all details)
@@ -179,6 +180,8 @@ Example:
 [NOTE]
 ====
 The file name must end in `.txt` for it to be acceptable to the program.
+
+As for login credentials, the file containing the login data must end in `.PROPERTIES` for it to be acceptable to the program.
 
 When running the program inside IntelliJ, you can set command line parameters
 before running the program.
