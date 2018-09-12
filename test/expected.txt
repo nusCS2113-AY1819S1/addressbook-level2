@@ -320,7 +320,7 @@
 || 	2. Bohn Doe Phone: 98765432 Email: bohnd@gmail.com Address: Bohn street, block 123, #01-01 Tags: 
 || 	3. Cohn Doe Phone: 98765432 Email: cohnd@gmail.com Address: Cohn street, block 123, #01-01 Tags: 
 || 
-|| 3 persons listed!
+|| 3 persons sorted and listed!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...
