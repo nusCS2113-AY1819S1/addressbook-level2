@@ -156,6 +156,11 @@ Views all details of the 1st person in the results of the `find` command.
 Clears all entries from the address book. +
 Format: `clear`
 
+Confirmation from the user is required after entering the `clear` command, to ensure that the command was not accidentally entered.
+Users will receive a confirmation request as shown below:
+`Are you sure you want to clear the address book? (Y/N): `
+Users will then have to input a `Y` or `N` to confirm/deny further action.
+
 == Exiting the program : `exit`
 
 Exits the program. +
