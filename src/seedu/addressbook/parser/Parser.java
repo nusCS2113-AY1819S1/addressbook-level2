@@ -83,7 +83,7 @@ public class Parser {
             return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
-            return prepareFind(arguments);
+            return prepareFind(arguments.toLowerCase());
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
