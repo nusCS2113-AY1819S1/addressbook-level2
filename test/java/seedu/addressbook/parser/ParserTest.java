@@ -12,7 +12,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.addressbook.commands.AddCommand;
+import seedu.addressbook.commands.AddCmd;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
@@ -214,7 +214,7 @@ public class ParserTest {
             // no address prefix
             String.format("add $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
         };
-        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCmd.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
 
@@ -251,7 +251,7 @@ public class ParserTest {
     public void parse_addCommandValidPersonData_parsedCorrectly() {
         final Person testPerson = generateTestPerson();
         final String input = convertPersonToAddCommandString(testPerson);
-        final AddCommand result = parseAndAssertCommandType(input, AddCommand.class);
+        final AddCmd result = parseAndAssertCommandType(input, AddCmd.class);
         assertEquals(result.getPerson(), testPerson);
     }
 
@@ -264,7 +264,7 @@ public class ParserTest {
             input += " t/" + tag.tagName;
         }
 
-        final AddCommand result = parseAndAssertCommandType(input, AddCommand.class);
+        final AddCmd result = parseAndAssertCommandType(input, AddCmd.class);
         assertEquals(result.getPerson(), testPerson);
     }
 

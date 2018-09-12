@@ -84,7 +84,7 @@ public class AddCommandTest {
             boolean isPhonePrivate, String email, boolean isEmailPrivate, String address,
             boolean isAddressPrivate, Set<String> tags) {
         try {
-            new AddCommand(name, phone, isPhonePrivate, email, isEmailPrivate, address, isAddressPrivate,
+            new AddCmd(name, phone, isPhonePrivate, email, isEmailPrivate, address, isAddressPrivate,
                     tags);
         } catch (IllegalValueException e) {
             return;
@@ -97,7 +97,7 @@ public class AddCommandTest {
 
     @Test
     public void addCommand_validData_correctlyConstructed() throws Exception {
-        AddCommand command = new AddCommand(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
+        AddCmd command = new AddCmd(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
                 Address.EXAMPLE, true, EMPTY_STRING_SET);
         ReadOnlyPerson p = command.getPerson();
 
@@ -117,7 +117,7 @@ public class AddCommandTest {
     @Test
     public void addCommand_emptyAddressBook_addressBookContainsPerson() {
         Person p = TestUtil.generateTestPerson();
-        AddCommand command = new AddCommand(p);
+        AddCmd command = new AddCmd(p);
         AddressBook book = new AddressBook();
         command.setData(book, EMPTY_PERSON_LIST);
         CommandResult result = command.execute();
@@ -126,7 +126,7 @@ public class AddCommandTest {
         assertTrue(people.contains(p));
         assertEquals(1, people.immutableListView().size());
         assertFalse(result.getRelevantPersons().isPresent());
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, p), result.feedbackToUser);
+        assertEquals(String.format(AddCmd.MESSAGE_SUCCESS, p), result.feedbackToUser);
     }
 
     @Test
@@ -134,12 +134,12 @@ public class AddCommandTest {
         Person p = TestUtil.generateTestPerson();
         AddressBook book = new AddressBook();
         book.addPerson(p);
-        AddCommand command = new AddCommand(p);
+        AddCmd command = new AddCmd(p);
         command.setData(book, EMPTY_PERSON_LIST);
         CommandResult result = command.execute();
 
         assertFalse(result.getRelevantPersons().isPresent());
-        assertEquals(AddCommand.MESSAGE_DUPLICATE_PERSON, result.feedbackToUser);
+        assertEquals(AddCmd.MESSAGE_DUPLICATE_PERSON, result.feedbackToUser);
         UniquePersonList people = book.getAllPersons();
         assertTrue(people.contains(p));
         assertEquals(1, people.immutableListView().size());

@@ -98,6 +98,8 @@
   find 23912039120
   # matching should be case-sensitive
   find betsy
+  # matching should be case-sensitive
+  find Betsy
 
   # find unique keyword
   find Betsy
