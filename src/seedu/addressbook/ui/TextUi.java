@@ -39,6 +39,8 @@ public class TextUi {
     /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
     private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
 
+    private static final String MESSAGE_CLEAR_CONFIRM = "Are you sure you want to clear the address book? (Y/N) : ";
+
     private final Scanner in;
     private final PrintStream out;
 
@@ -89,6 +91,23 @@ public class TextUi {
 
         showToUser("[Command entered:" + fullInputLine + "]");
         return fullInputLine;
+    }
+
+    /**
+     * Prompts user for confirmation to clear the entire address book
+     * Ignores empty, pure whitespace, and comment lines.
+     * @return user input
+     */
+    public String clearConfirmationMessage() {
+        out.print(LINE_PREFIX + MESSAGE_CLEAR_CONFIRM);
+        String inputLine = in.nextLine();
+
+        // silently consume all ignored lines
+        while (shouldIgnore(inputLine)) {
+            inputLine = in.nextLine();
+        }
+
+        return inputLine;
     }
 
 
