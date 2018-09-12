@@ -78,7 +78,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case FindEmailCommand.COMMAND_WORD:
-            return prepareFind(arguments);
+            return prepareFindEmail(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -243,5 +243,24 @@ public class Parser {
         return new FindCommand(keywordSet);
     }
 
+
+    /**
+     * Parses arguments in the context of the find email command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareFindEmail(String args) {
+        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    FindEmailCommand.MESSAGE_USAGE));
+        }
+
+        // keywords delimited by whitespace
+        final String[] keywords = matcher.group("keywords").split("\\s+");
+        final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
+        return new FindCommand(keywordSet);
+    }
 
 }

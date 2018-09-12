@@ -12,7 +12,7 @@ public class FindEmailCommand extends Command {
 
     public static final String COMMAND_WORD = "find_Email";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose Emails contain any of "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose Emails match any of "
             + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice@xyz.com bob@lay.gg charlie@ioo.gh";
@@ -37,7 +37,7 @@ public class FindEmailCommand extends Command {
     }
 
     /**
-     * Retrieves all persons in the address book whose names contain some of the specified keywords.
+     * Retrieves all persons in the address book whoose Email matches specified keywords.
      *
      * @param keywords for searching
      * @return list of persons found
