@@ -48,26 +48,23 @@ public interface ReadOnlyPerson {
     /**
      * Formats the person as text, showing all contact details.
      */
+    //use this as a way to create string
     default String getAsTextShowAll() {
         final StringBuilder builder = new StringBuilder();
         final String detailIsPrivate = "(private) ";
-        builder.append(getName())
-                .append(" Phone: ");
+        builder.append(getName()).append(" Phone: ");
         if (getPhone().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-        builder.append(getPhone())
-                .append(" Email: ");
+        builder.append(getPhone()).append(" Email: ");
         if (getEmail().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-        builder.append(getEmail())
-                .append(" Address: ");
+        builder.append(getEmail()).append(" Address: ");
         if (getAddress().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-        builder.append(getAddress())
-                .append(" Tags: ");
+        builder.append(getAddress()).append(" Tags: ");
         for (Tag tag : getTags()) {
             builder.append(tag);
         }

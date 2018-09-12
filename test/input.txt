@@ -22,6 +22,11 @@
   clear
   list
 
+
+  # address book should be emptied
+  clear
+  sort
+
 ##########################################################
 # test add person command, setup state for further tests
 ##########################################################

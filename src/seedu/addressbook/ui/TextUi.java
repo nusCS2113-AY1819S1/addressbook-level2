@@ -8,10 +8,7 @@ import static seedu.addressbook.common.Messages.MESSAGE_WELCOME;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -79,6 +76,7 @@ public class TextUi {
      * @return command (full line) entered by the user
      */
     public String getUserCommand() {
+        //short way to print out
         out.print(LINE_PREFIX + "Enter command: ");
         String fullInputLine = in.nextLine();
 
@@ -131,7 +129,6 @@ public class TextUi {
         }
         showToUser(result.feedbackToUser, DIVIDER);
     }
-
     /**
      * Shows a list of persons to the user, formatted as an indexed list.
      * Private contact details are hidden.

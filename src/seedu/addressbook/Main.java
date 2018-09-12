@@ -32,14 +32,13 @@ public class Main {
     /** The list of person shown to the user most recently.  */
     private List<? extends ReadOnlyPerson> lastShownList = Collections.emptyList();
 
-
     public static void main(String... launchArgs) {
         new Main().run(launchArgs);
     }
 
     /** Runs the program until termination.  */
     public void run(String[] launchArgs) {
-        start(launchArgs);
+        start(launchArgs); //launchArgs contain ui, storage, addressBook
         runCommandLoopUntilExitCommand();
         exit();
     }
@@ -84,7 +83,7 @@ public class Main {
         do {
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
-            CommandResult result = executeCommand(command);
+            CommandResult result = executeCommand(command); //find this in the child class
             recordResult(result);
             ui.showResultToUser(result);
 

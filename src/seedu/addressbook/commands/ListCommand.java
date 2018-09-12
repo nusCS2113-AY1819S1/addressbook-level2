@@ -2,6 +2,7 @@ package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -19,7 +20,12 @@ public class ListCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        //using immutableListView will return un-modifiable list
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        //commandResult have 2 variables:
+        //first is String feedbackToUser (in this case show the number of people added)
+        //second is private final List<? extends ReadOnlyPerson> relevantPersons
+
         return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 }
