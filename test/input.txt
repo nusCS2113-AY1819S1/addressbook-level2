@@ -50,9 +50,17 @@
   list
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
+  add Adrain p/6666666 e/meme@not.a.real.potato pa/666, king street t/tubers t/starchy
+  list
 
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+##########################################################
+# test sort contact command
+##########################################################
+  # should show a list of sorted contacts
+  sort
 
 ##########################################################
 # test view/viewall persons command
