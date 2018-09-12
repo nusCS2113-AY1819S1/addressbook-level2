@@ -13,7 +13,6 @@ public class ClearCommand extends Command {
 
     public ClearCommand() {}
 
-
     @Override
     public CommandResult execute() {
         addressBook.clear();
