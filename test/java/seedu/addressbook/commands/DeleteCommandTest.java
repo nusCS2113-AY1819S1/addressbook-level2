@@ -92,10 +92,10 @@ public class DeleteCommandTest {
      *
      * @param targetVisibleIndex of the person that we want to delete
      */
-    private DeleteCommand createDeleteCommand(int targetVisibleIndex, AddressBook addressBook,
-                                                                      List<ReadOnlyPerson> displayList) {
+    private RemoveCommand createDeleteCommand(int targetVisibleIndex, AddressBook addressBook,
+                                              List<ReadOnlyPerson> displayList) {
 
-        DeleteCommand command = new DeleteCommand(targetVisibleIndex);
+        RemoveCommand command = new RemoveCommand(targetVisibleIndex);
         command.setData(addressBook, displayList);
 
         return command;
@@ -104,10 +104,10 @@ public class DeleteCommandTest {
     /**
      * Executes the command, and checks that the execution was what we had expected.
      */
-    private void assertCommandBehaviour(DeleteCommand deleteCommand, String expectedMessage,
+    private void assertCommandBehaviour(RemoveCommand removeCommand, String expectedMessage,
                                         AddressBook expectedAddressBook, AddressBook actualAddressBook) {
 
-        CommandResult result = deleteCommand.execute();
+        CommandResult result = removeCommand.execute();
 
         assertEquals(expectedMessage, result.feedbackToUser);
         assertEquals(expectedAddressBook.getAllPersons(), actualAddressBook.getAllPersons());
@@ -121,7 +121,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
-        DeleteCommand command = createDeleteCommand(invalidVisibleIndex, addressBook, displayList);
+        RemoveCommand command = createDeleteCommand(invalidVisibleIndex, addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -134,7 +134,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
 
-        DeleteCommand command = createDeleteCommand(visibleIndex, addressBook, displayList);
+        RemoveCommand command = createDeleteCommand(visibleIndex, addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -152,11 +152,11 @@ public class DeleteCommandTest {
 
         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
         expectedAddressBook.removePerson(targetPerson);
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, targetPerson);
+        String expectedMessage = String.format(RemoveCommand.MESSAGE_DELETE_PERSON_SUCCESS, targetPerson);
 
         AddressBook actualAddressBook = TestUtil.clone(addressBook);
 
-        DeleteCommand command = createDeleteCommand(targetVisibleIndex, actualAddressBook, displayList);
+        RemoveCommand command = createDeleteCommand(targetVisibleIndex, actualAddressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
     }
 }
