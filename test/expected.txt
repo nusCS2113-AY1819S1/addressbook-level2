@@ -17,6 +17,8 @@
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
+|| sort: Displays all persons in the address book as a sorted list with index numbers.
+|| Example: sort
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
@@ -296,6 +298,29 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add Cohn Doe p/98765432 e/cohnd@gmail.com a/Cohn street, block 123, #01-01]
+|| New person added: Cohn Doe Phone: 98765432 Email: cohnd@gmail.com Address: Cohn street, block 123, #01-01 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add Bohn Doe p/98765432 e/bohnd@gmail.com a/Bohn street, block 123, #01-01]
+|| New person added: Bohn Doe Phone: 98765432 Email: bohnd@gmail.com Address: Bohn street, block 123, #01-01 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add Aohn Doe p/98765432 e/aohnd@gmail.com a/Aohn street, block 123, #01-01]
+|| New person added: Aohn Doe Phone: 98765432 Email: aohnd@gmail.com Address: Aohn street, block 123, #01-01 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Cohn Doe Phone: 98765432 Email: cohnd@gmail.com Address: Cohn street, block 123, #01-01 Tags: 
+|| 	2. Bohn Doe Phone: 98765432 Email: bohnd@gmail.com Address: Bohn street, block 123, #01-01 Tags: 
+|| 	3. Aohn Doe Phone: 98765432 Email: aohnd@gmail.com Address: Aohn street, block 123, #01-01 Tags: 
+|| 
+|| 3 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| 	1. Aohn Doe Phone: 98765432 Email: aohnd@gmail.com Address: Aohn street, block 123, #01-01 Tags: 
+|| 	2. Bohn Doe Phone: 98765432 Email: bohnd@gmail.com Address: Bohn street, block 123, #01-01 Tags: 
+|| 	3. Cohn Doe Phone: 98765432 Email: cohnd@gmail.com Address: Cohn street, block 123, #01-01 Tags: 
+|| 
+|| 3 persons sorted and listed!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...
