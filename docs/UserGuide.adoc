@@ -183,3 +183,9 @@ The file name must end in `.txt` for it to be acceptable to the program.
 When running the program inside IntelliJ, you can set command line parameters
 before running the program.
 ====
+
+Update as of 12/9/2018:
+Some refactoring was done to OrderCommand and RemoveCommand
+
+
+
