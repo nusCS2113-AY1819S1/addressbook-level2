@@ -56,8 +56,6 @@ public class Parser {
      */
     public static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
-    public Parser() {}
-
     /**
      * Parses user input into command for execution.
      *
@@ -70,7 +68,7 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        final String commandWord = matcher.group("commandWord");
+        final String commandWord = matcher.group("commandWord").toLowerCase();
         final String arguments = matcher.group("arguments");
 
         switch (commandWord) {
@@ -85,7 +83,7 @@ public class Parser {
             return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
-            return prepareFind(arguments);
+            return prepareFind(arguments.toLowerCase());
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
