@@ -47,7 +47,6 @@ Format: `help`
 Help is also shown if you enter an incorrect command e.g. `abcd`
 ====
 
-== Adding a person: `addCmd`
 
 Adds a person to the address book. +
 Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
