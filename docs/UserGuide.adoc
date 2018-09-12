@@ -37,6 +37,7 @@ What's different from AddressBook-Level1:
 * Support for storing address (`a/`) and tags (`t/`)
 * Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`)
 * View details of a person (`view` : shows non-private details), (`viewall` : shows all details)
+* Add and Delete command also list the names of all the people in the address book
 
 == Viewing help : `help`
 
@@ -51,6 +52,9 @@ Help is also shown if you enter an incorrect command e.g. `abcd`
 
 Adds a person to the address book. +
 Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
+
+Lists all the people in the address book at the current time. +
+Format: 'list: Name, Phone Number, Email Address, Tags'
 
 ****
 Words in `UPPER_CASE` are the parameters, items in `SQUARE_BRACKETS` are optional,
@@ -95,6 +99,9 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 
 Deletes the specified person from the address book. Irreversible. +
 Format: `delete INDEX`
+
+Lists all the remaining people in the address book after delete. +
+Format: 'list: Name, Phone Number, Email Address, Tags'
 
 ****
 Deletes the person at the specified `INDEX`.
