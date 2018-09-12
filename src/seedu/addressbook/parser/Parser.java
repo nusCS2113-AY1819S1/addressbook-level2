@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.addressbook.commands.AddCommand;
+import seedu.addressbook.commands.AddCmd;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
@@ -75,7 +75,7 @@ public class Parser {
 
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
+        case AddCmd.COMMAND_WORD:
             return prepareAdd(arguments);
 
         case DeleteCommand.COMMAND_WORD:
@@ -115,10 +115,10 @@ public class Parser {
         final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(args.trim());
         // Validate arg string format
         if (!matcher.matches()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCmd.MESSAGE_USAGE));
         }
         try {
-            return new AddCommand(
+            return new AddCmd(
                     matcher.group("name"),
 
                     matcher.group("phone"),

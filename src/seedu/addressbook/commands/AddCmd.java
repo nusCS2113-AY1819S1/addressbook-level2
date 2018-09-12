@@ -16,7 +16,7 @@ import seedu.addressbook.data.tag.Tag;
 /**
  * Adds a person to the address book.
  */
-public class AddCommand extends Command {
+public class AddCmd extends Command {
 
     public static final String COMMAND_WORD = "add";
 
@@ -36,11 +36,11 @@ public class AddCommand extends Command {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String name,
-                      String phone, boolean isPhonePrivate,
-                      String email, boolean isEmailPrivate,
-                      String address, boolean isAddressPrivate,
-                      Set<String> tags) throws IllegalValueException {
+    public AddCmd(String name,
+                  String phone, boolean isPhonePrivate,
+                  String email, boolean isEmailPrivate,
+                  String address, boolean isAddressPrivate,
+                  Set<String> tags) throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -54,7 +54,7 @@ public class AddCommand extends Command {
         );
     }
 
-    public AddCommand(Person toAdd) {
+    public AddCmd(Person toAdd) {
         this.toAdd = toAdd;
     }
 
