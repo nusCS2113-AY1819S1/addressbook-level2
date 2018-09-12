@@ -76,3 +76,7 @@ OSes. Convert the actual.txt to the format used by your OS using some https://kb
 * Problem: Test fails during the very first time. +
 Solution: The output of the very first test run could be slightly different because the program
 creates a new storage file. Tests should pass from the 2nd run onwards.
+
+=== Update of find command
+
+* For the current version of Addressbook-level2, the find people feature will be case-insensitive.
