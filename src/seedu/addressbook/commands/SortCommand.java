@@ -19,23 +19,25 @@ public class SortCommand extends Command{
         //commandResult have 2 variables:
             //first is String feedbackToUser (in this case show the number of people added)
             //second is private final List<? extends ReadOnlyPerson> relevantPersons
-
-        Map <String, ReadOnlyPerson> allSortedPersons_map = new HashMap<>();
-        for (ReadOnlyPerson person: allPersons) {
-            String name = person.getName().fullName;
-            allSortedPersons_map.put(name, person);
+        if (!allPersons.isEmpty()) {
+            Map<String, ReadOnlyPerson> allSortedPersons_map = new HashMap<>();
+            for (ReadOnlyPerson person : allPersons) {
+                String name = person.getName().fullName;
+                allSortedPersons_map.put(name, person);
+            }
+            //TODO: Put the value into the List<ReadOnlyPerson>
+            TreeMap<String, ReadOnlyPerson> allSortedPersons_treemap = new TreeMap<>();
+            allSortedPersons_treemap.putAll(allSortedPersons_map);
+            System.out.println(allSortedPersons_treemap.firstKey());
+            Set keys = allSortedPersons_treemap.keySet();
+            List<ReadOnlyPerson> allSortedPersons_list = new ArrayList<>();
+            for (Iterator itr = keys.iterator(); itr.hasNext(); ) {
+                String key = (String) itr.next();
+                ReadOnlyPerson value = allSortedPersons_treemap.get(key);
+                allSortedPersons_list.add(value);
+            }
+            return new CommandResult(getMessageForPersonListShownSummary(allSortedPersons_list), allSortedPersons_list);
         }
-        //TODO: Put the value into the List<ReadOnlyPerson>
-        TreeMap<String, ReadOnlyPerson> allSortedPersons_treemap = new TreeMap<>();
-        allSortedPersons_treemap.putAll(allSortedPersons_map);
-        System.out.println(allSortedPersons_treemap.firstKey());
-        Set keys = allSortedPersons_treemap.keySet();
-        List<ReadOnlyPerson> allSortedPersons_list = new ArrayList<>();
-        for (Iterator itr = keys.iterator(); itr.hasNext();){
-            String key = (String) itr.next();
-            ReadOnlyPerson value = allSortedPersons_treemap.get(key);
-            allSortedPersons_list.add(value);
-        }
-        return new CommandResult(getMessageForPersonListShownSummary(allSortedPersons_list), allSortedPersons_list);
+        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 }
