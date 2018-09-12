@@ -55,6 +55,14 @@ public class AddressBook {
     }
 
     /**
+     * Checks if there are persons in the address book.
+     *
+     */
+    public boolean check() {
+        return allPersons.check();
+    }
+
+    /**
      * Clears all persons and tags from the address book.
      */
     public void clear() {
@@ -72,6 +80,6 @@ public class AddressBook {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                        && this.allPersons.equals(((AddressBook) other).allPersons));
+                && this.allPersons.equals(((AddressBook) other).allPersons));
     }
 }
