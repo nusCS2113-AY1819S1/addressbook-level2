@@ -149,6 +149,20 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+
+  # should add correctly and list non private information
+  add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+  # should sort and list all persons in ascending order by name
+  sort
+
+
+
+##########################################################
 # test exit command
 ##########################################################
 
