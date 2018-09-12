@@ -25,3 +25,4 @@ The full list of contributors for se-edu can be found https://se-edu.github.io/T
 * *Bug reports, Suggestions* : Post in our https://github.com/se-edu/addressbook-level2/issues[issue tracker]
 if you noticed bugs or have suggestions on how to improve.
 * *Contributing* : We welcome pull requests. Follow the process described https://github.com/oss-generic/process[here]
+*FOR COMMIT*
