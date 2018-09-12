@@ -102,6 +102,16 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:add Aaron Tan p/121212 e/aaron@email.com a/12, aa st t/dummy]
+|| New person added: Aaron Tan Phone: 121212 Email: aaron@email.com Address: 12, aa st Tags: [dummy]
+|| ===================================================
+|| Enter command: || [Command entered:sort]
+|| 	1. Aaron Tan Phone: 121212 Email: aaron@email.com Address: 12, aa st Tags: [dummy]
+|| 	2. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags:
+|| 	3. Betsy Choo Tags: [secretive]
+||
+|| 3 contacts sorted and listed!
+|| ===================================================
 || Enter command: || [Command entered:  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school]
 || New person added: Charlie Dickson Phone: (private) 333333 Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || ===================================================
