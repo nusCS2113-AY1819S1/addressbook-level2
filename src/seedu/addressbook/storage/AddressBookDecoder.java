@@ -11,12 +11,7 @@ import java.util.regex.Matcher;
 
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
-import seedu.addressbook.data.person.Address;
-import seedu.addressbook.data.person.Email;
-import seedu.addressbook.data.person.Name;
-import seedu.addressbook.data.person.Person;
-import seedu.addressbook.data.person.Phone;
-import seedu.addressbook.data.person.UniquePersonList;
+import seedu.addressbook.data.person.*;
 import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 
@@ -57,6 +52,7 @@ public class AddressBookDecoder {
                 new Name(matcher.group("name")),
                 new Phone(matcher.group("phone"), isPrivatePrefixPresent(matcher.group("isPhonePrivate"))),
                 new Email(matcher.group("email"), isPrivatePrefixPresent(matcher.group("isEmailPrivate"))),
+                new DateOfBirth(matcher.group("dob"), isPrivatePrefixPresent(matcher.group("isDobPrivate"))),
                 new Address(matcher.group("address"), isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
                 getTagsFromEncodedPerson(matcher.group("tagArguments"))
         );
