@@ -6,6 +6,15 @@
   sfdfd
 
 ##########################################################
+# test for case sensitivity of commands
+##########################################################
+  
+  # should recognise command even though full caps
+  HELP
+  LIST
+  VIEW 1
+
+##########################################################
 # commands using list index before any listing created
 ##########################################################
 
@@ -96,8 +105,6 @@
   find bet
   # does not match if none have keyword
   find 23912039120
-  # matching should be case-sensitive
-  find betsy
 
   # find unique keyword
   find Betsy
@@ -105,6 +112,11 @@
   find Dickson
   # find multiple with some keywords
   find Charlie Betsy
+
+  # case insensitive test
+  find bEtSy
+  find BROWN
+  find ADaM
 
 ##########################################################
 # test delete person command
