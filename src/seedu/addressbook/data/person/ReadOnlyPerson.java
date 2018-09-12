@@ -54,17 +54,17 @@ public interface ReadOnlyPerson {
         builder.append(getName())
                 .append(" Phone: ");
         if (getPhone().isPrivate()) {
-            builder.append(detailIsPrivate);
+           // builder.append(detailIsPrivate);
         }
         builder.append(getPhone())
                 .append(" Email: ");
         if (getEmail().isPrivate()) {
-            builder.append(detailIsPrivate);
+            //builder.append(detailIsPrivate);
         }
         builder.append(getEmail())
                 .append(" Address: ");
         if (getAddress().isPrivate()) {
-            builder.append(detailIsPrivate);
+            //builder.append(detailIsPrivate);
         }
         builder.append(getAddress())
                 .append(" Tags: ");
