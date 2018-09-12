@@ -35,6 +35,9 @@ public class AddressBookEncoder {
         encodedPersonBuilder.append(person.getEmail().isPrivate() ? " p" : " ");
         encodedPersonBuilder.append("e/").append(person.getEmail().value);
 
+        encodedPersonBuilder.append(person.getDateOfBirth().isPrivate() ? " p" : " ");
+        encodedPersonBuilder.append("d/").append(person.getDateOfBirth().value);
+
         encodedPersonBuilder.append(person.getAddress().isPrivate() ? " p" : " ");
         encodedPersonBuilder.append("a/").append(person.getAddress().value);
 
