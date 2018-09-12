@@ -147,6 +147,11 @@
   # clears all
   clear
   list
+  add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  list
+  sort
+
 
 ##########################################################
 # test exit command
