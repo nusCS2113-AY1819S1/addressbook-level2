@@ -3,10 +3,10 @@ package seedu.addressbook.commands;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 /**
- * Lists all persons in the address book to the user.
+ * Sorts all persons in the address book to the user.
  */
 public class SortCommand extends Command{
     public static final String COMMAND_WORD = "sort";
@@ -18,7 +18,8 @@ public class SortCommand extends Command{
 
     @Override
     public CommandResult execute() {
+        addressBook.sortList();
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        return new CommandResult(getMessageForSortedPersonListShownSummary(allPersons), allPersons);
     }
 }
