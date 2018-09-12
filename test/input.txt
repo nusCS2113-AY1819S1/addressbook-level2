@@ -80,7 +80,7 @@
   view 3
   view 4
   view 5
-
+  view 6
   # should show all details even private for viewall
   viewall 3
   viewall 4
