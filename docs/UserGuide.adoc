@@ -44,8 +44,8 @@ Format: `help`
 
 [TIP]
 ====
-Help is also shown if you enter an incorrect command e.g. `abcd`
-Commands are **case insensitve**. i.e HeLp/HELP/helP... will display help regardless
+. Help is also shown if you enter an incorrect command e.g. `abcd`
+. Commands are **case insensitve**. i.e HeLp/HELP/helP... will display help regardless
 ====
 
 == Adding a person: `add`
