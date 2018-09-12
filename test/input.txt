@@ -107,6 +107,24 @@
   find Charlie Betsy
 
 ##########################################################
+# test find by email command
+##########################################################
+
+  # should consider no keywords as invalid command format
+  find_Email
+  # should only match full words in persons emails
+  find_Email adam@g
+  # does not match if none have keyword
+  find_Email 23912039120
+  # matching should be case-sensitive
+  find_Email ADAM@gmail.com
+
+  # find unique keyword
+  find_Email adam@gmail.com
+  # find multiple with some keywords
+  find_Email adam@gmail.com benchoo@nus.edu.sg
+
+##########################################################
 # test delete person command
 ##########################################################
 
