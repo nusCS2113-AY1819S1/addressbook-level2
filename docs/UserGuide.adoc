@@ -60,6 +60,9 @@ Put a `p` before the phone / email / address prefixes to mark it as `private`. `
 be seen using the `viewall` command.
 
 Persons can have any number of tags (including 0).
+
+Once a new person is added, all the people in the address book are listed.
+
 ****
 
 Examples:
@@ -99,6 +102,9 @@ Format: `delete INDEX`
 ****
 Deletes the person at the specified `INDEX`.
 The index refers to the index number shown in the most recent listing.
+
+Once a person at the specified index is deleted, the remaining people in the address book are listed.
+
 ****
 
 Examples:
