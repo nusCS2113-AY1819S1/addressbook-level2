@@ -15,7 +15,7 @@ import org.junit.Test;
 import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
+import seedu.addressbook.commands.RemoveCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
@@ -94,7 +94,7 @@ public class ParserTest {
     @Test
     public void parse_deleteCommandNoArgs_errorMessage() {
         final String[] inputs = { "delete", "delete " };
-        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemoveCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
 
@@ -109,7 +109,7 @@ public class ParserTest {
     public void parse_deleteCommandNumericArg_indexParsedCorrectly() {
         final int testIndex = 1;
         final String input = "delete " + testIndex;
-        final DeleteCommand result = parseAndAssertCommandType(input, DeleteCommand.class);
+        final RemoveCommand result = parseAndAssertCommandType(input, RemoveCommand.class);
         assertEquals(result.getTargetIndex(), testIndex);
     }
 

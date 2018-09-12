@@ -8,7 +8,7 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 /**
  * Deletes a person identified using it's last displayed index from the address book.
  */
-public class DeleteCommand extends Command {
+public class RemoveCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
@@ -20,7 +20,7 @@ public class DeleteCommand extends Command {
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
 
-    public DeleteCommand(int targetVisibleIndex) {
+    public RemoveCommand(int targetVisibleIndex) {
         super(targetVisibleIndex);
     }
 

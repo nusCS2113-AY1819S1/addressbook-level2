@@ -17,7 +17,7 @@ public class HelpCommand extends Command {
     public CommandResult execute() {
         return new CommandResult(
                 AddCommand.MESSAGE_USAGE
-                + "\n" + DeleteCommand.MESSAGE_USAGE
+                + "\n" + RemoveCommand.MESSAGE_USAGE
                 + "\n" + ClearCommand.MESSAGE_USAGE
                 + "\n" + FindCommand.MESSAGE_USAGE
                 + "\n" + ListCommand.MESSAGE_USAGE
