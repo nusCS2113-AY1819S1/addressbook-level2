@@ -16,8 +16,8 @@ public class Contact {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Name // instanceof handles nulls
-                && this.value.equals(((Name) other).value)); // state check
+                || (other instanceof Contact // instanceof handles nulls
+                && this.value.equals(((Contact) other).value)); // state check
     }
 
     public boolean isPrivate() {
