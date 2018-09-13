@@ -144,8 +144,10 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Sorts the internal list.
      */
-    public void sortlist(){
-        Collections.sort(internalList,Person.compareNames);
+    public List<Person> sortlist(){
+        List<Person> sorting = internalList;
+        sorting.sort(Person.compareNames);
+        return sorting;
     }
 
 }

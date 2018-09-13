@@ -1,8 +1,7 @@
 package seedu.addressbook.commands;
 
-import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.person.Person;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SortedListCommand extends Command {
@@ -15,14 +14,10 @@ public class SortedListCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        // extracting all objects from the Unique persons list and placing them in a new list for sorting
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        List<ReadOnlyPerson> sorting = new ArrayList<>(allPersons);
-
-        // sorting done on person objects here
-        sorting.sort((ReadOnlyPerson o1, ReadOnlyPerson o2)->o1.getName().toString().compareTo(o2.getName().toString()));
+        // extracting sorted list from the address book
+        List<Person> allPersons = addressBook.getAllPersons().sortlist();
 
         // display result of sorting
-        return new CommandResult(getMessageForPersonListShownSummary(sorting), sorting);
+        return new CommandResult(getMessageForSortSummary(allPersons), allPersons);
     }
 }

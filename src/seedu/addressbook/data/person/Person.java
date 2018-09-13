@@ -94,7 +94,7 @@ public class Person implements ReadOnlyPerson {
      */
     public static Comparator<Person> compareNames = new Comparator<Person>(){
         public int compare(Person o1, Person o2){
-            return o1.getName().toString().compareTo(o2.getName().toString());
+            return o1.getName().toString().compareToIgnoreCase(o2.getName().toString());
         }
     };
 }
