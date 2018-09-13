@@ -1,7 +1,5 @@
 package seedu.addressbook.commands;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -15,6 +13,8 @@ import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.util.TypicalPersons;
 
+import static org.junit.Assert.assertEquals;
+
 public class FindCommandTest {
 
     private final AddressBook addressBook = new TypicalPersons().getTypicalAddressBook();
@@ -23,23 +23,23 @@ public class FindCommandTest {
     @Test
     public void execute() throws IllegalValueException {
         //same word, same case: matched
-        assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
+        assertFindCommandBehavior(new String[]{"Amy".toLowerCase()}, Collections.singletonList(td.amy));
 
-        //same word, different case: not matched
-        assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList());
+        //same word, different case: matched
+        assertFindCommandBehavior(new String[] {"aMy".toLowerCase()}, Collections.singletonList(td.amy));
 
         //partial word: not matched
-        assertFindCommandBehavior(new String[]{"my"}, Collections.emptyList());
+        assertFindCommandBehavior(new String[]{"my".toLowerCase()}, Collections.emptyList());
 
         //multiple words: matched
-        assertFindCommandBehavior(new String[]{"Amy", "Bill", "Candy", "Destiny"},
+        assertFindCommandBehavior(new String[]{"Amy".toLowerCase(), "Bill".toLowerCase(), "Candy".toLowerCase(), "Destiny".toLowerCase()},
                 Arrays.asList(td.amy, td.bill, td.candy));
 
         //repeated keywords: matched
-        assertFindCommandBehavior(new String[]{"Amy", "Amy"}, Arrays.asList(td.amy));
+        assertFindCommandBehavior(new String[]{"Amy".toLowerCase(), "Amy".toLowerCase()}, Collections.singletonList(td.amy));
 
         //Keyword matching a word in address: not matched
-        assertFindCommandBehavior(new String[]{"Clementi"}, Collections.emptyList());
+        assertFindCommandBehavior(new String[]{"Clementi".toLowerCase()}, Collections.emptyList());
     }
 
     /**
@@ -50,7 +50,8 @@ public class FindCommandTest {
         FindCommand command = createFindCommand(keywords);
         CommandResult result = command.execute();
 
-        assertEquals(Command.getMessageForPersonListShownSummary(expectedPersonList), result.feedbackToUser);
+
+        assertEquals(Command.getMessageForPersonListShownSummary(expectedPersonList), result.getFeedbackToUser());
     }
 
     private FindCommand createFindCommand(String[] keywords) {
