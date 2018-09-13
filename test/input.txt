@@ -55,6 +55,18 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test sort command
+##########################################################
+
+  # Add another entry and sort
+  add Bobby Brown p/111112 e/bb@gmail.com a/112, alpha street
+  sort
+  add Sammy Brown p/111113 e/sam@gmail.com a/113, alpha street
+  sort
+  add Dobby Brown p/111114 e/houseelf@gmail.com a/115, alpha street
+  sort
+
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
@@ -147,6 +159,13 @@
   # clears all
   clear
   list
+
+
+##########################################################
+# test sorting on an empty list command
+##########################################################
+  # sorts nothing
+  sort
 
 ##########################################################
 # test exit command

@@ -60,6 +60,15 @@ public class Command {
         return relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
     }
 
+    /**
+     * Displays a sorted list of persons.
+     *
+     * @return summary message for successful sorting of the list
+     */
+    public static String getMessageForSortSummary(List<? extends ReadOnlyPerson> personsDisplayed) {
+        return String.format(Messages.MESSAGE_SORTED, personsDisplayed.size());
+    }
+
     public int getTargetIndex() {
         return targetIndex;
     }
