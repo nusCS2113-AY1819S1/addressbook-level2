@@ -28,11 +28,11 @@ public interface ReadOnlyPerson {
     default boolean isSamePerson(ReadOnlyPerson other) {
         return (other == this)
                 || (other != null
-                    && (other.getName().equals(this.getName())
+                    && other.getPhone().equals(this.getPhone())
+                    && other.getEmail().equals(this.getEmail())
+                    || (other.getName().equals(this.getName())
                     && (other.getPhone().equals(this.getPhone())
-                    || other.getEmail().equals(this.getEmail())))
-                    || other.getPhone().equals(this.getPhone())
-                    && other.getEmail().equals(this.getEmail()));
+                    || other.getEmail().equals(this.getEmail()))));
     }
 
     /**
