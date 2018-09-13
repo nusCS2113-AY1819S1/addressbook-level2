@@ -79,9 +79,9 @@ public class UniquePersonList implements Iterable<Person> {
     public List<ReadOnlyPerson> sortedListView() {
         this.internalList.sort(new Comparator<Person>() {
             @Override
-            public int compare(Person o1, Person o2) {
-                String name1=o1.getName().toString();
-                String name2=o2.getName().toString();
+            public int compare(Person person1, Person person2) {
+                String name1=person1.getName().toString();
+                String name2=person2.getName().toString();
                 return name1.compareToIgnoreCase(name2);
             }
         });
