@@ -11,17 +11,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.addressbook.commands.AddCommand;
-import seedu.addressbook.commands.ClearCommand;
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
-import seedu.addressbook.commands.ExitCommand;
-import seedu.addressbook.commands.FindCommand;
-import seedu.addressbook.commands.HelpCommand;
-import seedu.addressbook.commands.IncorrectCommand;
-import seedu.addressbook.commands.ListCommand;
-import seedu.addressbook.commands.ViewAllCommand;
-import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
@@ -75,33 +65,46 @@ public class Parser {
 
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-            return prepareAdd(arguments);
+            case AddCommand.COMMAND_WORD:
+                return prepareAdd(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return prepareDelete(arguments);
+            case DeleteCommand.COMMAND_WORD:
+                return prepareDelete(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            case DeleteCommand.COMMAND_WORD_STRING:
+                return prepareDeleteWithName(arguments);
 
-        case FindCommand.COMMAND_WORD:
-            return prepareFind(arguments);
+            case ClearCommand.COMMAND_WORD:
+                return new ClearCommand();
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            case ConfirmClearCommand.COMMAND_WORD:
+                return new ConfirmClearCommand();
 
-        case ViewCommand.COMMAND_WORD:
-            return prepareView(arguments);
+            case CancelClearCommand.COMMAND_WORD:
+                return new CancelClearCommand();
 
-        case ViewAllCommand.COMMAND_WORD:
-            return prepareViewAll(arguments);
+            case FindCommand.COMMAND_WORD:
+                return prepareFind(arguments);
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
 
-        case HelpCommand.COMMAND_WORD: // Fallthrough
-        default:
-            return new HelpCommand();
+            case ListCommand.COMMAND_WORD:
+                return new ListCommand();
+
+            case ViewCommand.COMMAND_WORD:
+                return prepareView(arguments);
+
+            case ViewAllCommand.COMMAND_WORD:
+                return prepareViewAll(arguments);
+
+            case ExitCommand.COMMAND_WORD:
+                return new ExitCommand();
+
+            case HelpCommand.COMMAND_WORD: // Fallthrough
+            default:
+                return new HelpCommand();
+           
+            case TotalCommand.COMMAND_WORD:
+                return new TotalCommand();
         }
     }
 
@@ -176,6 +179,15 @@ public class Parser {
         }
     }
 
+    private Command prepareDeleteWithName(String args) {
+        try {
+            final String name = parseArgsAsName(args);
+            return new DeleteCommand(name);
+        } catch (ParseException pe) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        }
+    }
+
     /**
      * Parses arguments in the context of the view command.
      *
@@ -230,6 +242,21 @@ public class Parser {
         return Integer.parseInt(matcher.group("targetIndex"));
     }
 
+
+    /**
+     * Parses arguments string to get the name of the person
+     *
+     * @param args arguments string to parse as name
+     * @return name
+     * @throws ParseException if no region of args string can be found for name
+     */
+    private String parseArgsAsName(String args) throws ParseException {
+        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            throw new ParseException("Could not find name to parse");
+        }
+        return matcher.group();
+    }
 
     /**
      * Parses arguments in the context of the find person command.
