@@ -20,6 +20,11 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
  * Text UI of the application.
  */
 public class TextUi {
+    private  static  final String USERNAME = "user";
+    private  static final String PASSWORD = "pass";
+    private static final String ENTER_USERID_PROMPT = "Enter the username and password: ";
+    private static final String PASSWORD_CORRECT_MESSAGE = "Granting access...";
+    private static final String PASSWORD_INCORRECT_MESSAGE = "Incorrect Username/Password...";
 
     /** A decorative prefix added to the beginning of lines printed by AddressBook */
     private static final String LINE_PREFIX = "|| ";
@@ -49,6 +54,16 @@ public class TextUi {
     public TextUi(InputStream in, PrintStream out) {
         this.in = new Scanner(in);
         this.out = out;
+        showToUser(ENTER_USERID_PROMPT);
+        String usernameEntered = this.getUserInput();
+        String passwordEntered = this.getUserInput();
+        while(!usernameEntered.equals(USERNAME) || !passwordEntered.equals(PASSWORD)) {
+            showToUser(PASSWORD_INCORRECT_MESSAGE);
+            showToUser(ENTER_USERID_PROMPT);
+            usernameEntered = this.getUserInput();
+            passwordEntered = this.getUserInput();
+        }
+        showToUser(PASSWORD_CORRECT_MESSAGE);
     }
 
     /**
@@ -72,6 +87,15 @@ public class TextUi {
         return rawInputLine.trim().matches(COMMENT_LINE_FORMAT_REGEX);
     }
 
+    public String getUserInput() {
+        String fullInputLine = in.nextLine();
+
+        // silently consume all ignored lines
+        while (shouldIgnore(fullInputLine)) {
+            fullInputLine = in.nextLine();
+        }
+        return fullInputLine;
+    }
     /**
      * Prompts for the command and reads the text entered by the user.
      * Ignores empty, pure whitespace, and comment lines.
@@ -80,15 +104,9 @@ public class TextUi {
      */
     public String getUserCommand() {
         out.print(LINE_PREFIX + "Enter command: ");
-        String fullInputLine = in.nextLine();
-
-        // silently consume all ignored lines
-        while (shouldIgnore(fullInputLine)) {
-            fullInputLine = in.nextLine();
-        }
-
-        showToUser("[Command entered:" + fullInputLine + "]");
-        return fullInputLine;
+        String input = getUserInput();
+        showToUser("[Command entered:" + input + "]");
+        return input;
     }
 
 
