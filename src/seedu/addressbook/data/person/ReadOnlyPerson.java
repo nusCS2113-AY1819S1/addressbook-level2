@@ -22,13 +22,17 @@ public interface ReadOnlyPerson {
     Set<Tag> getTags();
 
     /**
-     * Returns true if both persons have the same identity fields (name and telephone).
+     * Returns true if both persons have the same identity fields (name and telephone and/or email).
+     * Will also return true if a different person has the same telephone and email.
      */
     default boolean isSamePerson(ReadOnlyPerson other) {
         return (other == this)
                 || (other != null
-                    && other.getName().equals(this.getName())
-                    && other.getPhone().equals(this.getPhone()));
+                    && (other.getName().equals(this.getName())
+                    && (other.getPhone().equals(this.getPhone())
+                    || other.getEmail().equals(this.getEmail())))
+                    || other.getPhone().equals(this.getPhone())
+                    && other.getEmail().equals(this.getEmail()));
     }
 
     /**
