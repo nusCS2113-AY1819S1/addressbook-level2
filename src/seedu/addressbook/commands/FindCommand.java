@@ -53,9 +53,14 @@ public class FindCommand extends Command {
         return matchedPersons;
     }
 
-    private Set<String> makeNamesLowercase(Collection<String> keywords) {
+    /**
+     *
+     * @param names for converting each person's name into
+     * @return list of persons with their names in lowercase
+     */
+    private Set<String> makeNamesLowercase(Collection<String> names) {
         final Set<String> lowerKeywords = new HashSet<>();
-        for(String word : keywords) {
+        for(String word : names) {
             lowerKeywords.add(word.toLowerCase());
         }
         return lowerKeywords;
