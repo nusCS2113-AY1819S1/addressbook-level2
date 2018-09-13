@@ -59,6 +59,9 @@ items with `...` after them can have multiple instances. Order of parameters are
 Put a `p` before the phone / email / address prefixes to mark it as `private`. `private` details can only
 be seen using the `viewall` command.
 
+Persons with duplicate primary key identity fields (Same name AND same phone number/email, or even different
+name with same phone number AND email) will not be allowed.
+
 Persons can have any number of tags (including 0).
 ****
 
@@ -66,6 +69,11 @@ Examples:
 
 * `add John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01`
 * `add Betsy Crowe pp/1234567 e/betsycrowe@gmail.com pa/Newgate Prison t/criminal t/friend`
+
+== Showing current number of contacts : `total`
+
+Shows the current total number of contacts in the address book, without showing the names. +
+Format: `total`
 
 == Listing all persons : `list`
 
