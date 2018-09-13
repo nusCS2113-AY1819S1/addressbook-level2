@@ -53,12 +53,4 @@ public class FindCommand extends Command {
         return matchedPersons;
     }
 
-    private static boolean isEquals(Set<String> wordsInName, Set<String> keywords){
-        final SortedSet<String> searchArgs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
-        final SortedSet<String> namesToSearch = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
-        namesToSearch.addAll(wordsInName);
-        searchArgs.addAll(keywords);
-        return namesToSearch.equals(searchArgs);
-    }
-
 }
