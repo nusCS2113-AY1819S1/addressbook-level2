@@ -74,7 +74,7 @@ Format: `list`
 
 == Sorting all persons : `sort`
 
-Sorts the address book in lexicographical order by their names
+Sorts the address book in lexicographical order by their names +
 Format: `sort`
 
 == Finding all persons containing any keyword in their name: `find`
