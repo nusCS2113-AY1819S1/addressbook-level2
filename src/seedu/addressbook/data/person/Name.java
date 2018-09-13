@@ -9,12 +9,14 @@ import java.util.List;
  * Represents a Person's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
-public class Name {
+public class Name extends Contact{
 
     public static final String EXAMPLE = "John Doe";
     public static final String MESSAGE_NAME_CONSTRAINTS = "Person names should be spaces or alphabetic characters";
     public static final String NAME_VALIDATION_REGEX = "[\\p{Alpha} ]+";
-    public final String fullName;
+
+    public String fullName;
+    protected boolean isPrivate;
 
     /**
      * Validates given name.
@@ -55,9 +57,12 @@ public class Name {
                 && this.fullName.equals(((Name) other).fullName)); // state check
     }
 
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
     @Override
     public int hashCode() {
         return fullName.hashCode();
     }
-
 }
