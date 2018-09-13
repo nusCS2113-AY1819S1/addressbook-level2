@@ -120,7 +120,7 @@
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 
+||                       
 || 4 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
@@ -213,8 +213,9 @@
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find betsy]
-|| 
-|| 0 persons listed!
+|| 	1. Betsy Choo Tags: [secretive]
+||
+|| 1 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find Betsy]
 || 	1. Betsy Choo Tags: [secretive]
