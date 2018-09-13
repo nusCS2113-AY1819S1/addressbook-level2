@@ -35,11 +35,16 @@ public class SortCommand extends Command {
      *
      * @param uniquePersonList
      */
-    private static void sortContacts(UniquePersonList uniquePersonList) {
+    private void sortContacts(UniquePersonList uniquePersonList) {
         List<Person> listToBeSorted = uniquePersonList.getInternalList();
 
         Collections.sort(listToBeSorted, Person.personNameComparator);
 
+        try {
+            UniquePersonList newList = new UniquePersonList(listToBeSorted);
+            addressBook.replaceAllPersons(newList);
+        } catch (UniquePersonList.DuplicatePersonException dpe) {
+        }
 
     }
 }
