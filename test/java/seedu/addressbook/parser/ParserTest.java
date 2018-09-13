@@ -71,11 +71,11 @@ public class ParserTest {
         parseAndAssertCommandType(input, ListCommand.class);
     }
 
-    @Test
-    public void parse_topFiveCommand_parsedCorrectly() {
-        final String input = "topFive";
-        parseAndAssertCommandType(input, TopFiveCommand.class);
-    }
+    //@Test
+    //public void parse_topFiveCommand_parsedCorrectly() {
+    //    final String input = "topFive";
+    //    parseAndAssertCommandType(input, TopFiveCommand.class);
+    //}
 
     @Test
     public void parse_exitCommand_parsedCorrectly() {
