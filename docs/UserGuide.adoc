@@ -59,6 +59,9 @@ items with `...` after them can have multiple instances. Order of parameters are
 Put a `p` before the phone / email / address prefixes to mark it as `private`. `private` details can only
 be seen using the `viewall` command.
 
+Persons with duplicate primary key identity fields (Same name AND same phone number/email, or even different
+name with same phone number AND email) will not be allowed.
+
 Persons can have any number of tags (including 0).
 ****
 
