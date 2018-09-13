@@ -29,6 +29,7 @@ Please refer to the <<DeveloperGuide#setting-up, Setting up>> section to learn h
 . `cd` into the project's `out\production\addressbook-level2` directory
 . Type `java seedu.addressbook.Main`, then Enter to execute
 . Now you can interact with the program through the CLI
+. Enter the username and password. The default username is 'user', and default password is 'pass'.
 
 == Changes from level 1
 

@@ -1,0 +1,15 @@
+##########################
+# should catch invalid password
+##########################
+asakn
+asskdjafnd
+asjdj
+akjdah
+askj
+sjakh
+## correct password
+user
+pass
+## to quit
+exit
+#########################
