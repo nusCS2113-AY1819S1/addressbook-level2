@@ -290,6 +290,24 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  edit 0 New Guy p/1234 e/new@gmail.com a/ New street]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  edit 3 New Guy p/1234 e/new@gmail.com a/ New street]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 New Guy p/1234 e/new@gmail.com a/ New street]
+|| Entry 1 changed to: New Guy Phone: 1234 Email: new@gmail.com Address: New street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. New Guy Phone: 1234 Email: new@gmail.com Address: New street Tags: 
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  edit 1 New Guy p/1234 e/new@gmail.com a/ New street]
+|| This person already exists in the address book
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================

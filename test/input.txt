@@ -139,7 +139,19 @@
   # listing indexes get updated on next request
   delete 1
   list
-
+##########################################################
+# test edit command
+##########################################################
+  # invalid index
+  edit 0 New Guy p/1234 e/new@gmail.com a/ New street
+  edit 3 New Guy p/1234 e/new@gmail.com a/ New street
+  
+  # edit first person
+  edit 1 New Guy p/1234 e/new@gmail.com a/ New street
+  list
+  
+  # catch editing in a existing person
+  edit 1 New Guy p/1234 e/new@gmail.com a/ New street
 ##########################################################
 # test clear command
 ##########################################################
