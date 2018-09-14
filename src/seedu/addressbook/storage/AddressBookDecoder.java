@@ -1,14 +1,5 @@
 package seedu.addressbook.storage;
 
-import static seedu.addressbook.parser.Parser.PERSON_DATA_ARGS_FORMAT;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
@@ -19,6 +10,15 @@ import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+
+import static seedu.addressbook.parser.Parser.PERSON_DATA_ARGS_FORMAT;
 
 /**
  * Decodes the storage data file into an {@code AddressBook} object.

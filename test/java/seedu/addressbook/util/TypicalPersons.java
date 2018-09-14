@@ -1,7 +1,5 @@
 package seedu.addressbook.util;
 
-import java.util.Collections;
-
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
@@ -10,6 +8,8 @@ import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.tag.Tag;
+
+import java.util.Collections;
 
 /**
  * Class to generate typical test persons
