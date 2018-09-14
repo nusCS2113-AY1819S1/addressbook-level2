@@ -91,6 +91,24 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Filtering persons by their associated tags: `filter`
+
+Finds persons whose names contain any of the given tags. +
+Format: `filter TAGS [MORE_TAGS]`
+
+[NOTE]
+====
+The search is case sensitive, the order of the tags does not matter.
+====
+
+Examples:
+
+* `filter work` +
+Returns any person with the `work` tag.
+
+* `filter work school` +
+Returns any person with the `work` and `school` tag.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
