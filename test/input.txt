@@ -141,6 +141,15 @@
   list
 
 ##########################################################
+# test Filter command
+##########################################################
+
+    # Filter all friends tag
+    filter friends
+    # Filter all friends and secretive tag
+    filter friends secretive
+
+##########################################################
 # test clear command
 ##########################################################
 
