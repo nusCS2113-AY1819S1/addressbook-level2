@@ -1,10 +1,10 @@
 package seedu.addressbook.storage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.Person;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Encodes the {@code AddressBook} object into a data file for storage.
