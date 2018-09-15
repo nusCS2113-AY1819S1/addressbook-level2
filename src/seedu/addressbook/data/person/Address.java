@@ -30,4 +30,8 @@ public class Address extends Contact {
                 && this.value.equals(((Address) other).value)); // state check
     }
 
+    @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
 }

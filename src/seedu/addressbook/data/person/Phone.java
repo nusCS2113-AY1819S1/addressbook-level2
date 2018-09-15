@@ -29,4 +29,8 @@ public class Phone extends Contact {
                 && this.value.equals(((Phone) other).value)); // state check
     }
 
+    @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
 }
