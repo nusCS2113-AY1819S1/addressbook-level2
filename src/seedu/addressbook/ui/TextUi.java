@@ -63,6 +63,21 @@ public class TextUi {
     }
 
     /**
+     * Prompts for password the text entered by the user.
+     * Any password can be entered to continue with the programme.
+     */
+    public void askForPassword() {
+        System.out.print(LINE_PREFIX + MESSAGE_PASSWORD);
+        String password=in.nextLine();
+        if (password.equals("CS2113")) {
+            System.out.print(LINE_PREFIX + MESSAGE_PASSWORD_SUCCESSFUL);
+        } else {
+            System.out.print(LINE_PREFIX + MESSAGE_PASSWORD_AGAIN);
+            askForPassword();
+        }
+    }
+    
+    /**
      * Returns true if the user input line is a comment line.
      *
      * @param rawInputLine full raw user input line.

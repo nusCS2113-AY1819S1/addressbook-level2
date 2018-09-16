@@ -56,6 +56,7 @@ public class Main {
             this.storage = initializeStorage(launchArgs);
             this.addressBook = storage.load();
             ui.showWelcomeMessage(VERSION, storage.getPath());
+            ui.askForPassword();
 
         } catch (InvalidStorageFilePathException | StorageOperationException e) {
             ui.showInitFailedMessage();

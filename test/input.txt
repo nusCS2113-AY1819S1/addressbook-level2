@@ -1,4 +1,14 @@
 ##########################################################
+# invalid password
+##########################################################
+
+  # should recognise invalid password and ask user to try again
+  cs2113
+
+  # should recognise valid password and allow entry to addressbook
+  CS2113
+
+##########################################################
 # invalid command
 ##########################################################
 
