@@ -16,6 +16,7 @@ import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
+import seedu.addressbook.commands.FindByTagCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
@@ -41,6 +42,8 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    public static final Pattern TAG_ARGS_FORMAT =
+            Pattern.compile("(?<tag>^\\w+$)"); // only one word allowed
 
     /**
      * Signals that the user input could not be parsed.
@@ -98,6 +101,9 @@ public class Parser {
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
+
+        case FindByTagCommand.COMMAND_WORD:
+            return prepareFindByTag(arguments);
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
@@ -250,5 +256,20 @@ public class Parser {
         return new FindCommand(keywordSet);
     }
 
+    /**
+     * Parses arguments in the context of findByTag command
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareFindByTag(String args) {
+        final Matcher matcher = TAG_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    FindByTagCommand.MESSAGE_USAGE));
+        }
+
+        return new FindByTagCommand(matcher.group("tag"));
+    }
 
 }

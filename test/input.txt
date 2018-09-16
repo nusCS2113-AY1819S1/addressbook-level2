@@ -107,6 +107,22 @@
   find Charlie Betsy
 
 ##########################################################
+# test findByTag command
+##########################################################
+
+  # should consider no keywords as invalid command format
+  findbytag
+  # should match tag in person tags
+  findbytag friends
+  # should match tag in person tags even for non-case-sensitive tags
+  findbytag FRIENDS
+  # does not match if no none hae tag
+  findbytag nobodyhasthistag
+
+  # return to previous active view
+  find Charlie Betsy
+
+##########################################################
 # test delete person command
 ##########################################################
 
