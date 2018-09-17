@@ -13,9 +13,6 @@ public class Address extends Contact {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
-//    public final String value;
-//    private boolean isPrivate;
-
     /**
      * Validates given address.
      *
@@ -24,7 +21,7 @@ public class Address extends Contact {
     public Address(String address, boolean isPrivate) throws IllegalValueException {
         super(null, isPrivate);
         String trimmedAddress = address.trim();
-//        this.isPrivate = isPrivate;
+
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
@@ -38,17 +35,14 @@ public class Address extends Contact {
         return test.matches(ADDRESS_VALIDATION_REGEX);
     }
 
-//    @Override
     public String toString() { return super.toString(); }
 
-//    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Address // instanceof handles nulls
                 && this.value.equals(((Address) other).value)); // state check
     }
 
-//    @Override
     public int hashCode() { return super.hashCode(); }
 
     public boolean isPrivate() {
