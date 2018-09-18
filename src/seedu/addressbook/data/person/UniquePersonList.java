@@ -123,6 +123,13 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * @return the underlying internalList
+     */
+    public List<Person> getInternalList() {
+        return internalList;
+    }
+
+    /**
      * Clears all persons in list.
      */
     public void clear() {

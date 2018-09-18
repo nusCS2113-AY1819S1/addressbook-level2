@@ -11,7 +11,7 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
  */
 public class AddressBook {
 
-    private final UniquePersonList allPersons;
+    private UniquePersonList allPersons;
 
     /**
      * Creates an empty address book.
@@ -52,6 +52,10 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+    }
+
+    public void replaceAllPersons(UniquePersonList newList) {
+        allPersons = newList;
     }
 
     /**

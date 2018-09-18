@@ -1,9 +1,11 @@
 package seedu.addressbook.data.person;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.sun.javafx.tools.packager.CommonParams;
 import seedu.addressbook.data.tag.Tag;
 
 /**
@@ -18,6 +20,21 @@ public class Person implements ReadOnlyPerson {
     private Address address;
 
     private final Set<Tag> tags = new HashSet<>();
+
+
+    /**
+     * Comparator to compare two persons based on their names
+     * Lexicographical comparison in ascending order
+     */
+    public static Comparator<Person> personNameComparator = new Comparator<Person>() {
+        @Override
+        public int compare(Person leftPerson, Person rightPerson) {
+            String leftPersonString = leftPerson.name.toString();
+            String rightPersonString = rightPerson.name.toString();
+
+            return leftPersonString.compareTo(rightPersonString);
+        }
+    };
 
     /**
      * Assumption: Every field must be present and not null.
