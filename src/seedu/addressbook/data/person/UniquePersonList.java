@@ -123,10 +123,10 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * @return the underlying internalList
+     * Sorts the underlying internal list in lexicographical order.
      */
-    public List<Person> getInternalList() {
-        return internalList;
+    public void sortInternalList() {
+        Collections.sort(internalList);
     }
 
     /**

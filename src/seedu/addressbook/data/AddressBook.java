@@ -54,10 +54,6 @@ public class AddressBook {
         allPersons.remove(toRemove);
     }
 
-    public void replaceAllPersons(UniquePersonList newList) {
-        allPersons = newList;
-    }
-
     /**
      * Clears all persons and tags from the address book.
      */
@@ -70,6 +66,14 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+    }
+
+    /**
+     * Returns the UniquePersonList representing the current persons in the address book.
+     * @return
+     */
+    public UniquePersonList getCurrentPersons() {
+        return allPersons;
     }
 
     @Override
