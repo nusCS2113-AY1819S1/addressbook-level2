@@ -11,7 +11,7 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
  */
 public class AddressBook {
 
-    private final UniquePersonList allPersons;
+    private UniquePersonList allPersons;
 
     /**
      * Creates an empty address book.
@@ -66,6 +66,14 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+    }
+
+    /**
+     * Returns the UniquePersonList representing the current persons in the address book.
+     * @return
+     */
+    public UniquePersonList getCurrentPersons() {
+        return allPersons;
     }
 
     @Override
