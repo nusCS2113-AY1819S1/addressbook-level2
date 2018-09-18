@@ -5,7 +5,7 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import java.util.List;
 
 /**
- * Sort the list of contacts in address book
+ * Sorts the list of contacts in address book.
  */
 public class SortCommand extends Command {
 
