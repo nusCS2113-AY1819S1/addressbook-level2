@@ -14,6 +14,7 @@ public interface ReadOnlyPerson {
     Phone getPhone();
     Email getEmail();
     Address getAddress();
+    Price getPrice();
 
     /**
      * Returns a new TagSet that is a deep copy of the internal TagSet,
@@ -71,6 +72,11 @@ public interface ReadOnlyPerson {
         for (Tag tag : getTags()) {
             builder.append(tag);
         }
+        builder.append(" Price: ")
+                .append(getPrice());
+        if (getPrice().isPrivate()) {
+            builder.append(detailIsPrivate);
+        }
         return builder.toString();
     }
 
@@ -88,6 +94,9 @@ public interface ReadOnlyPerson {
         }
         if (!getAddress().isPrivate()) {
             builder.append(" Address: ").append(getAddress());
+        }
+        if (!getPrice().isPrivate()) {
+            builder.append(" Price: ").append(getPrice());
         }
         builder.append(" Tags: ");
         for (Tag tag : getTags()) {

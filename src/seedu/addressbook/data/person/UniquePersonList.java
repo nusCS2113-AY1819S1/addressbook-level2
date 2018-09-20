@@ -37,13 +37,13 @@ public class UniquePersonList implements Iterable<Person> {
 
     private final List<Person> internalList = new ArrayList<>();
 
+
     /**
      * Constructs empty person list.
      */
     public UniquePersonList() {}
 
-    /**
-     * Constructs a person list with the given persons.
+    /**     * Constructs a person list with the given persons.
      */
     public UniquePersonList(Person... persons) throws DuplicatePersonException {
         final List<Person> initialTags = Arrays.asList(persons);

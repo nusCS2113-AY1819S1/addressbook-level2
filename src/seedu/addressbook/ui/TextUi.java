@@ -126,6 +126,7 @@ public class TextUi {
      */
     public void showResultToUser(CommandResult result) {
         final Optional<List<? extends ReadOnlyPerson>> resultPersons = result.getRelevantPersons();
+        System.out.println("this is from UI" + resultPersons);
         if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
         }
