@@ -1,4 +1,4 @@
-package seedu.addressbook.commands;
+ package seedu.addressbook.commands;
 
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
@@ -47,8 +47,8 @@ public class Command {
      * Supplies the data the command will operate on.
      */
     public void setData(AddressBook addressBook, List<? extends ReadOnlyPerson> relevantPersons) {
-        this.addressBook = addressBook;
-        this.relevantPersons = relevantPersons;
+            this.addressBook = addressBook;
+            this.relevantPersons = relevantPersons;
     }
 
     /**

@@ -15,7 +15,6 @@ import seedu.addressbook.storage.StorageFile.InvalidStorageFilePathException;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 import seedu.addressbook.ui.TextUi;
 
-
 /**
  * Entry point of the Address Book application.
  * Initializes the application and starts the interaction with the user.
@@ -94,8 +93,10 @@ public class Main {
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
     private void recordResult(CommandResult result) {
         final Optional<List<? extends ReadOnlyPerson>> personList = result.getRelevantPersons();
+        System.out.println("the personlist is:" + result);
         if (personList.isPresent()) {
             lastShownList = personList.get();
+            System.out.println("the last shownlistt is:" + lastShownList);
         }
     }
 

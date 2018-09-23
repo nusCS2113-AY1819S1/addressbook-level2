@@ -17,11 +17,13 @@ public class CommandResult {
     private final List<? extends ReadOnlyPerson> relevantPersons;
 
     public CommandResult(String feedbackToUser) {
+        System.out.println("this is from CommandResult0000000000: " );
         this.feedbackToUser = feedbackToUser;
         relevantPersons = null;
     }
 
     public CommandResult(String feedbackToUser, List<? extends ReadOnlyPerson> relevantPersons) {
+        System.out.println("this is from CommandResult: " + relevantPersons);
         this.feedbackToUser = feedbackToUser;
         this.relevantPersons = relevantPersons;
     }

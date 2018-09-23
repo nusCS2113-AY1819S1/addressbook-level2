@@ -48,13 +48,30 @@ public class FindCommand extends Command {
      */
     private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
+        Set<String> keywordUpper = changeSetToUpper(keywords);
+
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            Set<String> wordsInNameToUpper = changeSetToUpper(wordsInName);
+            if (!Collections.disjoint(wordsInNameToUpper, keywordUpper)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
+    }
+
+    /**
+     *
+     * @param keywords
+     * this function change all element in a set to upper case
+     * @return set of string that all in upper case
+     */
+    private Set<String> changeSetToUpper(Set<String> keywords){
+        Set<String> keywordUpper = new HashSet<>();
+        for(String s : keywords){
+            keywordUpper.add(s.toUpperCase());
+        }
+        return keywordUpper;
     }
 
 }

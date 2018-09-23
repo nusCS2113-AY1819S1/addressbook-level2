@@ -4,13 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.addressbook.data.exception.IllegalValueException;
-import seedu.addressbook.data.person.Address;
-import seedu.addressbook.data.person.Email;
-import seedu.addressbook.data.person.Name;
-import seedu.addressbook.data.person.Person;
-import seedu.addressbook.data.person.Phone;
-import seedu.addressbook.data.person.ReadOnlyPerson;
-import seedu.addressbook.data.person.UniquePersonList;
+import seedu.addressbook.data.person.*;
 import seedu.addressbook.data.tag.Tag;
 
 /**
@@ -40,18 +34,24 @@ public class AddCommand extends Command {
                       String phone, boolean isPhonePrivate,
                       String email, boolean isEmailPrivate,
                       String address, boolean isAddressPrivate,
-                      Set<String> tags) throws IllegalValueException {
+                      String price, boolean isPricePrivate,
+                      Set<String> tags
+                      ) throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
+        System.out.println("this is a tag: "+tags);
+        System.out.println("this is the price :" + price);
         this.toAdd = new Person(
                 new Name(name),
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
                 new Address(address, isAddressPrivate),
+                new Price(price, isPricePrivate),
                 tagSet
         );
+        System.out.println("this is to add: " + toAdd);
     }
 
     public AddCommand(Person toAdd) {
@@ -66,6 +66,7 @@ public class AddCommand extends Command {
     public CommandResult execute() {
         try {
             addressBook.addPerson(toAdd);
+            System.out.println("this is toAdd" + toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);

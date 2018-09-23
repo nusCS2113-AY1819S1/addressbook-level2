@@ -36,10 +36,11 @@ public class Parser {
 
     public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
-                    + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
-                    + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
-                    + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
-                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+            + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
+            + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
+            + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
+            + " (?<isPricePrivate>p?)pi/(?<price>[^/]+)"
+            + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
 
     /**
@@ -112,9 +113,14 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareAdd(String args) {
+        System.out.println(args);
         final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(args.trim());
+        while(matcher.find()) {
+            System.out.println("name is" + matcher.group("name"));
+        }
         // Validate arg string format
         if (!matcher.matches()) {
+            System.out.println("returned");
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
         try {
@@ -130,7 +136,11 @@ public class Parser {
                     matcher.group("address"),
                     isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
 
+                    matcher.group("price"),
+                    isPrivatePrefixPresent("isPricePrivate"),
+
                     getTagsFromArgs(matcher.group("tagArguments"))
+
             );
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
