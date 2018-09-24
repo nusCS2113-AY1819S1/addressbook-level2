@@ -113,7 +113,7 @@ public class Main {
             return result;
         } catch (StorageOperationException soe) {
             return new CommandResult(soe.getMessage());
-        }catch (Exception e) {
+        } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
         }
