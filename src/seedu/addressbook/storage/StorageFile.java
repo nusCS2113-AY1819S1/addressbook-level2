@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -14,6 +16,8 @@ import seedu.addressbook.data.exception.IllegalValueException;
  * Represents the file used to store address book data.
  */
 public class StorageFile {
+
+    private static final Logger logger = Logger.getLogger("StorageFile");
 
     /** Default file path used if the user doesn't provide the file name. */
     public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";
@@ -78,7 +82,7 @@ public class StorageFile {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
-            throw new StorageOperationException("Error writing to file: " + path);
+            logger.log(Level.SEVERE, "File is read only!");
         }
     }
 
