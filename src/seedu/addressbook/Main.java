@@ -78,17 +78,22 @@ public class Main {
         System.exit(0);
     }
 
-    /** Reads the user command and executes it, until the user issues the exit command.  */
+    /** Reads the user command and executes it, until the user issues the exit command or
+     *  a storage operation exception occurs.
+     */
     private void runCommandLoopUntilExitCommand() {
         Command command;
-        do {
-            String userCommandText = ui.getUserCommand();
-            command = new Parser().parseCommand(userCommandText);
-            CommandResult result = executeCommand(command);
-            recordResult(result);
-            ui.showResultToUser(result);
-
-        } while (!ExitCommand.isExit(command));
+        try {
+            do {
+                String userCommandText = ui.getUserCommand();
+                command = new Parser().parseCommand(userCommandText);
+                CommandResult result = executeCommand(command);
+                recordResult(result);
+                ui.showResultToUser(result);
+            } while (!ExitCommand.isExit(command));
+        } catch (StorageOperationException e) {
+            ui.showToUser(e.getMessage());
+        }
     }
 
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
@@ -104,13 +109,16 @@ public class Main {
      *
      * @param command user command
      * @return result of the command
+     * @throws StorageOperationException if there were errors reading and/or converting data from file.
      */
-    private CommandResult executeCommand(Command command)  {
+    private CommandResult executeCommand(Command command) throws StorageOperationException {
         try {
             command.setData(addressBook, lastShownList);
             CommandResult result = command.execute();
             storage.save(addressBook);
             return result;
+        } catch (StorageOperationException e) {
+            throw e;
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
