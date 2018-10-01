@@ -111,9 +111,9 @@ public class Main {
             CommandResult result = command.execute();
             storage.save(addressBook);
             return result;
-        } catch (Exception e) {
-            ui.showToUser(e.getMessage());
-            throw new RuntimeException(e);
+        } catch (StorageOperationException e) {
+            return new CommandResult(e.getMessage() +
+                    "\n" + "Change your file permissions to read and write and restart this program.");
         }
     }
 
