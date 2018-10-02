@@ -1,5 +1,6 @@
 package seedu.addressbook;
 
+import java.nio.file.AccessDeniedException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -84,10 +85,14 @@ public class Main {
         do {
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
-            CommandResult result = executeCommand(command);
-            recordResult(result);
-            ui.showResultToUser(result);
-
+            CommandResult result = null;
+            try {
+                result = executeCommand(command);
+                recordResult(result);
+                ui.showResultToUser(result);
+            } catch (StorageOperationException e) {
+                ui.showToUser(e.getMessage());
+            }
         } while (!ExitCommand.isExit(command));
     }
 
@@ -105,12 +110,15 @@ public class Main {
      * @param command user command
      * @return result of the command
      */
-    private CommandResult executeCommand(Command command)  {
+    private CommandResult executeCommand(Command command) throws StorageOperationException {
         try {
             command.setData(addressBook, lastShownList);
             CommandResult result = command.execute();
             storage.save(addressBook);
             return result;
+        } catch (StorageOperationException e) {
+            ui.showToUser(e.getMessage());
+            throw new StorageOperationException("Storage file is read-only. Please allow write access.");
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
