@@ -44,7 +44,6 @@ public class EditCommand extends Command {
         );
     }
 
-
     public static String getMessageEditPersonSuccess() {
         return MESSAGE_EDIT_PERSON_SUCCESS;
     }
